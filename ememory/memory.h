@@ -12,10 +12,21 @@
 #include <memory>
 
 namespace ememory {
+	/**
+	 * @brief std::shared_ptr wrapper
+	 */
 	template<class TYPE>
 	using SharedPtr = std::shared_ptr<TYPE>;
+	
+	/**
+	 * @brief std::weak_ptr wrapper
+	 */
 	template<class TYPE>
 	using WeakPtr = std::weak_ptr<TYPE>;
+	
+	/**
+	 * @brief std::enable_shared_from_this wrapper
+	 */
 	template<class TYPE>
 	using EnableSharedFromThis = std::enable_shared_from_this<TYPE>;
 	/*
