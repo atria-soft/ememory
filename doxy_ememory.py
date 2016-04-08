@@ -17,5 +17,15 @@ def create(target, module_name):
 	my_module.add_module_depend([
 	    'etk'
 	    ])
+	my_module.add_exclude_symbols([
+	    '*operator<<*',
+	    ])
+	my_module.add_exclude_file([
+	    'debug.h',
+	    ])
+	my_module.add_file_patterns([
+	    '*.h',
+	    '*.md',
+	    ])
 	
 	return my_module
