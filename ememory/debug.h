@@ -14,7 +14,7 @@ namespace ememory {
 	int32_t getLogId();
 };
 
-#define EMEMORY_BASIC(info,data) EMEMORY_BASE(ememory::getLogId(),info,data)
+#define EMEMORY_BASIC(info,data) ELOG_BASE(ememory::getLogId(),info,data)
 
 #define EMEMORY_PRINT(data)         EMEMORY_BASIC(-1, data)
 #define EMEMORY_CRITICAL(data)      EMEMORY_BASIC(1, data)

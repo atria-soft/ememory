@@ -29,11 +29,21 @@ def create(target, module_name):
 	my_module.add_extra_compile_flags()
 	# add the file to compile:
 	my_module.add_src_file([
-		'ememory/debug.cpp'
+		'ememory/debug.cpp',
+		'ememory/Counter.cpp'
 		])
 	
 	my_module.add_header_file([
+		'ememory/debug.h',
 		'ememory/memory.h',
+		'ememory/Counter.h',
+		'ememory/SharedPtr.h',
+		'ememory/WeakPtr.h',
+		'ememory/EnableSharedFromThis.h',
+		'ememory/details/memory.hxx',
+		'ememory/details/SharedPtr.hxx',
+		'ememory/details/WeakPtr.hxx',
+		'ememory/details/EnableSharedFromThis.hxx'
 		])
 	
 	# build in C++ mode
