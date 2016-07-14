@@ -23,12 +23,12 @@ ememory::Counter::~Counter() {
 	EMEMORY_VERBOSE("delete counter");
 }
 
-int64_t ememory::Counter::incrementShared() {
+int64_t ememory::Counter::incrementShared(bool _fromWeak) {
 	int64_t out;
 	{
 		std::unique_lock<std::mutex> lock(m_mutex);
 		EMEMORY_VERBOSE("shared++ (start)    ==> w:" << m_counterWeak << " s:" << m_counterShared);
-		if (m_counterShared != 0) {
+		if (m_counterShared != 0 || _fromWeak == false) {
 			m_counterShared++;
 		}
 		out = m_counterShared;

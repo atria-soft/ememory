@@ -67,6 +67,12 @@ ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const
 }
 
 template<typename EMEMORY_TYPE>
+ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (std::nullptr_t) {
+	reset();
+	return *this;
+}
+
+template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(ememory::WeakPtr<EMEMORY_TYPE>&& _obj) {
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
@@ -108,6 +114,44 @@ ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const
 	return *this;
 }
 
+/*
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+                                 , int>::type>
+WeakPtr(const WeakPtr<EMEMORY_TYPE2>& _obj):
+  m_element(_obj.m_element),
+  m_counter(_obj.getCounter()) {
+	if (    m_element == nullptr
+	     || m_counter == nullptr) {
+		m_element = nullptr;
+		m_counter = nullptr;
+		return;
+	}
+	if (m_counter == nullptr) {
+		return;
+	}
+	m_counter->incrementWeak();
+	
+}
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+                                 , int>::type>
+WeakPtr& operator= (const WeakPtr<EMEMORY_TYPE2>& _obj) {
+	m_element = _obj.m_element;
+	m_counter = _obj.getCounter();
+	if (    m_element == nullptr
+	     || m_counter == nullptr) {
+		m_element = nullptr;
+		m_counter = nullptr;
+		return *this;
+	}
+	if (m_counter == nullptr) {
+		return *this;
+	}
+	m_counter->incrementWeak();
+	return *this;
+}
+*/
 template<typename EMEMORY_TYPE>
 void ememory::WeakPtr<EMEMORY_TYPE>::reset() {
 	if(m_counter == nullptr) {
@@ -154,7 +198,7 @@ ememory::SharedPtr<EMEMORY_TYPE> ememory::WeakPtr<EMEMORY_TYPE>::lock() {
 	if (m_counter == nullptr) {
 		return out;
 	}
-	int64_t count = m_counter->incrementShared();
+	int64_t count = m_counter->incrementShared(true);
 	if (count == 0) {
 		return out;
 	}
@@ -164,13 +208,23 @@ ememory::SharedPtr<EMEMORY_TYPE> ememory::WeakPtr<EMEMORY_TYPE>::lock() {
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::WeakPtr<EMEMORY_TYPE>::operator == (const ememory::WeakPtr<EMEMORY_TYPE>& _obj) {
+bool ememory::WeakPtr<EMEMORY_TYPE>::operator==(const ememory::WeakPtr<EMEMORY_TYPE>& _obj) {
 	return m_counter == _obj.m_counter;
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::WeakPtr<EMEMORY_TYPE>::operator == (std::nullptr_t) {
+bool ememory::WeakPtr<EMEMORY_TYPE>::operator==(std::nullptr_t) const {
 	return m_counter == nullptr;
+}
+
+template<typename EMEMORY_TYPE>
+bool ememory::WeakPtr<EMEMORY_TYPE>::operator!=(const ememory::WeakPtr<EMEMORY_TYPE>& _obj) {
+	return m_counter != _obj.m_counter;
+}
+
+template<typename EMEMORY_TYPE>
+bool ememory::WeakPtr<EMEMORY_TYPE>::operator!=(std::nullptr_t) const {
+	return m_counter != nullptr;
 }
 
 template<typename EMEMORY_TYPE>

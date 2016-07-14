@@ -27,7 +27,7 @@ namespace ememory {
 		public:
 			Counter(bool _fromWeak=false);
 			~Counter();
-			int64_t incrementShared();
+			int64_t incrementShared(bool _fromWeak=false);
 			ememory::Counter::remove decrementShared();
 			int64_t incrementWeak();
 			ememory::Counter::remove decrementWeak();

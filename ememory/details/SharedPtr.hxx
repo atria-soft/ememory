@@ -11,7 +11,11 @@
 #include <ememory/WeakPtr.h>
 
 template<typename EMEMORY_TYPE>
-ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE* _element):
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+                                  && std::is_base_of<ememory::EnableSharedFromThis<EMEMORY_TYPE2>, EMEMORY_TYPE2>::value
+                                 , int>::type>
+ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element):
   m_element(_element),
   m_counter(nullptr) {
 	EMEMORY_VERBOSE("new shared");
@@ -19,19 +23,24 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE* _element):
 		return;
 	}
 	// check if the clas does not refer itself ... to get his own sharedPtr
-	ememory::EnableSharedFromThis<EMEMORY_TYPE> upperClass = static_cast<ememory::EnableSharedFromThis<EMEMORY_TYPE>*>(m_element);
+	ememory::EnableSharedFromThis<EMEMORY_TYPE2>* upperClass = static_cast<ememory::EnableSharedFromThis<EMEMORY_TYPE2>*>(m_element);
 	if (upperClass != nullptr) {
-		m_counter = upperClass->m_weakThis;
+		EMEMORY_VERBOSE("    ==> get previous pointer");
+		m_counter = upperClass->m_weakThis.m_counter;
 		if (m_counter != nullptr) {
 			m_counter->incrementShared();
 		}
-	} else {
-		m_counter = new ememory::Counter(false);
+		return;
 	}
+	EMEMORY_ERROR("No counter on a shared ptr class (EnableSharedFromThis ==> this is bad");
 }
 
 template<typename EMEMORY_TYPE>
-ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE* _element):
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+                                  && !std::is_base_of<ememory::EnableSharedFromThis<EMEMORY_TYPE2>, EMEMORY_TYPE2>::value
+                                 , int>::type>
+ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element):
   m_element(_element),
   m_counter(nullptr) {
 	EMEMORY_VERBOSE("new shared");
@@ -46,6 +55,18 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr():
   m_element(nullptr),
   m_counter(nullptr) {
 	EMEMORY_VERBOSE("new shared");
+}
+
+template<typename EMEMORY_TYPE>
+ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE* _obj, ememory::Counter* _counter):
+  m_element(_obj),
+  m_counter(_counter) {
+	EMEMORY_VERBOSE("new shared (from a cast)");
+	if (_obj == nullptr) {
+		m_counter = nullptr;
+		return;
+	}
+	m_counter->incrementShared();
 }
 
 template<typename EMEMORY_TYPE>
@@ -88,11 +109,57 @@ ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (c
 }
 
 template<typename EMEMORY_TYPE>
+ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (std::nullptr_t) {
+	reset();
+	return *this;
+}
+
+
+template<typename EMEMORY_TYPE>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(ememory::SharedPtr<EMEMORY_TYPE>&& _obj) {
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
 	_obj.m_element = nullptr;
 	_obj.m_counter = nullptr;
+}
+
+template<typename EMEMORY_TYPE>
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+                                 , int>::type>
+ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(const ememory::SharedPtr<EMEMORY_TYPE2>& _obj):
+  m_element(const_cast<EMEMORY_TYPE2*>(_obj.get())),
+  m_counter(const_cast<ememory::Counter*>(_obj.getCounter())) {
+	if (    m_element == nullptr
+	     || m_counter == nullptr) {
+		m_element = nullptr;
+		m_counter = nullptr;
+		return;
+	}
+	if (m_counter == nullptr) {
+		return;
+	}
+	m_counter->incrementShared();
+}
+
+template<typename EMEMORY_TYPE>
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+                                 , int>::type>
+ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (const SharedPtr<EMEMORY_TYPE2>& _obj) {
+	m_element = const_cast<EMEMORY_TYPE2*>(_obj.get());
+	m_counter = const_cast<ememory::Counter*>(_obj.getCounter());
+	if (    m_element == nullptr
+	     || m_counter == nullptr) {
+		m_element = nullptr;
+		m_counter = nullptr;
+		return *this;
+	}
+	if (m_counter == nullptr) {
+		return *this;
+	}
+	m_counter->incrementShared();
+	return *this;
 }
 
 template<typename EMEMORY_TYPE>
@@ -131,7 +198,7 @@ int64_t ememory::SharedPtr<EMEMORY_TYPE>::useCount() const {
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::SharedPtr<EMEMORY_TYPE>::operator == (std::nullptr_t) {
+bool ememory::SharedPtr<EMEMORY_TYPE>::operator == (std::nullptr_t) const {
 	return m_counter == nullptr;
 }
 
@@ -141,7 +208,7 @@ bool ememory::SharedPtr<EMEMORY_TYPE>::operator==(const SharedPtr& _obj) const {
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::SharedPtr<EMEMORY_TYPE>::operator != (std::nullptr_t) {
+bool ememory::SharedPtr<EMEMORY_TYPE>::operator != (std::nullptr_t) const {
 	return m_counter != nullptr;
 }
 

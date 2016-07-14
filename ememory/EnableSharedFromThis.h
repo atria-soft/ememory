@@ -22,7 +22,9 @@ namespace ememory {
 			virtual ~EnableSharedFromThis() = default;
 		public:
 			ememory::SharedPtr<EMEMORY_TYPE> sharedFromThis();
+			const ememory::SharedPtr<EMEMORY_TYPE> sharedFromThis() const;
 			ememory::WeakPtr<EMEMORY_TYPE> weakFromThis();
+			const ememory::WeakPtr<EMEMORY_TYPE> weakFromThis() const;
 	};
 }
 
