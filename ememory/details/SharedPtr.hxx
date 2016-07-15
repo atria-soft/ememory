@@ -58,6 +58,13 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr():
 }
 
 template<typename EMEMORY_TYPE>
+ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(std::nullptr_t):
+  m_element(nullptr),
+  m_counter(nullptr) {
+	EMEMORY_VERBOSE("new shared");
+}
+
+template<typename EMEMORY_TYPE>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE* _obj, ememory::Counter* _counter):
   m_element(_obj),
   m_counter(_counter) {
@@ -228,21 +235,37 @@ EMEMORY_TYPE* ememory::SharedPtr<EMEMORY_TYPE>::get() {
 }
 
 template<typename EMEMORY_TYPE>
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+                                  && !std::is_same<EMEMORY_TYPE2, void>::value
+                                 , int>::type>
 const EMEMORY_TYPE* ememory::SharedPtr<EMEMORY_TYPE>::operator->() const {
 	return m_element;
 }
 
 template<typename EMEMORY_TYPE>
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+                                  && !std::is_same<EMEMORY_TYPE2, void>::value
+                                 , int>::type>
 EMEMORY_TYPE* ememory::SharedPtr<EMEMORY_TYPE>::operator->() {
 	return m_element;
 }
 
 template<typename EMEMORY_TYPE>
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+                                  && !std::is_same<EMEMORY_TYPE2, void>::value
+                                 , int>::type>
 const EMEMORY_TYPE& ememory::SharedPtr<EMEMORY_TYPE>::operator*() const {
 	return *m_element;
 }
 
 template<typename EMEMORY_TYPE>
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+                                  && !std::is_same<EMEMORY_TYPE2, void>::value
+                                 , int>::type>
 EMEMORY_TYPE& ememory::SharedPtr<EMEMORY_TYPE>::operator*() {
 	return *m_element;
 }

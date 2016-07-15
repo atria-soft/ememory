@@ -22,6 +22,7 @@ namespace ememory {
 			ememory::Counter* m_counter;
 		public:
 			WeakPtr();
+			WeakPtr(std::nullptr_t);
 		private:
 			WeakPtr(EMEMORY_TYPE* _element); // this is only for enable shared from this ...
 		public:

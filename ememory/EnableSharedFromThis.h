@@ -16,7 +16,7 @@ namespace ememory {
 	class EnableSharedFromThis {
 		friend class ememory::SharedPtr<EMEMORY_TYPE>;
 		private:
-			ememory::WeakPtr<EMEMORY_TYPE> m_weakThis;
+			mutable ememory::WeakPtr<EMEMORY_TYPE> m_weakThis;
 		protected:
 			EnableSharedFromThis();
 			virtual ~EnableSharedFromThis() = default;

@@ -33,6 +33,7 @@ namespace ememory {
 			                                 , int>::type = 0>
 			SharedPtr(EMEMORY_TYPE2* _element);
 		public:
+			SharedPtr(std::nullptr_t);
 			SharedPtr();
 			~SharedPtr();
 			SharedPtr(EMEMORY_TYPE* _obj, ememory::Counter* _counter);
@@ -58,9 +59,25 @@ namespace ememory {
 			bool operator!=(const SharedPtr<EMEMORY_TYPE>& _obj) const;
 			const EMEMORY_TYPE* get() const;
 			EMEMORY_TYPE* get();
+			template<class EMEMORY_TYPE2 = EMEMORY_TYPE,
+			         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+			                                  && !std::is_same<EMEMORY_TYPE2, void>::value
+			                                 , int>::type = 0>
 			const EMEMORY_TYPE* operator->() const;
+			template<class EMEMORY_TYPE2 = EMEMORY_TYPE,
+			         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+			                                  && !std::is_same<EMEMORY_TYPE2, void>::value
+			                                 , int>::type = 0>
 			EMEMORY_TYPE* operator->();
+			template<class EMEMORY_TYPE2 = EMEMORY_TYPE,
+			         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+			                                  && !std::is_same<EMEMORY_TYPE2, void>::value
+			                                 , int>::type = 0>
 			const EMEMORY_TYPE& operator*() const;
+			template<class EMEMORY_TYPE2 = EMEMORY_TYPE,
+			         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+			                                  && !std::is_same<EMEMORY_TYPE2, void>::value
+			                                 , int>::type = 0>
 			EMEMORY_TYPE& operator*();
 			void swap(SharedPtr<EMEMORY_TYPE>& _obj);
 			ememory::Counter* getCounter() const {

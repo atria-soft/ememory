@@ -18,6 +18,13 @@ ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr():
 }
 
 template<typename EMEMORY_TYPE>
+ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(std::nullptr_t):
+  m_element(nullptr),
+  m_counter(nullptr) {
+	
+}
+
+template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(EMEMORY_TYPE* _element):
   m_element(_element),
   m_counter(nullptr) {
