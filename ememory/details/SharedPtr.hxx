@@ -235,27 +235,19 @@ EMEMORY_TYPE* ememory::SharedPtr<EMEMORY_TYPE>::get() {
 }
 
 template<typename EMEMORY_TYPE>
-template<class EMEMORY_TYPE2,
-         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-                                  && !std::is_same<EMEMORY_TYPE2, void>::value
-                                 , int>::type>
 const EMEMORY_TYPE* ememory::SharedPtr<EMEMORY_TYPE>::operator->() const {
 	return m_element;
 }
 
 template<typename EMEMORY_TYPE>
-template<class EMEMORY_TYPE2,
-         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-                                  && !std::is_same<EMEMORY_TYPE2, void>::value
-                                 , int>::type>
 EMEMORY_TYPE* ememory::SharedPtr<EMEMORY_TYPE>::operator->() {
 	return m_element;
 }
-
+/*
 template<typename EMEMORY_TYPE>
 template<class EMEMORY_TYPE2,
          typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-                                  && !std::is_same<EMEMORY_TYPE2, void>::value
+                                  && !std::is_void<EMEMORY_TYPE2>::value
                                  , int>::type>
 const EMEMORY_TYPE& ememory::SharedPtr<EMEMORY_TYPE>::operator*() const {
 	return *m_element;
@@ -264,11 +256,12 @@ const EMEMORY_TYPE& ememory::SharedPtr<EMEMORY_TYPE>::operator*() const {
 template<typename EMEMORY_TYPE>
 template<class EMEMORY_TYPE2,
          typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-                                  && !std::is_same<EMEMORY_TYPE2, void>::value
+                                  && !std::is_void<EMEMORY_TYPE2>::value
                                  , int>::type>
 EMEMORY_TYPE& ememory::SharedPtr<EMEMORY_TYPE>::operator*() {
 	return *m_element;
 }
+*/
 
 template<typename EMEMORY_TYPE>
 void ememory::SharedPtr<EMEMORY_TYPE>::swap(SharedPtr& _obj) {
