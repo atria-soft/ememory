@@ -101,7 +101,7 @@ ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(const ememory::SharedPtr<EMEMORY_TYPE>& 
 		return;
 	}
 	m_counter->incrementWeak();
-};
+}
 
 
 template<typename EMEMORY_TYPE>
@@ -120,6 +120,50 @@ ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const
 	m_counter->incrementWeak();
 	return *this;
 }
+
+
+template<typename EMEMORY_TYPE>
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
+                                  && !std::is_void<EMEMORY_TYPE2>::value
+                                 , int>::type>
+ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(const ememory::SharedPtr<EMEMORY_TYPE2>& _obj):
+  m_element((void*)_obj.get()),
+  m_counter(_obj.getCounter()) {
+	if (    m_element == nullptr
+	     || m_counter == nullptr) {
+		m_element = nullptr;
+		m_counter = nullptr;
+		return;
+	}
+	if (m_counter == nullptr) {
+		return;
+	}
+	m_counter->incrementWeak();
+}
+
+
+template<typename EMEMORY_TYPE>
+template<class EMEMORY_TYPE2,
+         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
+                                  && !std::is_void<EMEMORY_TYPE2>::value
+                                 , int>::type>
+ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const ememory::SharedPtr<EMEMORY_TYPE2>& _obj) {
+	m_element = (void*)_obj.get();
+	m_counter = _obj.getCounter();
+	if (    m_element == nullptr
+	     || m_counter == nullptr) {
+		m_element = nullptr;
+		m_counter = nullptr;
+		return *this;
+	}
+	if (m_counter == nullptr) {
+		return *this;
+	}
+	m_counter->incrementWeak();
+	return *this;
+}
+
 
 /*
 template<class EMEMORY_TYPE2,

@@ -18,9 +18,26 @@ namespace ememory {
 	template<typename EMEMORY_TYPE>
 	class SharedPtr {
 		friend class WeakPtr<EMEMORY_TYPE>;
+		public:
+			using deleterCall = std::function<void(EMEMORY_TYPE* _data)>;
 		private:
 			EMEMORY_TYPE* m_element;
 			ememory::Counter* m_counter;
+			deleterCall m_deleter;
+			template<class EMEMORY_TYPE2,
+			         typename std::enable_if<    !std::is_void<EMEMORY_TYPE>::value
+			                                  && std::is_integral<EMEMORY_TYPE2>::value
+			                                 , int>::type = 0>
+			deleterCall createDeleter(EMEMORY_TYPE2) const {
+				return [](EMEMORY_TYPE* _data) { delete(_data);};
+			}
+			template<class EMEMORY_TYPE2,
+			         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
+			                                  && std::is_integral<EMEMORY_TYPE2>::value
+			                                 , int>::type = 0>
+			deleterCall createDeleter(EMEMORY_TYPE2) const {
+				return [](EMEMORY_TYPE* _data) { EMEMORY_ERROR("Request deleter of a void type ==> surrely an error");};
+			}
 		public:
 			template<class EMEMORY_TYPE2,
 			         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
@@ -41,6 +58,16 @@ namespace ememory {
 			SharedPtr& operator= (const SharedPtr<EMEMORY_TYPE>& _obj);
 			SharedPtr& operator= (std::nullptr_t);
 			SharedPtr(SharedPtr<EMEMORY_TYPE>&& _obj);
+			template<class EMEMORY_TYPE2,
+			         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
+			                                  && !std::is_void<EMEMORY_TYPE2>::value
+			                                 , int>::type = 0>
+			SharedPtr(const SharedPtr<EMEMORY_TYPE2>& _obj);
+			template<class EMEMORY_TYPE2,
+			         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
+			                                  && !std::is_void<EMEMORY_TYPE2>::value
+			                                 , int>::type = 0>
+			SharedPtr& operator= (const SharedPtr<EMEMORY_TYPE2>& _obj);
 		public:
 			template<class EMEMORY_TYPE2,
 			         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
@@ -61,43 +88,26 @@ namespace ememory {
 			EMEMORY_TYPE* get();
 			const EMEMORY_TYPE* operator->() const;
 			EMEMORY_TYPE* operator->();
-			#if 0
-				template<>
-				const typename std::enable_if<!std::is_void<EMEMORY_TYPE>::value, EMEMORY_TYPE>::type& operator*() const {
-					return *m_element;
-				}
-				template<>
-				typename std::enable_if<!std::is_void<EMEMORY_TYPE>::value, EMEMORY_TYPE&>::type operator*() {
-					return *m_element;
-				}
-			#else
-				#if 1
-					template<class EMEMORY_TYPE2,
-					         typename std::enable_if<    !std::is_void<EMEMORY_TYPE>::value
-					                                  && !std::is_void<EMEMORY_TYPE2>::value
-					                                 , int>::type>
-					const EMEMORY_TYPE2& operator*() const {
-						return *m_element;
-					}
-					template<class EMEMORY_TYPE2,
-					         typename std::enable_if<    !std::is_void<EMEMORY_TYPE>::value
-					                                  && !std::is_void<EMEMORY_TYPE2>::value
-					                                 , int>::type>
-					EMEMORY_TYPE2& operator*() {
-						return *m_element;
-					}
-				#else
-					const EMEMORY_TYPE& operator*() const {
-						return *m_element;
-					}
-					EMEMORY_TYPE& operator*() {
-						return *m_element;
-					}
-				#endif
-			#endif
+			template<class EMEMORY_TYPE2,
+			         typename std::enable_if<    !std::is_void<EMEMORY_TYPE>::value
+			                                  && !std::is_void<EMEMORY_TYPE2>::value
+			                                 , int>::type>
+			const EMEMORY_TYPE2& operator*() const {
+				return *m_element;
+			}
+			template<class EMEMORY_TYPE2,
+			         typename std::enable_if<    !std::is_void<EMEMORY_TYPE>::value
+			                                  && !std::is_void<EMEMORY_TYPE2>::value
+			                                 , int>::type>
+			EMEMORY_TYPE2& operator*() {
+				return *m_element;
+			}
 			void swap(SharedPtr<EMEMORY_TYPE>& _obj);
 			ememory::Counter* getCounter() const {
 				return m_counter;
+			}
+			deleterCall getDeleter() const {
+				return m_deleter;
 			}
 			// TODO: unique
 			// TODO: bool

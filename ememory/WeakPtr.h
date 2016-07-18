@@ -33,6 +33,16 @@ namespace ememory {
 			WeakPtr(const SharedPtr<EMEMORY_TYPE>& _obj);
 			WeakPtr<EMEMORY_TYPE>& operator= (const SharedPtr<EMEMORY_TYPE>& _obj);
 			WeakPtr<EMEMORY_TYPE>& operator= (std::nullptr_t);
+			template<class EMEMORY_TYPE2,
+			         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
+			                                  && !std::is_void<EMEMORY_TYPE2>::value
+			                                 , int>::type = 0>
+			WeakPtr(const SharedPtr<EMEMORY_TYPE2>& _obj);
+			template<class EMEMORY_TYPE2,
+			         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
+			                                  && !std::is_void<EMEMORY_TYPE2>::value
+			                                 , int>::type = 0>
+			WeakPtr<EMEMORY_TYPE>& operator= (const SharedPtr<EMEMORY_TYPE2>& _obj);
 		public:
 			/*
 			template<class EMEMORY_TYPE2,
