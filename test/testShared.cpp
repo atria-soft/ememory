@@ -57,4 +57,28 @@ TEST(TestShared, callOperator) {
 	EXPECT_EQ(data->size(), 6);
 }
 
+static void functionCallRef(std::string& _data) {
+	_data = "plop";
+}
+
+TEST(TestShared, callOperatorStar) {
+	ememory::SharedPtr<std::string> data = ememory::makeShared<std::string>("coucou");
+	EXPECT_EQ(data->size(), 6);
+	EXPECT_EQ(*data, "coucou");
+	*data = "ragout";
+	EXPECT_EQ(data->size(), 6);
+	EXPECT_EQ(*data, "ragout");
+	functionCallRef(*data);
+	EXPECT_EQ(data->size(), 4);
+	EXPECT_EQ(*data, "plop");
+}
+
+TEST(TestShared, setInVoid) {
+	ememory::SharedPtr<std::string> data = ememory::makeShared<std::string>("coucou");
+	ememory::SharedPtr<void> dataVoid(data);
+	ememory::SharedPtr<void> dataVoid2;
+	dataVoid2 = data;
+	EXPECT_EQ(data.useCount(), 3);
+}
+
 

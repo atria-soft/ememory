@@ -14,29 +14,17 @@
 namespace ememory {
 	template<typename> class WeakPtr;
 	template<typename> class EnableSharedFromThis;
+	using deleterCall = std::function<void(void* _data)>;
 	// limited implementation of actual shared pointer (only 1 instance allowed, can be promoted though)
 	template<typename EMEMORY_TYPE>
 	class SharedPtr {
 		friend class WeakPtr<EMEMORY_TYPE>;
-		public:
-			using deleterCall = std::function<void(EMEMORY_TYPE* _data)>;
 		private:
 			EMEMORY_TYPE* m_element;
 			ememory::Counter* m_counter;
 			deleterCall m_deleter;
-			template<class EMEMORY_TYPE2,
-			         typename std::enable_if<    !std::is_void<EMEMORY_TYPE>::value
-			                                  && std::is_integral<EMEMORY_TYPE2>::value
-			                                 , int>::type = 0>
-			deleterCall createDeleter(EMEMORY_TYPE2) const {
-				return [](EMEMORY_TYPE* _data) { delete(_data);};
-			}
-			template<class EMEMORY_TYPE2,
-			         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
-			                                  && std::is_integral<EMEMORY_TYPE2>::value
-			                                 , int>::type = 0>
-			deleterCall createDeleter(EMEMORY_TYPE2) const {
-				return [](EMEMORY_TYPE* _data) { EMEMORY_ERROR("Request deleter of a void type ==> surrely an error");};
+			deleterCall createDeleter() const {
+				return [](void* _data) { delete((EMEMORY_TYPE*)_data);};
 			}
 		public:
 			template<class EMEMORY_TYPE2,
@@ -58,16 +46,6 @@ namespace ememory {
 			SharedPtr& operator= (const SharedPtr<EMEMORY_TYPE>& _obj);
 			SharedPtr& operator= (std::nullptr_t);
 			SharedPtr(SharedPtr<EMEMORY_TYPE>&& _obj);
-			template<class EMEMORY_TYPE2,
-			         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
-			                                  && !std::is_void<EMEMORY_TYPE2>::value
-			                                 , int>::type = 0>
-			SharedPtr(const SharedPtr<EMEMORY_TYPE2>& _obj);
-			template<class EMEMORY_TYPE2,
-			         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
-			                                  && !std::is_void<EMEMORY_TYPE2>::value
-			                                 , int>::type = 0>
-			SharedPtr& operator= (const SharedPtr<EMEMORY_TYPE2>& _obj);
 		public:
 			template<class EMEMORY_TYPE2,
 			         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
@@ -81,27 +59,17 @@ namespace ememory {
 			void reset();
 			int64_t useCount() const;
 			bool operator==(std::nullptr_t) const;
-			bool operator==(const SharedPtr<EMEMORY_TYPE>& _obj) const;
+			template<class EMEMORY_TYPE2>
+			bool operator==(const SharedPtr<EMEMORY_TYPE2>& _obj) const;
 			bool operator!=(std::nullptr_t) const;
-			bool operator!=(const SharedPtr<EMEMORY_TYPE>& _obj) const;
+			template<class EMEMORY_TYPE2>
+			bool operator!=(const SharedPtr<EMEMORY_TYPE2>& _obj) const;
 			const EMEMORY_TYPE* get() const;
 			EMEMORY_TYPE* get();
 			const EMEMORY_TYPE* operator->() const;
 			EMEMORY_TYPE* operator->();
-			template<class EMEMORY_TYPE2,
-			         typename std::enable_if<    !std::is_void<EMEMORY_TYPE>::value
-			                                  && !std::is_void<EMEMORY_TYPE2>::value
-			                                 , int>::type>
-			const EMEMORY_TYPE2& operator*() const {
-				return *m_element;
-			}
-			template<class EMEMORY_TYPE2,
-			         typename std::enable_if<    !std::is_void<EMEMORY_TYPE>::value
-			                                  && !std::is_void<EMEMORY_TYPE2>::value
-			                                 , int>::type>
-			EMEMORY_TYPE2& operator*() {
-				return *m_element;
-			}
+			const EMEMORY_TYPE& operator*() const;
+			EMEMORY_TYPE& operator*();
 			void swap(SharedPtr<EMEMORY_TYPE>& _obj);
 			ememory::Counter* getCounter() const {
 				return m_counter;

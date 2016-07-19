@@ -18,7 +18,7 @@ template<class EMEMORY_TYPE2,
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element):
   m_element(_element),
   m_counter(nullptr),
-  m_deleter(createDeleter(9999)) {
+  m_deleter(createDeleter()) {
 	EMEMORY_VERBOSE("new shared");
 	if (m_element == nullptr) {
 		return;
@@ -44,7 +44,7 @@ template<class EMEMORY_TYPE2,
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element):
   m_element(_element),
   m_counter(nullptr),
-  m_deleter(createDeleter(9999)) {
+  m_deleter(createDeleter()) {
 	EMEMORY_VERBOSE("new shared");
 	if (m_element == nullptr) {
 		return;
@@ -56,7 +56,7 @@ template<typename EMEMORY_TYPE>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr():
   m_element(nullptr),
   m_counter(nullptr),
-  m_deleter(createDeleter(9999)) {
+  m_deleter(createDeleter()) {
 	EMEMORY_VERBOSE("new shared");
 }
 
@@ -64,7 +64,7 @@ template<typename EMEMORY_TYPE>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(std::nullptr_t):
   m_element(nullptr),
   m_counter(nullptr),
-  m_deleter(createDeleter(9999)) {
+  m_deleter(createDeleter()) {
 	EMEMORY_VERBOSE("new shared");
 }
 
@@ -72,7 +72,7 @@ template<typename EMEMORY_TYPE>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE* _obj, ememory::Counter* _counter):
   m_element(_obj),
   m_counter(_counter),
-  m_deleter(createDeleter(9999)) {
+  m_deleter(createDeleter()) {
 	EMEMORY_VERBOSE("new shared (from a cast)");
 	if (_obj == nullptr) {
 		m_counter = nullptr;
@@ -125,52 +125,6 @@ ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (c
 }
 
 template<typename EMEMORY_TYPE>
-template<class EMEMORY_TYPE2,
-         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
-                                  && !std::is_void<EMEMORY_TYPE2>::value
-                                 , int>::type>
-ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(const ememory::SharedPtr<EMEMORY_TYPE2>& _obj):
-  m_element((void*)_obj.get()),
-  m_counter(_obj.getCounter()),
-  m_deleter(nullptr) { // NOTE the deleter does not exist anymore ...
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
-		m_deleter = nullptr;
-		return;
-	}
-	if (m_counter == nullptr) {
-		return;
-	}
-	m_counter->incrementShared();
-}
-
-template<typename EMEMORY_TYPE>
-template<class EMEMORY_TYPE2,
-         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
-                                  && !std::is_void<EMEMORY_TYPE2>::value
-                                 , int>::type>
-ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (const ememory::SharedPtr<EMEMORY_TYPE2>& _obj) {
-	m_element = (void*)_obj.get();
-	m_counter = _obj.getCounter();
-	m_deleter = nullptr; // NOTE the deleter does not exist anymore ...
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
-		m_deleter = nullptr;
-		return *this;
-	}
-	if (m_counter == nullptr) {
-		return *this;
-	}
-	m_counter->incrementShared();
-	return *this;
-}
-
-
-template<typename EMEMORY_TYPE>
 ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (std::nullptr_t) {
 	reset();
 	return *this;
@@ -194,7 +148,7 @@ template<class EMEMORY_TYPE2,
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(const ememory::SharedPtr<EMEMORY_TYPE2>& _obj):
   m_element(const_cast<EMEMORY_TYPE2*>(_obj.get())),
   m_counter(const_cast<ememory::Counter*>(_obj.getCounter())),
-  m_deleter(createDeleter(9999)) {
+  m_deleter(createDeleter()) {
 	if (    m_element == nullptr
 	     || m_counter == nullptr) {
 		m_element = nullptr;
@@ -214,7 +168,7 @@ template<class EMEMORY_TYPE2,
 ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (const SharedPtr<EMEMORY_TYPE2>& _obj) {
 	m_element = const_cast<EMEMORY_TYPE2*>(_obj.get());
 	m_counter = const_cast<ememory::Counter*>(_obj.getCounter());
-	m_deleter = createDeleter(9999);
+	m_deleter = createDeleter();
 	if (    m_element == nullptr
 	     || m_counter == nullptr) {
 		m_element = nullptr;
@@ -241,14 +195,14 @@ void ememory::SharedPtr<EMEMORY_TYPE>::reset() {
 		case ememory::Counter::remove::all:
 			delete m_counter;
 			if (m_deleter != nullptr) {
-				m_deleter(m_element);
+				m_deleter((void*)m_element);
 			} else {
 				EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr");
 			}
 			break;
 		case ememory::Counter::remove::data:
 			if (m_deleter != nullptr) {
-				m_deleter(m_element);
+				m_deleter((void*)m_element);
 			} else {
 				EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr");
 			}
@@ -279,8 +233,9 @@ bool ememory::SharedPtr<EMEMORY_TYPE>::operator==(std::nullptr_t) const {
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::SharedPtr<EMEMORY_TYPE>::operator==(const SharedPtr& _obj) const {
-	return m_counter == _obj.m_counter;
+template<class EMEMORY_TYPE2>
+bool ememory::SharedPtr<EMEMORY_TYPE>::operator==(const SharedPtr<EMEMORY_TYPE2>& _obj) const {
+	return m_counter == _obj.getCounter();
 }
 
 template<typename EMEMORY_TYPE>
@@ -289,8 +244,9 @@ bool ememory::SharedPtr<EMEMORY_TYPE>::operator!=(std::nullptr_t) const {
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::SharedPtr<EMEMORY_TYPE>::operator!=(const SharedPtr& _obj) const {
-	return m_counter != _obj.m_counter;
+template<typename EMEMORY_TYPE2>
+bool ememory::SharedPtr<EMEMORY_TYPE>::operator!=(const SharedPtr<EMEMORY_TYPE2>& _obj) const {
+	return m_counter != _obj.getCounter();
 }
 
 template<typename EMEMORY_TYPE>
@@ -312,37 +268,205 @@ template<typename EMEMORY_TYPE>
 EMEMORY_TYPE* ememory::SharedPtr<EMEMORY_TYPE>::operator->() {
 	return m_element;
 }
-/*
+
 template<typename EMEMORY_TYPE>
-template<class EMEMORY_TYPE2,
-         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-                                  && !std::is_void<EMEMORY_TYPE2>::value
-                                 , int>::type>
 const EMEMORY_TYPE& ememory::SharedPtr<EMEMORY_TYPE>::operator*() const {
 	return *m_element;
 }
 
 template<typename EMEMORY_TYPE>
-template<class EMEMORY_TYPE2,
-         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-                                  && !std::is_void<EMEMORY_TYPE2>::value
-                                 , int>::type>
 EMEMORY_TYPE& ememory::SharedPtr<EMEMORY_TYPE>::operator*() {
 	return *m_element;
 }
-*/
+
 
 template<typename EMEMORY_TYPE>
 void ememory::SharedPtr<EMEMORY_TYPE>::swap(SharedPtr& _obj) {
 	EMEMORY_TYPE* tmpE = m_element;
 	ememory::Counter* tmpC = m_counter;
-	deleterCall* tmpD = m_deleter;
+	deleterCall tmpD = m_deleter;
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
 	m_deleter = _obj.m_deleter;
 	_obj.m_element = tmpE;
 	_obj.m_counter = tmpC;
 	_obj.m_deleter = tmpD;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////
+// void ...
+///////////////////////////////////////////////////////////////////
+namespace ememory {
+	// Void template specification ...
+	template<>
+	class SharedPtr<void> {
+		friend class WeakPtr<void>;
+		public:
+			using deleterCall = std::function<void(void* _data)>;
+		private:
+			void* m_element;
+			ememory::Counter* m_counter;
+		public:
+			SharedPtr(void* _element);
+		public:
+			SharedPtr(std::nullptr_t):
+			  m_element(nullptr),
+			  m_counter(nullptr) {
+				EMEMORY_VERBOSE("new shared<void>");
+			}
+						SharedPtr():
+						  m_element(nullptr),
+						  m_counter(nullptr) {
+							EMEMORY_VERBOSE("new shared<void>");
+						}
+						~SharedPtr() {
+				EMEMORY_VERBOSE("delete shared");
+				reset();
+			}
+			SharedPtr(void* _obj, ememory::Counter* _counter):
+			  m_element(_obj),
+			  m_counter(_counter) {
+				EMEMORY_VERBOSE("new shared (from a cast)");
+				if (_obj == nullptr) {
+					m_counter = nullptr;
+					return;
+				}
+				m_counter->incrementShared();
+			}
+			SharedPtr& operator= (std::nullptr_t) {
+				reset();
+				return *this;
+			}
+			SharedPtr(SharedPtr<void>&& _obj) {
+				m_element = _obj.m_element;
+				m_counter = _obj.m_counter;
+				_obj.m_element = nullptr;
+				_obj.m_counter = nullptr;
+			}
+			template<class EMEMORY_TYPE2>
+			SharedPtr(const SharedPtr<EMEMORY_TYPE2>& _obj):
+			  m_element((void*)_obj.get()),
+			  m_counter(_obj.getCounter()) {
+				if (    m_element == nullptr
+				     || m_counter == nullptr) {
+					m_element = nullptr;
+					m_counter = nullptr;
+					return;
+				}
+				if (m_counter == nullptr) {
+					return;
+				}
+				m_counter->incrementShared();
+			}
+			template<class EMEMORY_TYPE2>
+			SharedPtr& operator= (const SharedPtr<EMEMORY_TYPE2>& _obj) {
+				m_element = (void*)_obj.get();
+				m_counter = _obj.getCounter();
+				if (    m_element == nullptr
+				     || m_counter == nullptr) {
+					m_element = nullptr;
+					m_counter = nullptr;
+					return *this;
+				}
+				if (m_counter == nullptr) {
+					return *this;
+				}
+				m_counter->incrementShared();
+				return *this;
+			}
+		public:
+			void reset() {
+				if(m_counter == nullptr) {
+					m_element = nullptr; // in case ...
+					return;
+				}
+				EMEMORY_VERBOSE("reset sharedPtr (start)");
+				ememory::Counter::remove rmData = m_counter->decrementShared();
+				switch(rmData) {
+					case ememory::Counter::remove::all:
+						delete m_counter;
+						EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr<void>");
+						break;
+					case ememory::Counter::remove::data:
+						EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr<void>");
+						break;
+					case ememory::Counter::remove::counter:
+						delete m_counter;
+						break;
+					case ememory::Counter::remove::none:
+						break;
+				}
+				m_counter = nullptr;
+				m_element = nullptr;
+				EMEMORY_VERBOSE("reset sharedPtr (stop)");
+			}
+			int64_t useCount() const {
+				if (m_counter == nullptr) {
+					return 0;
+				}
+				return m_counter->getCountShared();
+			}
+			bool operator==(std::nullptr_t) const {
+				return m_counter == nullptr;
+			}
+			template<class EMEMORY_TYPE2>
+			bool operator==(const SharedPtr<EMEMORY_TYPE2>& _obj) const {
+				return m_counter == _obj.m_counter;
+			}
+			bool operator!=(std::nullptr_t) const {
+				return m_counter != nullptr;
+			}
+			template<class EMEMORY_TYPE2>
+			bool operator!=(const SharedPtr<EMEMORY_TYPE2>& _obj) const {
+				return m_counter != _obj.m_counter;
+			}
+			const void* get() const {
+				return m_element;
+			}
+			void* get() {
+				return m_element;
+			}
+			const void* operator->() const {
+				return m_element;
+			}
+			void* operator->() {
+				return m_element;
+			}
+			void swap(SharedPtr<void>& _obj) {
+				void* tmpE = m_element;
+				ememory::Counter* tmpC = m_counter;
+				m_element = _obj.m_element;
+				m_counter = _obj.m_counter;
+				_obj.m_element = tmpE;
+				_obj.m_counter = tmpC;
+			}
+			ememory::Counter* getCounter() const {
+				return m_counter;
+			}
+			// TODO: unique
+			// TODO: bool
+	};
 }
 
 
