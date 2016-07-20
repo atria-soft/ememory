@@ -32,6 +32,12 @@ namespace ememory {
 	#define EMEMORY_TODO(data)      do { } while(false)
 #endif
 
+#if 0
+	#define EMEMORY_DBG(data)     EMEMORY_BASIC(5, data)
+#else
+	#define EMEMORY_DBG(data)     do { } while(false)
+#endif
+
 #define EMEMORY_HIDDEN(data)          do { } while(false)
 
 #define EMEMORY_ASSERT(cond,data) \

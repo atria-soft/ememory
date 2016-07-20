@@ -29,12 +29,12 @@ namespace ememory {
 		public:
 			template<class EMEMORY_TYPE2,
 			         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-			                                  && std::is_base_of<ememory::EnableSharedFromThis<EMEMORY_TYPE2>, EMEMORY_TYPE2>::value
+			                                  && std::is_base_of<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
 			                                 , int>::type = 0>
 			SharedPtr(EMEMORY_TYPE2* _element);
 			template<class EMEMORY_TYPE2,
 			         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-			                                  && !std::is_base_of<ememory::EnableSharedFromThis<EMEMORY_TYPE2>, EMEMORY_TYPE2>::value
+			                                  && !std::is_base_of<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
 			                                 , int>::type = 0>
 			SharedPtr(EMEMORY_TYPE2* _element);
 		public:

@@ -12,9 +12,9 @@
 
 
 namespace ememory {
+	class EnableSharedFromThisBase {};
 	template<typename EMEMORY_TYPE>
-	class EnableSharedFromThis {
-		friend class ememory::SharedPtr<EMEMORY_TYPE>;
+	class EnableSharedFromThis : public ememory::EnableSharedFromThisBase {
 		private:
 			mutable ememory::WeakPtr<EMEMORY_TYPE> m_weakThis;
 		protected:

@@ -28,7 +28,7 @@ template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(EMEMORY_TYPE* _element):
   m_element(_element),
   m_counter(nullptr) {
-	EMEMORY_VERBOSE("new weak");
+	EMEMORY_DBG("new weak");
 	if (m_element == nullptr) {
 		return;
 	}

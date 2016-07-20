@@ -11,7 +11,7 @@
 template<typename EMEMORY_TYPE>
 ememory::EnableSharedFromThis<EMEMORY_TYPE>::EnableSharedFromThis() :
   m_weakThis(static_cast<EMEMORY_TYPE*>(this)) {
-	EMEMORY_VERBOSE("create shared from this ...");
+	EMEMORY_DBG("create shared from this ...");
 }
 
 template<typename EMEMORY_TYPE>

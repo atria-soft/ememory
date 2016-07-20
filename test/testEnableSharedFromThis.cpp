@@ -8,22 +8,43 @@
 #include <ememory/memory.h>
 #include "main.h"
 
+namespace testESFT {
+	class TestClassBase : public ememory::EnableSharedFromThis<TestClassBase> {
+		public:
+			TestClassBase() {
+				EMEMORY_INFO("create TestClassBase");
+			}
+			~TestClassBase() {
+				EMEMORY_INFO("delete TestClassBase");
+			}
+	};
+	
+	class TestClass : public testESFT::TestClassBase {
+		public:
+			TestClass() {
+				EMEMORY_INFO("create TestClass");
+			}
+			~TestClass() {
+				EMEMORY_INFO("delete TestClass");
+			}
+	};
+}
 
-class testClass : public ememory::EnableSharedFromThis<testClass> {
-	public:
-		testClass() {
-			EMEMORY_INFO("create TestClass");
-		}
-		~testClass() {
-			EMEMORY_INFO("delete TestClass");
-		}
-};
-
-
-TEST(TestEnableSharedFromThis, base) {
-	ememory::SharedPtr<testClass> data = ememory::makeShared<testClass>();
+TEST(TestEnableSharedFromThis, testClassBase) {
+	ememory::SharedPtr<testESFT::TestClassBase> data = ememory::makeShared<testESFT::TestClassBase>();
 	EXPECT_EQ(data.useCount(), 1);
-	ememory::WeakPtr<testClass> dataWeak = data;
+	ememory::WeakPtr<testESFT::TestClassBase> dataWeak = data;
+	EXPECT_EQ(data.useCount(), 1);
+	EXPECT_EQ(dataWeak.useCount(), 1);
+	data.reset();
+	EXPECT_EQ(data.useCount(), 0);
+	EXPECT_EQ(dataWeak.useCount(), 0);
+}
+
+TEST(TestEnableSharedFromThis, testClass) {
+	ememory::SharedPtr<testESFT::TestClass> data = ememory::makeShared<testESFT::TestClass>();
+	EXPECT_EQ(data.useCount(), 1);
+	ememory::WeakPtr<testESFT::TestClass> dataWeak = data;
 	EXPECT_EQ(data.useCount(), 1);
 	EXPECT_EQ(dataWeak.useCount(), 1);
 	data.reset();
