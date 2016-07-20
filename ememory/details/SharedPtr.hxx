@@ -24,7 +24,6 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element):
 		return;
 	}
 	EMEMORY_DBG("    ==> get previous pointer");
-	
 	m_counter = m_element->weakFromThis().getCounter();
 	if (m_counter != nullptr) {
 		m_counter->incrementShared();
@@ -131,7 +130,7 @@ ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (s
 
 template<typename EMEMORY_TYPE>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(ememory::SharedPtr<EMEMORY_TYPE>&& _obj) {
-	EMEMORY_INFO("move operator ... " << int64_t(_obj.m_counter));
+	EMEMORY_DBG("move operator ... " << int64_t(_obj.m_counter));
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
 	m_deleter = _obj.m_deleter;
