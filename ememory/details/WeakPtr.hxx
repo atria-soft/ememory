@@ -240,7 +240,7 @@ bool ememory::WeakPtr<EMEMORY_TYPE>::expired() const {
 	if (m_counter == nullptr) {
 		return true;
 	}
-	return m_counter->getCountShared() != 0;
+	return m_counter->getCountShared() == 0;
 }
 
 template<typename EMEMORY_TYPE>
