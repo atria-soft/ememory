@@ -58,6 +58,7 @@ ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(const ememory::WeakPtr<EMEMORY_TYPE>& _o
 
 template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const ememory::WeakPtr<EMEMORY_TYPE>& _obj) {
+	reset();
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
 	if (    m_element == nullptr
@@ -106,6 +107,7 @@ ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(const ememory::SharedPtr<EMEMORY_TYPE>& 
 
 template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const ememory::SharedPtr<EMEMORY_TYPE>& _obj) {
+	reset();
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
 	if (    m_element == nullptr
@@ -149,6 +151,7 @@ template<class EMEMORY_TYPE2,
                                   && !std::is_void<EMEMORY_TYPE2>::value
                                  , int>::type>
 ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const ememory::SharedPtr<EMEMORY_TYPE2>& _obj) {
+	reset();
 	m_element = (void*)_obj.get();
 	m_counter = _obj.getCounter();
 	if (    m_element == nullptr
@@ -188,6 +191,7 @@ template<class EMEMORY_TYPE2,
          typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
                                  , int>::type>
 WeakPtr& operator= (const WeakPtr<EMEMORY_TYPE2>& _obj) {
+	reset();
 	m_element = _obj.m_element;
 	m_counter = _obj.getCounter();
 	if (    m_element == nullptr

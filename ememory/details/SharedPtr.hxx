@@ -104,6 +104,7 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(const ememory::SharedPtr<EMEMORY_TYP
 
 template<typename EMEMORY_TYPE>
 ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (const ememory::SharedPtr<EMEMORY_TYPE>& _obj) {
+	reset();
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
 	m_deleter = _obj.m_deleter;
@@ -164,6 +165,7 @@ template<class EMEMORY_TYPE2,
          typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
                                  , int>::type>
 ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (const SharedPtr<EMEMORY_TYPE2>& _obj) {
+	reset();
 	m_element = const_cast<EMEMORY_TYPE2*>(_obj.get());
 	m_counter = const_cast<ememory::Counter*>(_obj.getCounter());
 	m_deleter = createDeleter();
@@ -379,6 +381,7 @@ namespace ememory {
 			}
 			template<class EMEMORY_TYPE2>
 			SharedPtr& operator= (const SharedPtr<EMEMORY_TYPE2>& _obj) {
+				reset();
 				m_element = (void*)_obj.get();
 				m_counter = _obj.getCounter();
 				if (    m_element == nullptr
