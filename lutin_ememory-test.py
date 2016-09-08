@@ -33,6 +33,6 @@ def create(target, module_name):
 		'test/testEnableSharedFromThis.cpp',
 		'test/testCasts.cpp'
 		])
-	my_module.add_module_depend(['ememory', 'gtest', 'test-debug'])
+	my_module.add_depend(['ememory', 'gtest', 'test-debug'])
 	return my_module
 
