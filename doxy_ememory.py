@@ -27,5 +27,9 @@ def create(target, module_name):
 	    '*.h',
 	    '*.md',
 	    ])
+	my_module.add_module_define([
+	    "PARSE_DOXYGEN",
+	    ])
+
 	
 	return my_module

@@ -10,7 +10,7 @@ def get_sub_type():
 	return "TEST"
 
 def get_desc():
-	return "eSVG test-unit"
+	return "e-memory test-unit"
 
 def get_licence():
 	return "APACHE-2"
@@ -27,12 +27,16 @@ def get_maintainer():
 def create(target, module_name):
 	my_module = module.Module(__file__, module_name, get_type())
 	my_module.add_src_file([
-		'test/main.cpp',
-		'test/testShared.cpp',
-		'test/testWeak.cpp',
-		'test/testEnableSharedFromThis.cpp',
-		'test/testCasts.cpp'
-		])
-	my_module.add_depend(['ememory', 'gtest', 'test-debug'])
+	    'test/main.cpp',
+	    'test/testShared.cpp',
+	    'test/testWeak.cpp',
+	    'test/testEnableSharedFromThis.cpp',
+	    'test/testCasts.cpp'
+	    ])
+	my_module.add_depend([
+	    'ememory',
+	    'gtest',
+	    'test-debug'
+	    ])
 	return my_module
 

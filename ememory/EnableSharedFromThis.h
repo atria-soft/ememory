@@ -12,18 +12,46 @@
 
 
 namespace ememory {
+	/**
+	 * @brief Basic handle to be simplify at the basic mode of the onject recognition for internal tamplate filter (empty implementation)
+	 */
 	class EnableSharedFromThisBase {};
+	/**
+	 * @brief Enable the acces of the self sharedPtr inside an object (note: not availlable in contructor and destructor)
+	 */
 	template<typename EMEMORY_TYPE>
 	class EnableSharedFromThis : public ememory::EnableSharedFromThisBase {
 		private:
-			mutable ememory::WeakPtr<EMEMORY_TYPE> m_weakThis;
+			mutable ememory::WeakPtr<EMEMORY_TYPE> m_weakThis; //!< Weak pointer reference of itself.
 		protected:
+			/**
+			 * @brief Contructor
+			 */
 			EnableSharedFromThis();
+			/**
+			 * @brief Virual destructor (simply virtualyse the destructor)
+			 */
 			virtual ~EnableSharedFromThis() = default;
 		public:
+			/**
+			 * @brief Get the currect class SharedPtr
+			 * @return Request SharedPtr
+			 */
 			ememory::SharedPtr<EMEMORY_TYPE> sharedFromThis();
+			/**
+			 * @brief Get the currect class SharedPtr
+			 * @return Request const SharedPtr
+			 */
 			const ememory::SharedPtr<EMEMORY_TYPE> sharedFromThis() const;
+			/**
+			 * @brief Get the currect class WeakPtr
+			 * @return Request WeakPtr
+			 */
 			ememory::WeakPtr<EMEMORY_TYPE> weakFromThis();
+			/**
+			 * @brief Get the currect class WeakPtr
+			 * @return Request const WeakPtr
+			 */
 			const ememory::WeakPtr<EMEMORY_TYPE> weakFromThis() const;
 	};
 }
