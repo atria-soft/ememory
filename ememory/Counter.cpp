@@ -4,8 +4,8 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <ememory/Counter.h>
-#include <ememory/debug.h>
+#include <ememory/Counter.hpp>
+#include <ememory/debug.hpp>
 
 ememory::Counter::Counter(bool _fromWeak):
   m_counterShared(1),

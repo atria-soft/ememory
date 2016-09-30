@@ -34,12 +34,12 @@ def create(target, module_name):
 		])
 	
 	my_module.add_header_file([
-		'ememory/debug.h',
-		'ememory/memory.h',
-		'ememory/Counter.h',
-		'ememory/SharedPtr.h',
-		'ememory/WeakPtr.h',
-		'ememory/EnableSharedFromThis.h',
+		'ememory/debug.hpp',
+		'ememory/memory.hpp',
+		'ememory/Counter.hpp',
+		'ememory/SharedPtr.hpp',
+		'ememory/WeakPtr.hpp',
+		'ememory/EnableSharedFromThis.hpp',
 		'ememory/details/memory.hxx',
 		'ememory/details/SharedPtr.hxx',
 		'ememory/details/WeakPtr.hxx',

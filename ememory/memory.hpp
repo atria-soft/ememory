@@ -7,9 +7,9 @@
 
 #include <vector>
 #include <mutex>
-#include <ememory/SharedPtr.h>
-#include <ememory/WeakPtr.h>
-#include <ememory/EnableSharedFromThis.h>
+#include <ememory/SharedPtr.hpp>
+#include <ememory/WeakPtr.hpp>
+#include <ememory/EnableSharedFromThis.hpp>
 
 /**
  * @brief Ememory is a namespace to represent the @code #include <memory> @endcode part ==> simple memory access abstraction

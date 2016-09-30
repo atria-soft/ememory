@@ -4,10 +4,10 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <test-debug/debug.h>
+#include <test-debug/debug.hpp>
 #include <vector>
 #include <gtest/gtest.h>
-#include <etk/etk.h>
+#include <etk/etk.hpp>
 
 
 int main(int _argc, const char *_argv[]) {

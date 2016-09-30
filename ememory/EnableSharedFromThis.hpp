@@ -7,8 +7,8 @@
 
 #include <vector>
 #include <mutex>
-#include <ememory/SharedPtr.h>
-#include <ememory/WeakPtr.h>
+#include <ememory/SharedPtr.hpp>
+#include <ememory/WeakPtr.hpp>
 
 
 namespace ememory {

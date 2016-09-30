@@ -5,8 +5,8 @@
  */
 
 #include <gtest/gtest.h>
-#include <ememory/memory.h>
-#include "main.h"
+#include <ememory/memory.hpp>
+#include "main.hpp"
 
 TEST(TestShared, createAndDestroy) {
 	ememory::SharedPtr<std::string> data = ememory::makeShared<std::string>("coucou");
