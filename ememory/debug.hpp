@@ -8,7 +8,7 @@
 #pragma once
 
 #include <elog/log.hpp>
-#include <assert.h>
+#include <cassert>
 
 namespace ememory {
 	int32_t getLogId();

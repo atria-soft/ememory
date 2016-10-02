@@ -7,8 +7,8 @@
 
 #include <vector>
 #include <mutex>
-#include <ememory/debug.h>
-#include <ememory/WeakPtr.h>
+#include <ememory/debug.hpp>
+#include <ememory/WeakPtr.hpp>
 
 template<typename EMEMORY_TYPE>
 template<class EMEMORY_TYPE2,

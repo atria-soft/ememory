@@ -9,7 +9,7 @@
 // define type : uintXX_t and intXX_t
 #define __STDC_LIMIT_MACROS
 // note in android include the macro of min max are overwitten
-#include <stdint.h>
+#include <cstdint>
 
 namespace ememory {
 	/**

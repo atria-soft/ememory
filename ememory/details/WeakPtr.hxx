@@ -7,8 +7,8 @@
 
 #include <vector>
 #include <mutex>
-#include <ememory/debug.h>
-#include <ememory/Counter.h>
+#include <ememory/debug.hpp>
+#include <ememory/Counter.hpp>
 
 template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr():

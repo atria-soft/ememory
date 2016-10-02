@@ -5,8 +5,8 @@
  */
 #pragma once
 
-#include <ememory/SharedPtr.h>
-#include <ememory/WeakPtr.h>
+#include <ememory/SharedPtr.hpp>
+#include <ememory/WeakPtr.hpp>
 
 template<typename EMEMORY_TYPE>
 ememory::EnableSharedFromThis<EMEMORY_TYPE>::EnableSharedFromThis() :
