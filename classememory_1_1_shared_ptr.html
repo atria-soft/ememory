@@ -1,0 +1,845 @@
+<!-- HTML header for doxygen 1.8.8-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- For Mobile Devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+        <meta name="generator" content="Doxygen 1.8.12"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <title>ememory: Ewol memory interface: ememory::SharedPtr&lt; EMEMORY_TYPE &gt; Class Template Reference</title>
+        <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
+        <script type="text/javascript" src="dynsections.js"></script>
+        <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+        <link href="doxygen.css" rel="stylesheet" type="text/css" />
+        <link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="doxy-boot.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand">ememory: Ewol memory interface 0.4.0</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Main&nbsp;Page</a></li>
+                        <li><a href="pages.html">Related&nbsp;Pages</a></li>
+                        <li><a href="namespaces.html">Namespaces</a></li>
+                        <li><a href="annotated.html">Classes</a></li>
+                        <li><a href="files.html">Files</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Link-libs<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://HeeroYui.github.io/lutin">lutin</a></li>
+                                <li><a href="http://atria-soft.github.io/ewol">ewol</a></li>
+                                <li><a href="http://atria-soft.github.io/etk">etk</a></li>
+                                <li><a href="http://atria-soft.github.io/ejson">ejson</a></li>
+                                <li><a href="http://atria-soft.github.io/exml">exml</a></li>
+                                <li><a href="http://atria-soft.github.io/esvg">esvg</a></li>
+                                <li><a href="http://atria-soft.github.io/egami">egami</a></li>
+                                <li><a href="http://atria-soft.github.io/gale">gale</a></li>
+                                <li><a href="http://atria-soft.github.io/ege">ege</a></li>
+                                <li><a href="http://atria-soft.github.io/elog">elog</a></li>
+                                <li><a href="http://atria-soft.github.io/ememory">ememory</a></li>
+                                <li><a href="http://atria-soft.github.io/enet">enet</a></li>
+                                <li><a href="http://atria-soft.github.io/eproperty">eproperty</a></li>
+                                <li><a href="http://atria-soft.github.io/esignal">esignal</a></li>
+                                <li><a href="http://atria-soft.github.io/zeus">zeus</a></li>
+                                <li><a href="http://atria-soft.github.io/audio-ess">audio-ess</a></li>
+                                <li><a href="http://musicdsp.github.io/audio">audio</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-drain">audio-drain</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-orchestra">audio-orchestra</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-river">audio-river</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="search-box" class="input-group">
+                        <div class="input-group-btn">
+                            <button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-search"></span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">All</a></li>
+                                <li><a href="#">Classes</a></li>
+                                <li><a href="#">Namespaces</a></li>
+                                <li><a href="#">Files</a></li>
+                                <li><a href="#">Functions</a></li>
+                                <li><a href="#">Variables</a></li>
+                                <li><a href="#">Typedefs</a></li>
+                                <li><a href="#">Enumerations</a></li>
+                                <li><a href="#">Enumerator</a></li>
+                                <li><a href="#">Friends</a></li>
+                                <li><a href="#">Macros</a></li>
+                                <li><a href="#">Pages</a></li>
+                            </ul>
+                        </div>
+                        <button id="search-close" type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <input id="search-field" class="form-control" accesskey="S" onkeydown="searchBox.OnSearchFieldChange(event);" placeholder="Search ..." type="text">
+                    </div>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+            <div class="content" id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 panel panel-default" style="padding-bottom: 15px;">
+                            <div style="margin-bottom: 15px;">
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.12 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceememory.html">ememory</a></li><li class="navelem"><a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
+<a href="classememory_1_1_shared_ptr-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ememory::SharedPtr&lt; EMEMORY_TYPE &gt; Class Template Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_shared_ptr_8hpp_source.html">SharedPtr.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a7b017780895f0a9d32e753574ae82010"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#a7b017780895f0a9d32e753574ae82010">SharedPtr</a> (EMEMORY_TYPE2 *_element)</td></tr>
+<tr class="separator:a7b017780895f0a9d32e753574ae82010"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef65a1bba18c17a8a13e05aa5d702b1e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#aef65a1bba18c17a8a13e05aa5d702b1e">SharedPtr</a> (std::nullptr_t)</td></tr>
+<tr class="separator:aef65a1bba18c17a8a13e05aa5d702b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b448ecd7740c97551e8afd65acaca6f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#a6b448ecd7740c97551e8afd65acaca6f">SharedPtr</a> ()</td></tr>
+<tr class="separator:a6b448ecd7740c97551e8afd65acaca6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5052506642bddd3aa5e6fb44ec1a173"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#ab5052506642bddd3aa5e6fb44ec1a173">SharedPtr</a> (EMEMORY_TYPE *_obj, <a class="el" href="classememory_1_1_counter.html">ememory::Counter</a> *_counter)</td></tr>
+<tr class="separator:ab5052506642bddd3aa5e6fb44ec1a173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab91fe50ba210a0545fa41e993df9beea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#ab91fe50ba210a0545fa41e993df9beea">SharedPtr</a> (const <a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE &gt; &amp;_obj)</td></tr>
+<tr class="separator:ab91fe50ba210a0545fa41e993df9beea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab46f51a66327265bbc94ee89b603ca71"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#ab46f51a66327265bbc94ee89b603ca71">SharedPtr</a> (<a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE &gt; &amp;&amp;_obj)</td></tr>
+<tr class="separator:ab46f51a66327265bbc94ee89b603ca71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11e3f0079bc15778cec63fc378c10c9d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#a11e3f0079bc15778cec63fc378c10c9d">~SharedPtr</a> ()</td></tr>
+<tr class="separator:a11e3f0079bc15778cec63fc378c10c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af734e3eb23a10bf11e45cebf5318825c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#af734e3eb23a10bf11e45cebf5318825c">operator=</a> (const <a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE &gt; &amp;_obj)</td></tr>
+<tr class="separator:af734e3eb23a10bf11e45cebf5318825c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e2a657eee2f7cd579e4ffad898a2ae6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#a9e2a657eee2f7cd579e4ffad898a2ae6">operator=</a> (std::nullptr_t)</td></tr>
+<tr class="separator:a9e2a657eee2f7cd579e4ffad898a2ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa0eb096ccb28c0b229921bb6eb5fe58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#afa0eb096ccb28c0b229921bb6eb5fe58">reset</a> ()</td></tr>
+<tr class="separator:afa0eb096ccb28c0b229921bb6eb5fe58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74070b8ebda543021108e0df4b1e825b"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#a74070b8ebda543021108e0df4b1e825b">useCount</a> () const</td></tr>
+<tr class="separator:a74070b8ebda543021108e0df4b1e825b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a913da6c7c487b32f786d0f3adf49759a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#a913da6c7c487b32f786d0f3adf49759a">operator==</a> (std::nullptr_t) const</td></tr>
+<tr class="separator:a913da6c7c487b32f786d0f3adf49759a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada1e161c0596ce8c7e22a1c2d4722f43"><td class="memTemplParams" colspan="2">template&lt;class EMEMORY_TYPE2 &gt; </td></tr>
+<tr class="memitem:ada1e161c0596ce8c7e22a1c2d4722f43"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#ada1e161c0596ce8c7e22a1c2d4722f43">operator==</a> (const <a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE2 &gt; &amp;_obj) const</td></tr>
+<tr class="separator:ada1e161c0596ce8c7e22a1c2d4722f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a672be4bbc5b509d86e0e1969203dac55"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#a672be4bbc5b509d86e0e1969203dac55">operator!=</a> (std::nullptr_t) const</td></tr>
+<tr class="separator:a672be4bbc5b509d86e0e1969203dac55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73af60d24efa9dfb2b51cf0ece0bd105"><td class="memTemplParams" colspan="2">template&lt;class EMEMORY_TYPE2 &gt; </td></tr>
+<tr class="memitem:a73af60d24efa9dfb2b51cf0ece0bd105"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#a73af60d24efa9dfb2b51cf0ece0bd105">operator!=</a> (const <a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE2 &gt; &amp;_obj) const</td></tr>
+<tr class="separator:a73af60d24efa9dfb2b51cf0ece0bd105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4b7eb0326a1d4aac87d2699eb6902cb"><td class="memItemLeft" align="right" valign="top">const EMEMORY_TYPE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#ad4b7eb0326a1d4aac87d2699eb6902cb">get</a> () const</td></tr>
+<tr class="separator:ad4b7eb0326a1d4aac87d2699eb6902cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0fb9399753ec0125f8456d716203d08"><td class="memItemLeft" align="right" valign="top">EMEMORY_TYPE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#ad0fb9399753ec0125f8456d716203d08">get</a> ()</td></tr>
+<tr class="separator:ad0fb9399753ec0125f8456d716203d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac51978a1cafd573f38bf8187cf0fbe8d"><td class="memItemLeft" align="right" valign="top">const EMEMORY_TYPE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#ac51978a1cafd573f38bf8187cf0fbe8d">operator-&gt;</a> () const</td></tr>
+<tr class="separator:ac51978a1cafd573f38bf8187cf0fbe8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab65dfd8d12dc245947b1fe35f2f1f9c9"><td class="memItemLeft" align="right" valign="top">EMEMORY_TYPE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#ab65dfd8d12dc245947b1fe35f2f1f9c9">operator-&gt;</a> ()</td></tr>
+<tr class="separator:ab65dfd8d12dc245947b1fe35f2f1f9c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5991c3edce48eee7724225254b53e67e"><td class="memItemLeft" align="right" valign="top">const EMEMORY_TYPE &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#a5991c3edce48eee7724225254b53e67e">operator*</a> () const</td></tr>
+<tr class="separator:a5991c3edce48eee7724225254b53e67e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42d2e1b4524a05d881497a50ba23eeae"><td class="memItemLeft" align="right" valign="top">EMEMORY_TYPE &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#a42d2e1b4524a05d881497a50ba23eeae">operator*</a> ()</td></tr>
+<tr class="separator:a42d2e1b4524a05d881497a50ba23eeae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7a06dd2042312f6f94da526adddfc48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#ad7a06dd2042312f6f94da526adddfc48">swap</a> (<a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE &gt; &amp;_obj)</td></tr>
+<tr class="separator:ad7a06dd2042312f6f94da526adddfc48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3de746aec06d5e39d14b32085d37a8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classememory_1_1_counter.html">ememory::Counter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#af3de746aec06d5e39d14b32085d37a8b">getCounter</a> () const</td></tr>
+<tr class="separator:af3de746aec06d5e39d14b32085d37a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20c3bc26755a4917c2ce1641aa2e1925"><td class="memItemLeft" align="right" valign="top">deleterCall&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_shared_ptr.html#a20c3bc26755a4917c2ce1641aa2e1925">getDeleter</a> () const</td></tr>
+<tr class="separator:a20c3bc26755a4917c2ce1641aa2e1925"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a042d6cbaa5290241ba6cb1d99d2e7e71"><td class="memItemLeft" align="right" valign="top"><a id="a042d6cbaa5290241ba6cb1d99d2e7e71"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>WeakPtr&lt; EMEMORY_TYPE &gt;</b></td></tr>
+<tr class="separator:a042d6cbaa5290241ba6cb1d99d2e7e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename EMEMORY_TYPE&gt;<br />
+class ememory::SharedPtr&lt; EMEMORY_TYPE &gt;</h3>
+
+<p><a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">ememory::SharedPtr</a> is a smart pointer that retains shared ownership of an object through a pointer. Several <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> objects may own the same object. The object is destroyed and its memory deallocated when either of the following happens: </p>
+<ul>
+<li>the last remaining <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> owning the object is destroyed;</li>
+<li>the last remaining <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> owning the object is assigned another pointer via operator= or <a class="el" href="classememory_1_1_shared_ptr.html#afa0eb096ccb28c0b229921bb6eb5fe58" title="Reset the SharedPtr ==&gt; Remove data if needed. ">reset()</a>. The object is destroyed using delete-expression or a custom deleter that is supplied to shared_ptr during construction.</li>
+</ul>
+<p>A <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> can share ownership of an object while storing a pointer to another object. This feature can be used to point to member objects while owning the object they belong to. The stored pointer is the one accessed by <a class="el" href="classememory_1_1_shared_ptr.html#ad0fb9399753ec0125f8456d716203d08" title="Get a pointer on the data. ">get()</a>, the dereference and the comparison operators. The managed pointer is the one passed to the deleter when use count reaches zero.</p>
+<dl class="section note"><dt>Note</dt><dd>A big difference whith this wrapper is the constness sharing. When your sharedPtr is shared, the internal pointer is shared too. </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7b017780895f0a9d32e753574ae82010"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b017780895f0a9d32e753574ae82010">&sect;&nbsp;</a></span>SharedPtr() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::<a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a> </td>
+          <td>(</td>
+          <td class="paramtype">EMEMORY_TYPE2 *&#160;</td>
+          <td class="paramname"><em>_element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Contructor whith the pointer of data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_element</td><td>allocated data (<a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> will remove it) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aef65a1bba18c17a8a13e05aa5d702b1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef65a1bba18c17a8a13e05aa5d702b1e">&sect;&nbsp;</a></span>SharedPtr() <span class="overload">[2/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::<a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::nullptr_t&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Contructor on nullptr. </p>
+
+</div>
+</div>
+<a id="a6b448ecd7740c97551e8afd65acaca6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b448ecd7740c97551e8afd65acaca6f">&sect;&nbsp;</a></span>SharedPtr() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::<a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Contructor empty. </p>
+
+</div>
+</div>
+<a id="ab5052506642bddd3aa5e6fb44ec1a173"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5052506642bddd3aa5e6fb44ec1a173">&sect;&nbsp;</a></span>SharedPtr() <span class="overload">[4/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::<a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a> </td>
+          <td>(</td>
+          <td class="paramtype">EMEMORY_TYPE *&#160;</td>
+          <td class="paramname"><em>_obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classememory_1_1_counter.html">ememory::Counter</a> *&#160;</td>
+          <td class="paramname"><em>_counter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Contructor (API for casting) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td>Pointer on the Data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_counter</td><td>Pointer on the counter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab91fe50ba210a0545fa41e993df9beea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab91fe50ba210a0545fa41e993df9beea">&sect;&nbsp;</a></span>SharedPtr() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::<a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>copy Contructor </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td><a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab46f51a66327265bbc94ee89b603ca71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab46f51a66327265bbc94ee89b603ca71">&sect;&nbsp;</a></span>SharedPtr() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::<a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>copy Contructor </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td><a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a11e3f0079bc15778cec63fc378c10c9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11e3f0079bc15778cec63fc378c10c9d">&sect;&nbsp;</a></span>~SharedPtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::~<a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad4b7eb0326a1d4aac87d2699eb6902cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4b7eb0326a1d4aac87d2699eb6902cb">&sect;&nbsp;</a></span>get() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const EMEMORY_TYPE* <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a const pointer on the data. </p>
+<dl class="section return"><dt>Returns</dt><dd>Data const pointer </dd></dl>
+
+</div>
+</div>
+<a id="ad0fb9399753ec0125f8456d716203d08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0fb9399753ec0125f8456d716203d08">&sect;&nbsp;</a></span>get() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">EMEMORY_TYPE* <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a pointer on the data. </p>
+<dl class="section return"><dt>Returns</dt><dd>Data pointer </dd></dl>
+
+</div>
+</div>
+<a id="af3de746aec06d5e39d14b32085d37a8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3de746aec06d5e39d14b32085d37a8b">&sect;&nbsp;</a></span>getCounter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_counter.html">ememory::Counter</a>* <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::getCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get <a class="el" href="classememory_1_1_counter.html" title="Couter is an important part of the SharedPtr/WeakPtr implementation. This use a simple refcounting me...">Counter</a> pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer on the counter </dd></dl>
+
+</div>
+</div>
+<a id="a20c3bc26755a4917c2ce1641aa2e1925"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20c3bc26755a4917c2ce1641aa2e1925">&sect;&nbsp;</a></span>getDeleter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">deleterCall <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::getDeleter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get deleter function of the data pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>deleter function </dd></dl>
+
+</div>
+</div>
+<a id="a672be4bbc5b509d86e0e1969203dac55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a672be4bbc5b509d86e0e1969203dac55">&sect;&nbsp;</a></span>operator!=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">std::nullptr_t&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if the <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> have NOT an internal data (nullptr) </p>
+<dl class="section return"><dt>Returns</dt><dd>true The pointer is asigned, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a73af60d24efa9dfb2b51cf0ece0bd105"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73af60d24efa9dfb2b51cf0ece0bd105">&sect;&nbsp;</a></span>operator!=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+<div class="memtemplate">
+template&lt;class EMEMORY_TYPE2 &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if two <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> are NOT the same data (maybe not the same cast) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td>Object to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true The Object have NOT the same pointer reference, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a5991c3edce48eee7724225254b53e67e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5991c3edce48eee7724225254b53e67e">&sect;&nbsp;</a></span>operator*() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const EMEMORY_TYPE&amp; <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a const reference on the data. </p>
+<dl class="section return"><dt>Returns</dt><dd>Data const reference </dd></dl>
+
+</div>
+</div>
+<a id="a42d2e1b4524a05d881497a50ba23eeae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42d2e1b4524a05d881497a50ba23eeae">&sect;&nbsp;</a></span>operator*() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">EMEMORY_TYPE&amp; <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a reference on the data. </p>
+<dl class="section return"><dt>Returns</dt><dd>Data reference </dd></dl>
+
+</div>
+</div>
+<a id="ac51978a1cafd573f38bf8187cf0fbe8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac51978a1cafd573f38bf8187cf0fbe8d">&sect;&nbsp;</a></span>operator->() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const EMEMORY_TYPE* <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::operator-&gt; </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Const dereferences the stored pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>Const pointer on the Data </dd></dl>
+
+</div>
+</div>
+<a id="ab65dfd8d12dc245947b1fe35f2f1f9c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab65dfd8d12dc245947b1fe35f2f1f9c9">&sect;&nbsp;</a></span>operator->() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">EMEMORY_TYPE* <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::operator-&gt; </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dereferences the stored pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer on the Data </dd></dl>
+
+</div>
+</div>
+<a id="af734e3eb23a10bf11e45cebf5318825c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af734e3eb23a10bf11e45cebf5318825c">&sect;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&amp; <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Asignement operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td><a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference on this </dd></dl>
+
+</div>
+</div>
+<a id="a9e2a657eee2f7cd579e4ffad898a2ae6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e2a657eee2f7cd579e4ffad898a2ae6">&sect;&nbsp;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&amp; <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">std::nullptr_t&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Asignement operator (asign nullptr) </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference on this </dd></dl>
+
+</div>
+</div>
+<a id="a913da6c7c487b32f786d0f3adf49759a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a913da6c7c487b32f786d0f3adf49759a">&sect;&nbsp;</a></span>operator==() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::operator== </td>
+          <td>(</td>
+          <td class="paramtype">std::nullptr_t&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if the <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> have an internal data (not nullptr) </p>
+<dl class="section return"><dt>Returns</dt><dd>true The pointer is not asigned, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="ada1e161c0596ce8c7e22a1c2d4722f43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada1e161c0596ce8c7e22a1c2d4722f43">&sect;&nbsp;</a></span>operator==() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+<div class="memtemplate">
+template&lt;class EMEMORY_TYPE2 &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if two <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> are the same data (maybe not the same cast) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td>Object to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true The Object have the same pointer reference, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="afa0eb096ccb28c0b229921bb6eb5fe58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa0eb096ccb28c0b229921bb6eb5fe58">&sect;&nbsp;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reset the <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> ==&gt; Remove data if needed. </p>
+
+</div>
+</div>
+<a id="ad7a06dd2042312f6f94da526adddfc48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7a06dd2042312f6f94da526adddfc48">&sect;&nbsp;</a></span>swap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::swap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classememory_1_1_shared_ptr.html">SharedPtr</a>&lt; EMEMORY_TYPE &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Swap 2 Object inside the <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td>Object to swap with </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a74070b8ebda543021108e0df4b1e825b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74070b8ebda543021108e0df4b1e825b">&sect;&nbsp;</a></span>useCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EMEMORY_TYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t <a class="el" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; EMEMORY_TYPE &gt;::useCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of conencted <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Number of <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> on this data </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>framework/atria-soft/ememory/ememory/<a class="el" href="_shared_ptr_8hpp_source.html">SharedPtr.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.8-->
+<!-- start footer part -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="footer"/><address class="footer"><small>
+Generated on Mon Oct 24 2016 10:48:20 for ememory: Ewol memory interface by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.12
+</small></address>
+</body>
+</html>

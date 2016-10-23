@@ -1,0 +1,424 @@
+<!-- HTML header for doxygen 1.8.8-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- For Mobile Devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+        <meta name="generator" content="Doxygen 1.8.12"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <title>ememory: Ewol memory interface: ememory::Counter Class Reference</title>
+        <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
+        <script type="text/javascript" src="dynsections.js"></script>
+        <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+        <link href="doxygen.css" rel="stylesheet" type="text/css" />
+        <link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="doxy-boot.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand">ememory: Ewol memory interface 0.4.0</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Main&nbsp;Page</a></li>
+                        <li><a href="pages.html">Related&nbsp;Pages</a></li>
+                        <li><a href="namespaces.html">Namespaces</a></li>
+                        <li><a href="annotated.html">Classes</a></li>
+                        <li><a href="files.html">Files</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Link-libs<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://HeeroYui.github.io/lutin">lutin</a></li>
+                                <li><a href="http://atria-soft.github.io/ewol">ewol</a></li>
+                                <li><a href="http://atria-soft.github.io/etk">etk</a></li>
+                                <li><a href="http://atria-soft.github.io/ejson">ejson</a></li>
+                                <li><a href="http://atria-soft.github.io/exml">exml</a></li>
+                                <li><a href="http://atria-soft.github.io/esvg">esvg</a></li>
+                                <li><a href="http://atria-soft.github.io/egami">egami</a></li>
+                                <li><a href="http://atria-soft.github.io/gale">gale</a></li>
+                                <li><a href="http://atria-soft.github.io/ege">ege</a></li>
+                                <li><a href="http://atria-soft.github.io/elog">elog</a></li>
+                                <li><a href="http://atria-soft.github.io/ememory">ememory</a></li>
+                                <li><a href="http://atria-soft.github.io/enet">enet</a></li>
+                                <li><a href="http://atria-soft.github.io/eproperty">eproperty</a></li>
+                                <li><a href="http://atria-soft.github.io/esignal">esignal</a></li>
+                                <li><a href="http://atria-soft.github.io/zeus">zeus</a></li>
+                                <li><a href="http://atria-soft.github.io/audio-ess">audio-ess</a></li>
+                                <li><a href="http://musicdsp.github.io/audio">audio</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-drain">audio-drain</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-orchestra">audio-orchestra</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-river">audio-river</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="search-box" class="input-group">
+                        <div class="input-group-btn">
+                            <button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-search"></span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">All</a></li>
+                                <li><a href="#">Classes</a></li>
+                                <li><a href="#">Namespaces</a></li>
+                                <li><a href="#">Files</a></li>
+                                <li><a href="#">Functions</a></li>
+                                <li><a href="#">Variables</a></li>
+                                <li><a href="#">Typedefs</a></li>
+                                <li><a href="#">Enumerations</a></li>
+                                <li><a href="#">Enumerator</a></li>
+                                <li><a href="#">Friends</a></li>
+                                <li><a href="#">Macros</a></li>
+                                <li><a href="#">Pages</a></li>
+                            </ul>
+                        </div>
+                        <button id="search-close" type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <input id="search-field" class="form-control" accesskey="S" onkeydown="searchBox.OnSearchFieldChange(event);" placeholder="Search ..." type="text">
+                    </div>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+            <div class="content" id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 panel panel-default" style="padding-bottom: 15px;">
+                            <div style="margin-bottom: 15px;">
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.12 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceememory.html">ememory</a></li><li class="navelem"><a class="el" href="classememory_1_1_counter.html">Counter</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classememory_1_1_counter-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ememory::Counter Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_counter_8hpp_source.html">Counter.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a1614d672880eb19b18a98ea9babe723e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723e">remove</a> { <a class="el" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723ea334c4a4c42fdb79d7ebc3e73b517e6f8">remove::none</a>, 
+<a class="el" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723ea8d777f385d3dfec8815d20f7496026dc">remove::data</a>, 
+<a class="el" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723ea886bb73b3156b0aa24aac99d2de0b238">remove::counter</a>, 
+<a class="el" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723eaa181a603769c1f98ad927e7367c7aa51">remove::all</a>
+ }</td></tr>
+<tr class="separator:a1614d672880eb19b18a98ea9babe723e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a7424b792a2e2b05b228f8e02a10eb9d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_counter.html#a7424b792a2e2b05b228f8e02a10eb9d6">Counter</a> (bool _fromWeak=false)</td></tr>
+<tr class="separator:a7424b792a2e2b05b228f8e02a10eb9d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52762694b79f68cfb77022e6e6907d96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_counter.html#a52762694b79f68cfb77022e6e6907d96">~Counter</a> ()</td></tr>
+<tr class="separator:a52762694b79f68cfb77022e6e6907d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99aef3a1f476e47bc9e2ccaed0cd0f7b"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_counter.html#a99aef3a1f476e47bc9e2ccaed0cd0f7b">incrementShared</a> (bool _fromWeak=false)</td></tr>
+<tr class="separator:a99aef3a1f476e47bc9e2ccaed0cd0f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28cf4efdddded41d259fa7d3233bf00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723e">ememory::Counter::remove</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_counter.html#aa28cf4efdddded41d259fa7d3233bf00">decrementShared</a> ()</td></tr>
+<tr class="separator:aa28cf4efdddded41d259fa7d3233bf00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93aa2424f0ce29942ec95f486166ee46"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_counter.html#a93aa2424f0ce29942ec95f486166ee46">incrementWeak</a> ()</td></tr>
+<tr class="separator:a93aa2424f0ce29942ec95f486166ee46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b73b5b5d15ffe2494ff84beca813bd4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723e">ememory::Counter::remove</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_counter.html#a7b73b5b5d15ffe2494ff84beca813bd4">decrementWeak</a> ()</td></tr>
+<tr class="separator:a7b73b5b5d15ffe2494ff84beca813bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab059494abe4d8600369dd10ca8cf0f66"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_counter.html#ab059494abe4d8600369dd10ca8cf0f66">getCountWeak</a> () const</td></tr>
+<tr class="separator:ab059494abe4d8600369dd10ca8cf0f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a819fefc93965f5da013dd5f809471288"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_counter.html#a819fefc93965f5da013dd5f809471288">getCountShared</a> () const</td></tr>
+<tr class="separator:a819fefc93965f5da013dd5f809471288"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab57beaaee59c31438823a29fb24d4707"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classememory_1_1_counter.html#ab57beaaee59c31438823a29fb24d4707">getCount</a> () const</td></tr>
+<tr class="separator:ab57beaaee59c31438823a29fb24d4707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Couter is an important part of the SharedPtr/WeakPtr implementation. This use a simple refcounting method dut thread-safe. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a1614d672880eb19b18a98ea9babe723e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1614d672880eb19b18a98ea9babe723e">&sect;&nbsp;</a></span>remove</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723e">ememory::Counter::remove</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove case of the counter. When decrese the shared our weak counter, it is the upper class that need to remove the counter of the data pointer. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1614d672880eb19b18a98ea9babe723ea334c4a4c42fdb79d7ebc3e73b517e6f8"></a>none&#160;</td><td class="fielddoc"><p>Noting to remove. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1614d672880eb19b18a98ea9babe723ea8d777f385d3dfec8815d20f7496026dc"></a>data&#160;</td><td class="fielddoc"><p>Remove only the data. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1614d672880eb19b18a98ea9babe723ea886bb73b3156b0aa24aac99d2de0b238"></a>counter&#160;</td><td class="fielddoc"><p>Remove only the <a class="el" href="classememory_1_1_counter.html" title="Couter is an important part of the SharedPtr/WeakPtr implementation. This use a simple refcounting me...">Counter</a> (data already removed) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1614d672880eb19b18a98ea9babe723eaa181a603769c1f98ad927e7367c7aa51"></a>all&#160;</td><td class="fielddoc"><p>Remove Data and <a class="el" href="classememory_1_1_counter.html" title="Couter is an important part of the SharedPtr/WeakPtr implementation. This use a simple refcounting me...">Counter</a>. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7424b792a2e2b05b228f8e02a10eb9d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7424b792a2e2b05b228f8e02a10eb9d6">&sect;&nbsp;</a></span>Counter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ememory::Counter::Counter </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>_fromWeak</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Contructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_fromWeak</td><td><a class="el" href="classememory_1_1_counter.html" title="Couter is an important part of the SharedPtr/WeakPtr implementation. This use a simple refcounting me...">Counter</a> is created from a <a class="el" href="classememory_1_1_weak_ptr.html" title="WeakPtr is an interface that lose the data pointer when all SharedPtr as been released. ">WeakPtr</a> instead of a <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a52762694b79f68cfb77022e6e6907d96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52762694b79f68cfb77022e6e6907d96">&sect;&nbsp;</a></span>~Counter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ememory::Counter::~Counter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destrunctor (Not virtual !!) </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa28cf4efdddded41d259fa7d3233bf00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa28cf4efdddded41d259fa7d3233bf00">&sect;&nbsp;</a></span>decrementShared()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723e">ememory::Counter::remove</a> ememory::Counter::decrementShared </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Decrese of 1 the shared counter. </p>
+<dl class="section return"><dt>Returns</dt><dd>The action to do on the pointer or the counter </dd></dl>
+
+</div>
+</div>
+<a id="a7b73b5b5d15ffe2494ff84beca813bd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b73b5b5d15ffe2494ff84beca813bd4">&sect;&nbsp;</a></span>decrementWeak()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723e">ememory::Counter::remove</a> ememory::Counter::decrementWeak </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Decrese of 1 the weak counter. </p>
+<dl class="section return"><dt>Returns</dt><dd>The action to do on the pointer or the counter </dd></dl>
+
+</div>
+</div>
+<a id="ab57beaaee59c31438823a29fb24d4707"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab57beaaee59c31438823a29fb24d4707">&sect;&nbsp;</a></span>getCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t ememory::Counter::getCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of weak+shared counter. </p>
+<dl class="section return"><dt>Returns</dt><dd>Number of <a class="el" href="classememory_1_1_weak_ptr.html" title="WeakPtr is an interface that lose the data pointer when all SharedPtr as been released. ">WeakPtr</a> and <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> connected. </dd></dl>
+
+</div>
+</div>
+<a id="a819fefc93965f5da013dd5f809471288"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a819fefc93965f5da013dd5f809471288">&sect;&nbsp;</a></span>getCountShared()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t ememory::Counter::getCountShared </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of shared counter. </p>
+<dl class="section return"><dt>Returns</dt><dd>Number of <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> connected. </dd></dl>
+
+</div>
+</div>
+<a id="ab059494abe4d8600369dd10ca8cf0f66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab059494abe4d8600369dd10ca8cf0f66">&sect;&nbsp;</a></span>getCountWeak()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t ememory::Counter::getCountWeak </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of weak counter. </p>
+<dl class="section return"><dt>Returns</dt><dd>Number of <a class="el" href="classememory_1_1_weak_ptr.html" title="WeakPtr is an interface that lose the data pointer when all SharedPtr as been released. ">WeakPtr</a> connected. </dd></dl>
+
+</div>
+</div>
+<a id="a99aef3a1f476e47bc9e2ccaed0cd0f7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99aef3a1f476e47bc9e2ccaed0cd0f7b">&sect;&nbsp;</a></span>incrementShared()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t ememory::Counter::incrementShared </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>_fromWeak</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Increment the shared counter (one more shared user) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_fromWeak</td><td>At true if the increment came from a <a class="el" href="classememory_1_1_weak_ptr.html" title="WeakPtr is an interface that lose the data pointer when all SharedPtr as been released. ">WeakPtr</a> instead of a <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of current <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a> that has been curently access at this data. Return 0 if the increment is not possible (object has no more <a class="el" href="classememory_1_1_shared_ptr.html" title="ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...">SharedPtr</a>) </dd></dl>
+
+</div>
+</div>
+<a id="a93aa2424f0ce29942ec95f486166ee46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93aa2424f0ce29942ec95f486166ee46">&sect;&nbsp;</a></span>incrementWeak()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t ememory::Counter::incrementWeak </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Increment the weak counter (one more weak user) </p>
+<dl class="section return"><dt>Returns</dt><dd>Number of current <a class="el" href="classememory_1_1_weak_ptr.html" title="WeakPtr is an interface that lose the data pointer when all SharedPtr as been released. ">WeakPtr</a> that has been curently access at this data. </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>framework/atria-soft/ememory/ememory/<a class="el" href="_counter_8hpp_source.html">Counter.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.8-->
+<!-- start footer part -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="footer"/><address class="footer"><small>
+Generated on Mon Oct 24 2016 10:48:20 for ememory: Ewol memory interface by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.12
+</small></address>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!-- HTML header for doxygen 1.8.8-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- For Mobile Devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+        <meta name="generator" content="Doxygen 1.8.12"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <title>ememory: Ewol memory interface: framework/atria-soft/ememory/ememory/Counter.hpp Source File</title>
+        <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
+        <script type="text/javascript" src="dynsections.js"></script>
+        <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+        <link href="doxygen.css" rel="stylesheet" type="text/css" />
+        <link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="doxy-boot.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand">ememory: Ewol memory interface 0.4.0</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Main&nbsp;Page</a></li>
+                        <li><a href="pages.html">Related&nbsp;Pages</a></li>
+                        <li><a href="namespaces.html">Namespaces</a></li>
+                        <li><a href="annotated.html">Classes</a></li>
+                        <li><a href="files.html">Files</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Link-libs<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://HeeroYui.github.io/lutin">lutin</a></li>
+                                <li><a href="http://atria-soft.github.io/ewol">ewol</a></li>
+                                <li><a href="http://atria-soft.github.io/etk">etk</a></li>
+                                <li><a href="http://atria-soft.github.io/ejson">ejson</a></li>
+                                <li><a href="http://atria-soft.github.io/exml">exml</a></li>
+                                <li><a href="http://atria-soft.github.io/esvg">esvg</a></li>
+                                <li><a href="http://atria-soft.github.io/egami">egami</a></li>
+                                <li><a href="http://atria-soft.github.io/gale">gale</a></li>
+                                <li><a href="http://atria-soft.github.io/ege">ege</a></li>
+                                <li><a href="http://atria-soft.github.io/elog">elog</a></li>
+                                <li><a href="http://atria-soft.github.io/ememory">ememory</a></li>
+                                <li><a href="http://atria-soft.github.io/enet">enet</a></li>
+                                <li><a href="http://atria-soft.github.io/eproperty">eproperty</a></li>
+                                <li><a href="http://atria-soft.github.io/esignal">esignal</a></li>
+                                <li><a href="http://atria-soft.github.io/zeus">zeus</a></li>
+                                <li><a href="http://atria-soft.github.io/audio-ess">audio-ess</a></li>
+                                <li><a href="http://musicdsp.github.io/audio">audio</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-drain">audio-drain</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-orchestra">audio-orchestra</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-river">audio-river</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="search-box" class="input-group">
+                        <div class="input-group-btn">
+                            <button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-search"></span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">All</a></li>
+                                <li><a href="#">Classes</a></li>
+                                <li><a href="#">Namespaces</a></li>
+                                <li><a href="#">Files</a></li>
+                                <li><a href="#">Functions</a></li>
+                                <li><a href="#">Variables</a></li>
+                                <li><a href="#">Typedefs</a></li>
+                                <li><a href="#">Enumerations</a></li>
+                                <li><a href="#">Enumerator</a></li>
+                                <li><a href="#">Friends</a></li>
+                                <li><a href="#">Macros</a></li>
+                                <li><a href="#">Pages</a></li>
+                            </ul>
+                        </div>
+                        <button id="search-close" type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <input id="search-field" class="form-control" accesskey="S" onkeydown="searchBox.OnSearchFieldChange(event);" placeholder="Search ..." type="text">
+                    </div>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+            <div class="content" id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 panel panel-default" style="padding-bottom: 15px;">
+                            <div style="margin-bottom: 15px;">
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.12 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_644e041c3a6521da7b27eba0e4eb2b95.html">framework</a></li><li class="navelem"><a class="el" href="dir_a094892b17be858f66bf3446bbb755c7.html">atria-soft</a></li><li class="navelem"><a class="el" href="dir_507bb1c007c55684eba6f8985bd7f863.html">ememory</a></li><li class="navelem"><a class="el" href="dir_10e68e40b6346286372b87757193585d.html">ememory</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Counter.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_counter_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// define type : uintXX_t and intXX_t</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define __STDC_LIMIT_MACROS</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// note in android include the macro of min max are overwitten</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="namespaceememory.html">   14</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceememory.html">ememory</a> {</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classememory_1_1_counter.html">   18</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classememory_1_1_counter.html">Counter</a> {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723e">   23</a></span>&#160;            <span class="keyword">enum class</span> <a class="code" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723e">remove</a> {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <a class="code" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723ea334c4a4c42fdb79d7ebc3e73b517e6f8">none</a>, </div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <a class="code" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723ea8d777f385d3dfec8815d20f7496026dc">data</a>, </div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <a class="code" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723ea886bb73b3156b0aa24aac99d2de0b238">counter</a>, </div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <a class="code" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723eaa181a603769c1f98ad927e7367c7aa51">all</a> </div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            };</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">private</span>:</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            int64_t m_counterShared; </div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            int64_t m_counterWeak; </div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keyword">mutable</span> std::mutex m_mutex; </div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <a class="code" href="classememory_1_1_counter.html#a7424b792a2e2b05b228f8e02a10eb9d6">Counter</a>(<span class="keywordtype">bool</span> _fromWeak=<span class="keyword">false</span>);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <a class="code" href="classememory_1_1_counter.html#a52762694b79f68cfb77022e6e6907d96">~Counter</a>();</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            int64_t <a class="code" href="classememory_1_1_counter.html#a99aef3a1f476e47bc9e2ccaed0cd0f7b">incrementShared</a>(<span class="keywordtype">bool</span> _fromWeak=<span class="keyword">false</span>);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <a class="code" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723e">ememory::Counter::remove</a> <a class="code" href="classememory_1_1_counter.html#aa28cf4efdddded41d259fa7d3233bf00">decrementShared</a>();</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            int64_t <a class="code" href="classememory_1_1_counter.html#a93aa2424f0ce29942ec95f486166ee46">incrementWeak</a>();</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723e">ememory::Counter::remove</a> <a class="code" href="classememory_1_1_counter.html#a7b73b5b5d15ffe2494ff84beca813bd4">decrementWeak</a>();</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            int64_t <a class="code" href="classememory_1_1_counter.html#ab059494abe4d8600369dd10ca8cf0f66">getCountWeak</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            int64_t <a class="code" href="classememory_1_1_counter.html#a819fefc93965f5da013dd5f809471288">getCountShared</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            int64_t <a class="code" href="classememory_1_1_counter.html#ab57beaaee59c31438823a29fb24d4707">getCount</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    };</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="ttc" id="classememory_1_1_counter_html_a1614d672880eb19b18a98ea9babe723ea886bb73b3156b0aa24aac99d2de0b238"><div class="ttname"><a href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723ea886bb73b3156b0aa24aac99d2de0b238">ememory::Counter::remove::counter</a></div><div class="ttdoc">Remove only the Counter (data already removed) </div></div>
+<div class="ttc" id="classememory_1_1_counter_html_a99aef3a1f476e47bc9e2ccaed0cd0f7b"><div class="ttname"><a href="classememory_1_1_counter.html#a99aef3a1f476e47bc9e2ccaed0cd0f7b">ememory::Counter::incrementShared</a></div><div class="ttdeci">int64_t incrementShared(bool _fromWeak=false)</div><div class="ttdoc">Increment the shared counter (one more shared user) </div></div>
+<div class="ttc" id="classememory_1_1_counter_html_a93aa2424f0ce29942ec95f486166ee46"><div class="ttname"><a href="classememory_1_1_counter.html#a93aa2424f0ce29942ec95f486166ee46">ememory::Counter::incrementWeak</a></div><div class="ttdeci">int64_t incrementWeak()</div><div class="ttdoc">Increment the weak counter (one more weak user) </div></div>
+<div class="ttc" id="classememory_1_1_counter_html_ab57beaaee59c31438823a29fb24d4707"><div class="ttname"><a href="classememory_1_1_counter.html#ab57beaaee59c31438823a29fb24d4707">ememory::Counter::getCount</a></div><div class="ttdeci">int64_t getCount() const</div><div class="ttdoc">Get the number of weak+shared counter. </div></div>
+<div class="ttc" id="classememory_1_1_counter_html_a1614d672880eb19b18a98ea9babe723ea8d777f385d3dfec8815d20f7496026dc"><div class="ttname"><a href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723ea8d777f385d3dfec8815d20f7496026dc">ememory::Counter::remove::data</a></div><div class="ttdoc">Remove only the data. </div></div>
+<div class="ttc" id="classememory_1_1_counter_html_a1614d672880eb19b18a98ea9babe723ea334c4a4c42fdb79d7ebc3e73b517e6f8"><div class="ttname"><a href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723ea334c4a4c42fdb79d7ebc3e73b517e6f8">ememory::Counter::remove::none</a></div><div class="ttdoc">Noting to remove. </div></div>
+<div class="ttc" id="classememory_1_1_counter_html"><div class="ttname"><a href="classememory_1_1_counter.html">ememory::Counter</a></div><div class="ttdoc">Couter is an important part of the SharedPtr/WeakPtr implementation. This use a simple refcounting me...</div><div class="ttdef"><b>Definition:</b> Counter.hpp:18</div></div>
+<div class="ttc" id="classememory_1_1_counter_html_ab059494abe4d8600369dd10ca8cf0f66"><div class="ttname"><a href="classememory_1_1_counter.html#ab059494abe4d8600369dd10ca8cf0f66">ememory::Counter::getCountWeak</a></div><div class="ttdeci">int64_t getCountWeak() const</div><div class="ttdoc">Get the number of weak counter. </div></div>
+<div class="ttc" id="classememory_1_1_counter_html_a7b73b5b5d15ffe2494ff84beca813bd4"><div class="ttname"><a href="classememory_1_1_counter.html#a7b73b5b5d15ffe2494ff84beca813bd4">ememory::Counter::decrementWeak</a></div><div class="ttdeci">ememory::Counter::remove decrementWeak()</div><div class="ttdoc">Decrese of 1 the weak counter. </div></div>
+<div class="ttc" id="classememory_1_1_counter_html_a7424b792a2e2b05b228f8e02a10eb9d6"><div class="ttname"><a href="classememory_1_1_counter.html#a7424b792a2e2b05b228f8e02a10eb9d6">ememory::Counter::Counter</a></div><div class="ttdeci">Counter(bool _fromWeak=false)</div><div class="ttdoc">Contructor. </div></div>
+<div class="ttc" id="namespaceememory_html"><div class="ttname"><a href="namespaceememory.html">ememory</a></div><div class="ttdoc">Ememory is a namespace to represent the. </div><div class="ttdef"><b>Definition:</b> Counter.hpp:14</div></div>
+<div class="ttc" id="classememory_1_1_counter_html_aa28cf4efdddded41d259fa7d3233bf00"><div class="ttname"><a href="classememory_1_1_counter.html#aa28cf4efdddded41d259fa7d3233bf00">ememory::Counter::decrementShared</a></div><div class="ttdeci">ememory::Counter::remove decrementShared()</div><div class="ttdoc">Decrese of 1 the shared counter. </div></div>
+<div class="ttc" id="classememory_1_1_counter_html_a1614d672880eb19b18a98ea9babe723e"><div class="ttname"><a href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723e">ememory::Counter::remove</a></div><div class="ttdeci">remove</div><div class="ttdoc">Remove case of the counter. When decrese the shared our weak counter, it is the upper class that need...</div><div class="ttdef"><b>Definition:</b> Counter.hpp:23</div></div>
+<div class="ttc" id="classememory_1_1_counter_html_a52762694b79f68cfb77022e6e6907d96"><div class="ttname"><a href="classememory_1_1_counter.html#a52762694b79f68cfb77022e6e6907d96">ememory::Counter::~Counter</a></div><div class="ttdeci">~Counter()</div><div class="ttdoc">Destrunctor (Not virtual !!) </div></div>
+<div class="ttc" id="classememory_1_1_counter_html_a1614d672880eb19b18a98ea9babe723eaa181a603769c1f98ad927e7367c7aa51"><div class="ttname"><a href="classememory_1_1_counter.html#a1614d672880eb19b18a98ea9babe723eaa181a603769c1f98ad927e7367c7aa51">ememory::Counter::remove::all</a></div><div class="ttdoc">Remove Data and Counter. </div></div>
+<div class="ttc" id="classememory_1_1_counter_html_a819fefc93965f5da013dd5f809471288"><div class="ttname"><a href="classememory_1_1_counter.html#a819fefc93965f5da013dd5f809471288">ememory::Counter::getCountShared</a></div><div class="ttdeci">int64_t getCountShared() const</div><div class="ttdoc">Get the number of shared counter. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.8-->
+<!-- start footer part -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="footer"/><address class="footer"><small>
+Generated on Mon Oct 24 2016 10:48:20 for ememory: Ewol memory interface by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.12
+</small></address>
+</body>
+</html>

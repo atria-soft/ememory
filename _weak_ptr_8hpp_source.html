@@ -1,0 +1,167 @@
+<!-- HTML header for doxygen 1.8.8-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- For Mobile Devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+        <meta name="generator" content="Doxygen 1.8.12"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <title>ememory: Ewol memory interface: framework/atria-soft/ememory/ememory/WeakPtr.hpp Source File</title>
+        <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
+        <script type="text/javascript" src="dynsections.js"></script>
+        <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+        <link href="doxygen.css" rel="stylesheet" type="text/css" />
+        <link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="doxy-boot.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand">ememory: Ewol memory interface 0.4.0</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Main&nbsp;Page</a></li>
+                        <li><a href="pages.html">Related&nbsp;Pages</a></li>
+                        <li><a href="namespaces.html">Namespaces</a></li>
+                        <li><a href="annotated.html">Classes</a></li>
+                        <li><a href="files.html">Files</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Link-libs<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://HeeroYui.github.io/lutin">lutin</a></li>
+                                <li><a href="http://atria-soft.github.io/ewol">ewol</a></li>
+                                <li><a href="http://atria-soft.github.io/etk">etk</a></li>
+                                <li><a href="http://atria-soft.github.io/ejson">ejson</a></li>
+                                <li><a href="http://atria-soft.github.io/exml">exml</a></li>
+                                <li><a href="http://atria-soft.github.io/esvg">esvg</a></li>
+                                <li><a href="http://atria-soft.github.io/egami">egami</a></li>
+                                <li><a href="http://atria-soft.github.io/gale">gale</a></li>
+                                <li><a href="http://atria-soft.github.io/ege">ege</a></li>
+                                <li><a href="http://atria-soft.github.io/elog">elog</a></li>
+                                <li><a href="http://atria-soft.github.io/ememory">ememory</a></li>
+                                <li><a href="http://atria-soft.github.io/enet">enet</a></li>
+                                <li><a href="http://atria-soft.github.io/eproperty">eproperty</a></li>
+                                <li><a href="http://atria-soft.github.io/esignal">esignal</a></li>
+                                <li><a href="http://atria-soft.github.io/zeus">zeus</a></li>
+                                <li><a href="http://atria-soft.github.io/audio-ess">audio-ess</a></li>
+                                <li><a href="http://musicdsp.github.io/audio">audio</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-drain">audio-drain</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-orchestra">audio-orchestra</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-river">audio-river</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="search-box" class="input-group">
+                        <div class="input-group-btn">
+                            <button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-search"></span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">All</a></li>
+                                <li><a href="#">Classes</a></li>
+                                <li><a href="#">Namespaces</a></li>
+                                <li><a href="#">Files</a></li>
+                                <li><a href="#">Functions</a></li>
+                                <li><a href="#">Variables</a></li>
+                                <li><a href="#">Typedefs</a></li>
+                                <li><a href="#">Enumerations</a></li>
+                                <li><a href="#">Enumerator</a></li>
+                                <li><a href="#">Friends</a></li>
+                                <li><a href="#">Macros</a></li>
+                                <li><a href="#">Pages</a></li>
+                            </ul>
+                        </div>
+                        <button id="search-close" type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <input id="search-field" class="form-control" accesskey="S" onkeydown="searchBox.OnSearchFieldChange(event);" placeholder="Search ..." type="text">
+                    </div>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+            <div class="content" id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 panel panel-default" style="padding-bottom: 15px;">
+                            <div style="margin-bottom: 15px;">
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.12 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_644e041c3a6521da7b27eba0e4eb2b95.html">framework</a></li><li class="navelem"><a class="el" href="dir_a094892b17be858f66bf3446bbb755c7.html">atria-soft</a></li><li class="navelem"><a class="el" href="dir_507bb1c007c55684eba6f8985bd7f863.html">ememory</a></li><li class="navelem"><a class="el" href="dir_10e68e40b6346286372b87757193585d.html">ememory</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">WeakPtr.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_weak_ptr_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;ememory/debug.hpp&gt;</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_counter_8hpp.html">ememory/Counter.hpp</a>&gt;</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceememory.html">ememory</a> {</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>&gt; <span class="keyword">class </span>SharedPtr;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>&gt; <span class="keyword">class </span>EnableSharedFromThis;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> EMEMORY_TYPE&gt;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">class </span>WeakPtr {</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span>EnableSharedFromThis&lt;EMEMORY_TYPE&gt;;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span>SharedPtr&lt;EMEMORY_TYPE&gt;;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">private</span>:</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            EMEMORY_TYPE* m_element; </div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <a class="code" href="classememory_1_1_counter.html">ememory::Counter</a>* m_counter; </div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>();</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>(std::nullptr_t);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">private</span>:</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>(EMEMORY_TYPE* _element); <span class="comment">// this is only for enable shared from this ...</span></div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            ~<a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>();</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>(<span class="keyword">const</span> WeakPtr&lt;EMEMORY_TYPE&gt;&amp; _obj);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            WeakPtr&lt;EMEMORY_TYPE&gt;&amp; <a class="code" href="classememory_1_1_weak_ptr.html#a270904b19260492da231c4bed44e6abf">operator= </a>(<span class="keyword">const</span> WeakPtr&lt;EMEMORY_TYPE&gt;&amp; _obj);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>(<a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>&amp;&amp; _obj);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>(<span class="keyword">const</span> SharedPtr&lt;EMEMORY_TYPE&gt;&amp; _obj);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            WeakPtr&lt;EMEMORY_TYPE&gt;&amp; <a class="code" href="classememory_1_1_weak_ptr.html#a270904b19260492da231c4bed44e6abf">operator= </a>(<span class="keyword">const</span> SharedPtr&lt;EMEMORY_TYPE&gt;&amp; _obj);</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            WeakPtr&lt;EMEMORY_TYPE&gt;&amp; <a class="code" href="classememory_1_1_weak_ptr.html#a270904b19260492da231c4bed44e6abf">operator= </a>(std::nullptr_t);</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">class </span>EMEMORY_TYPE2,</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                     <span class="keyword">typename</span> std::enable_if&lt;    std::is_void&lt;EMEMORY_TYPE&gt;::value</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                              &amp;&amp; !std::is_void&lt;EMEMORY_TYPE2&gt;::value</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                             , <span class="keywordtype">int</span>&gt;::type = 0&gt;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>(<span class="keyword">const</span> SharedPtr&lt;EMEMORY_TYPE2&gt;&amp; _obj);</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">class </span>EMEMORY_TYPE2,</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                     <span class="keyword">typename</span> std::enable_if&lt;    std::is_void&lt;EMEMORY_TYPE&gt;::value</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                              &amp;&amp; !std::is_void&lt;EMEMORY_TYPE2&gt;::value</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                             , <span class="keywordtype">int</span>&gt;::type = 0&gt;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            WeakPtr&lt;EMEMORY_TYPE&gt;&amp; <a class="code" href="classememory_1_1_weak_ptr.html#a270904b19260492da231c4bed44e6abf">operator= </a>(<span class="keyword">const</span> SharedPtr&lt;EMEMORY_TYPE2&gt;&amp; _obj);</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="comment">/*</span></div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">            template&lt;class EMEMORY_TYPE2,</span></div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">                     typename std::enable_if&lt;  std::is_base_of&lt;EMEMORY_TYPE, EMEMORY_TYPE2&gt;::value</span></div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">                                             , int&gt;::type = 0&gt;</span></div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">            WeakPtr(const WeakPtr&lt;EMEMORY_TYPE2&gt;&amp; _obj);</span></div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">            template&lt;class EMEMORY_TYPE2,</span></div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">                     typename std::enable_if&lt;  std::is_base_of&lt;EMEMORY_TYPE, EMEMORY_TYPE2&gt;::value</span></div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">                                             , int&gt;::type = 0&gt;</span></div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">            WeakPtr&amp; operator= (const WeakPtr&lt;EMEMORY_TYPE2&gt;&amp; _obj);</span></div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">            */</span></div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classememory_1_1_weak_ptr.html#a1b52501248bbe13cfe984f4d24b03276">reset</a>();</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordtype">int</span> <a class="code" href="classememory_1_1_weak_ptr.html#a41fa587a2ee7a4bddd76688b94133af3">useCount</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classememory_1_1_weak_ptr.html#a821cf7802a0d9e3b1574e920b8fdefeb">expired</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <a class="code" href="classememory_1_1_shared_ptr.html">ememory::SharedPtr&lt;EMEMORY_TYPE&gt;</a> <a class="code" href="classememory_1_1_weak_ptr.html#ab0f7a9b6529d25071f339f1a6480a3e6">lock</a>();</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classememory_1_1_weak_ptr.html#a2d8156fcc5247958fae765aee33d3c5e">operator==</a>(<span class="keyword">const</span> <a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>&amp; _obj);</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classememory_1_1_weak_ptr.html#a2d8156fcc5247958fae765aee33d3c5e">operator==</a>(std::nullptr_t) <span class="keyword">const</span>;</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classememory_1_1_weak_ptr.html#a6f96fbaa4420a5b55263d58a55853cd9">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>&amp; _obj);</div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classememory_1_1_weak_ptr.html#a6f96fbaa4420a5b55263d58a55853cd9">operator!=</a>(std::nullptr_t) <span class="keyword">const</span>;</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classememory_1_1_weak_ptr.html#ab138aa24ae18beedf25cbbe9d99ba0b4">swap</a>(<a class="code" href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">WeakPtr</a>&amp; _obj);</div><div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="classememory_1_1_weak_ptr.html#a49bd7ef3006354416097d9d741ad8bdd">  157</a></span>&#160;            <a class="code" href="classememory_1_1_counter.html">ememory::Counter</a>* <a class="code" href="classememory_1_1_weak_ptr.html#a49bd7ef3006354416097d9d741ad8bdd">getCounter</a>()<span class="keyword"> const </span>{</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="keywordflow">return</span> m_counter;</div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            }</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    };</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#include &lt;ememory/details/WeakPtr.hxx&gt;</span></div><div class="ttc" id="_counter_8hpp_html"><div class="ttname"><a href="_counter_8hpp.html">Counter.hpp</a></div></div>
+<div class="ttc" id="classememory_1_1_weak_ptr_html_a6f96fbaa4420a5b55263d58a55853cd9"><div class="ttname"><a href="classememory_1_1_weak_ptr.html#a6f96fbaa4420a5b55263d58a55853cd9">ememory::WeakPtr::operator!=</a></div><div class="ttdeci">bool operator!=(const WeakPtr &amp;_obj)</div><div class="ttdoc">Check if two WeakPtr are different data. </div></div>
+<div class="ttc" id="classememory_1_1_weak_ptr_html_ab0f7a9b6529d25071f339f1a6480a3e6"><div class="ttname"><a href="classememory_1_1_weak_ptr.html#ab0f7a9b6529d25071f339f1a6480a3e6">ememory::WeakPtr::lock</a></div><div class="ttdeci">ememory::SharedPtr&lt; EMEMORY_TYPE &gt; lock()</div><div class="ttdoc">Lock in SharedPtr the current Weak pointer. </div></div>
+<div class="ttc" id="classememory_1_1_weak_ptr_html_a2d8156fcc5247958fae765aee33d3c5e"><div class="ttname"><a href="classememory_1_1_weak_ptr.html#a2d8156fcc5247958fae765aee33d3c5e">ememory::WeakPtr::operator==</a></div><div class="ttdeci">bool operator==(const WeakPtr &amp;_obj)</div><div class="ttdoc">Check if two WeakPtr are the same data. </div></div>
+<div class="ttc" id="classememory_1_1_weak_ptr_html_a270904b19260492da231c4bed44e6abf"><div class="ttname"><a href="classememory_1_1_weak_ptr.html#a270904b19260492da231c4bed44e6abf">ememory::WeakPtr::operator=</a></div><div class="ttdeci">WeakPtr&lt; EMEMORY_TYPE &gt; &amp; operator=(const WeakPtr&lt; EMEMORY_TYPE &gt; &amp;_obj)</div><div class="ttdoc">Const copy asignement. </div></div>
+<div class="ttc" id="classememory_1_1_weak_ptr_html_a821cf7802a0d9e3b1574e920b8fdefeb"><div class="ttname"><a href="classememory_1_1_weak_ptr.html#a821cf7802a0d9e3b1574e920b8fdefeb">ememory::WeakPtr::expired</a></div><div class="ttdeci">bool expired() const</div><div class="ttdoc">Get the status of the pointer. </div></div>
+<div class="ttc" id="classememory_1_1_weak_ptr_html_a41fa587a2ee7a4bddd76688b94133af3"><div class="ttname"><a href="classememory_1_1_weak_ptr.html#a41fa587a2ee7a4bddd76688b94133af3">ememory::WeakPtr::useCount</a></div><div class="ttdeci">int useCount() const</div><div class="ttdoc">Get the number of conencted SharedPtr. </div></div>
+<div class="ttc" id="classememory_1_1_weak_ptr_html_ab138aa24ae18beedf25cbbe9d99ba0b4"><div class="ttname"><a href="classememory_1_1_weak_ptr.html#ab138aa24ae18beedf25cbbe9d99ba0b4">ememory::WeakPtr::swap</a></div><div class="ttdeci">void swap(WeakPtr &amp;_obj)</div><div class="ttdoc">Swap 2 Object inside the WeakPtr. </div></div>
+<div class="ttc" id="classememory_1_1_counter_html"><div class="ttname"><a href="classememory_1_1_counter.html">ememory::Counter</a></div><div class="ttdoc">Couter is an important part of the SharedPtr/WeakPtr implementation. This use a simple refcounting me...</div><div class="ttdef"><b>Definition:</b> Counter.hpp:18</div></div>
+<div class="ttc" id="classememory_1_1_weak_ptr_html_a49bd7ef3006354416097d9d741ad8bdd"><div class="ttname"><a href="classememory_1_1_weak_ptr.html#a49bd7ef3006354416097d9d741ad8bdd">ememory::WeakPtr::getCounter</a></div><div class="ttdeci">ememory::Counter * getCounter() const</div><div class="ttdoc">Get Counter pointer. </div><div class="ttdef"><b>Definition:</b> WeakPtr.hpp:157</div></div>
+<div class="ttc" id="namespaceememory_html"><div class="ttname"><a href="namespaceememory.html">ememory</a></div><div class="ttdoc">Ememory is a namespace to represent the. </div><div class="ttdef"><b>Definition:</b> Counter.hpp:14</div></div>
+<div class="ttc" id="classememory_1_1_shared_ptr_html"><div class="ttname"><a href="classememory_1_1_shared_ptr.html">ememory::SharedPtr</a></div><div class="ttdoc">ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer...</div><div class="ttdef"><b>Definition:</b> SharedPtr.hpp:34</div></div>
+<div class="ttc" id="classememory_1_1_weak_ptr_html_a1b52501248bbe13cfe984f4d24b03276"><div class="ttname"><a href="classememory_1_1_weak_ptr.html#a1b52501248bbe13cfe984f4d24b03276">ememory::WeakPtr::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Reset the WeakPtr ==&gt; Remove data if needed. </div></div>
+<div class="ttc" id="classememory_1_1_weak_ptr_html_a7ca8af1a20e2bce96d5c65ea1fd72ec1"><div class="ttname"><a href="classememory_1_1_weak_ptr.html#a7ca8af1a20e2bce96d5c65ea1fd72ec1">ememory::WeakPtr::WeakPtr</a></div><div class="ttdeci">WeakPtr()</div><div class="ttdoc">Empty Contructor. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.8-->
+<!-- start footer part -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="footer"/><address class="footer"><small>
+Generated on Mon Oct 24 2016 10:48:20 for ememory: Ewol memory interface by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.12
+</small></address>
+</body>
+</html>
