@@ -10,7 +10,7 @@ def get_desc():
 	return "Ewol memory basic interface (have a thread safe shared_ptr with constness)"
 
 def get_licence():
-	return "APACHE-2"
+	return "MPL-2"
 
 def get_compagny_type():
 	return "com"

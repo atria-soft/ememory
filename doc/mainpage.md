@@ -1,8 +1,10 @@
 EMEMORY library                                {#mainpage}
 ===============
 
+@tableofcontents
+
 What is EMEMORY, and how can I use it?
---------------------------------------
+======================================
 
 EMEMORY, or Ewol Memory interface is a simple abstraction layer over std::shared_ptr.
 
@@ -13,25 +15,25 @@ EMEMORY is designed for:
 Now it is just a wrapper over shared_ptr
 
 What languages are supported?
------------------------------
+=============================
 
 EMEMORY is written in C++.
 
 Are there any licensing restrictions?
--------------------------------------
+=====================================
 
 EMEMORY is **FREE software** and _all sub-library are FREE and staticly linkable !!!_
 
-License (APACHE-2.0)
---------------------
+License (MPL v2.0)
+==================
 
 Copyright ememory Edouard DUPIN
 
-Licensed under the Apache License, Version 2.0 (the "License");
+Licensed under the Mozilla Public License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-<http://www.apache.org/licenses/LICENSE-2.0>
+<https://www.mozilla.org/MPL/2.0>
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
