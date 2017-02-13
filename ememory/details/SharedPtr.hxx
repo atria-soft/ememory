@@ -195,14 +195,20 @@ void ememory::SharedPtr<EMEMORY_TYPE>::reset() {
 		case ememory::Counter::remove::all:
 			delete m_counter;
 			if (m_deleter != nullptr) {
-				m_deleter((void*)m_element);
+				if (m_element != nullptr) {
+					//EMEMORY_ERROR("FREE 1 : " << std::hex << (uint64_t)m_element);
+					m_deleter((void*)m_element);
+				}
 			} else {
 				EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr");
 			}
 			break;
 		case ememory::Counter::remove::data:
 			if (m_deleter != nullptr) {
-				m_deleter((void*)m_element);
+				if (m_element != nullptr) {
+					//EMEMORY_ERROR("FREE 2 : " << std::hex << (uint64_t)m_element);
+					m_deleter((void*)m_element);
+				}
 			} else {
 				EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr");
 			}
