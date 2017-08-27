@@ -5,7 +5,7 @@
  */
 
 #include <test-debug/debug.hpp>
-#include <vector>
+#include <etk/Vector.hpp>
 #include <gtest/gtest.h>
 #include <etk/etk.hpp>
 
@@ -14,7 +14,7 @@ int main(int _argc, const char *_argv[]) {
 	::testing::InitGoogleTest(&_argc, const_cast<char **>(_argv));
 	etk::init(_argc, _argv);
 	for (int32_t iii=0; iii<_argc ; ++iii) {
-		std::string data = _argv[iii];
+		etk::String data = _argv[iii];
 		if (    data == "-h"
 		     || data == "--help") {
 			TEST_PRINT(_argv[0] << " - help : ");

@@ -9,9 +9,9 @@
 #include "main.hpp"
 
 TEST(TestWeak, createAndDestroy) {
-	ememory::SharedPtr<std::string> data = ememory::makeShared<std::string>("coucou");
+	ememory::SharedPtr<etk::String> data = ememory::makeShared<etk::String>("coucou");
 	EXPECT_EQ(data.useCount(), 1);
-	ememory::WeakPtr<std::string> dataWeak = data;
+	ememory::WeakPtr<etk::String> dataWeak = data;
 	EXPECT_EQ(data.useCount(), 1);
 	EXPECT_EQ(dataWeak.useCount(), 1);
 	data.reset();
@@ -20,12 +20,12 @@ TEST(TestWeak, createAndDestroy) {
 }
 
 TEST(TestWeak, retrive) {
-	ememory::SharedPtr<std::string> data = ememory::makeShared<std::string>("coucou");
+	ememory::SharedPtr<etk::String> data = ememory::makeShared<etk::String>("coucou");
 	EXPECT_EQ(data.useCount(), 1);
-	ememory::WeakPtr<std::string> dataWeak = data;
+	ememory::WeakPtr<etk::String> dataWeak = data;
 	EXPECT_EQ(data.useCount(), 1);
 	EXPECT_EQ(dataWeak.useCount(), 1);
-	ememory::SharedPtr<std::string> dataRetrive = dataWeak.lock();
+	ememory::SharedPtr<etk::String> dataRetrive = dataWeak.lock();
 	EXPECT_EQ(data.useCount(), 2);
 	EXPECT_EQ(dataWeak.useCount(), 2);
 	data.reset();

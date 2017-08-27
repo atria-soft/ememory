@@ -9,7 +9,7 @@
 #include "main.hpp"
 
 TEST(TestShared, createAndDestroy) {
-	ememory::SharedPtr<std::string> data = ememory::makeShared<std::string>("coucou");
+	ememory::SharedPtr<etk::String> data = ememory::makeShared<etk::String>("coucou");
 	EXPECT_EQ(data.useCount(), 1);
 	EXPECT_EQ(*data, "coucou");
 	EXPECT_EQ(data == nullptr, false);
@@ -21,10 +21,10 @@ TEST(TestShared, createAndDestroy) {
 }
 
 TEST(TestShared, copy) {
-	ememory::SharedPtr<std::string> data = ememory::makeShared<std::string>("coucou");
+	ememory::SharedPtr<etk::String> data = ememory::makeShared<etk::String>("coucou");
 	EXPECT_EQ(data.useCount(), 1);
 	EXPECT_EQ(*data, "coucou");
-	ememory::SharedPtr<std::string> dataCopy = data;
+	ememory::SharedPtr<etk::String> dataCopy = data;
 	EXPECT_EQ(data.useCount(), 2);
 	EXPECT_EQ(data == dataCopy, true);
 	EXPECT_EQ(data != dataCopy, false);
@@ -41,10 +41,10 @@ TEST(TestShared, copy) {
 }
 
 TEST(TestShared, swap) {
-	ememory::SharedPtr<std::string> data = ememory::makeShared<std::string>("coucou");
+	ememory::SharedPtr<etk::String> data = ememory::makeShared<etk::String>("coucou");
 	EXPECT_EQ(data.useCount(), 1);
 	EXPECT_EQ(*data, "coucou");
-	ememory::SharedPtr<std::string> dataCopy;
+	ememory::SharedPtr<etk::String> dataCopy;
 	EXPECT_EQ(dataCopy.useCount(), 0);
 	dataCopy.swap(data);
 	EXPECT_EQ(data.useCount(), 0);
@@ -53,16 +53,16 @@ TEST(TestShared, swap) {
 }
 
 TEST(TestShared, callOperator) {
-	ememory::SharedPtr<std::string> data = ememory::makeShared<std::string>("coucou");
+	ememory::SharedPtr<etk::String> data = ememory::makeShared<etk::String>("coucou");
 	EXPECT_EQ(data->size(), 6);
 }
 
-static void functionCallRef(std::string& _data) {
+static void functionCallRef(etk::String& _data) {
 	_data = "plop";
 }
 
 TEST(TestShared, callOperatorStar) {
-	ememory::SharedPtr<std::string> data = ememory::makeShared<std::string>("coucou");
+	ememory::SharedPtr<etk::String> data = ememory::makeShared<etk::String>("coucou");
 	EXPECT_EQ(data->size(), 6);
 	EXPECT_EQ(*data, "coucou");
 	*data = "ragout";
@@ -74,7 +74,7 @@ TEST(TestShared, callOperatorStar) {
 }
 
 TEST(TestShared, setInVoid) {
-	ememory::SharedPtr<std::string> data = ememory::makeShared<std::string>("coucou");
+	ememory::SharedPtr<etk::String> data = ememory::makeShared<etk::String>("coucou");
 	ememory::SharedPtr<void> dataVoid(data);
 	ememory::SharedPtr<void> dataVoid2;
 	dataVoid2 = data;
