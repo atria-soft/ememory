@@ -27,6 +27,7 @@ def get_maintainer():
 def configure(target, my_module):
 	my_module.add_src_file([
 	    'test/main.cpp',
+	    'test/testUnique.cpp',
 	    'test/testShared.cpp',
 	    'test/testWeak.cpp',
 	    'test/testEnableSharedFromThis.cpp',

@@ -37,6 +37,7 @@ def configure(target, my_module):
 		'ememory/memory.hpp',
 		'ememory/Counter.hpp',
 		'ememory/SharedPtr.hpp',
+		'ememory/UniquePtr.hpp',
 		'ememory/WeakPtr.hpp',
 		'ememory/EnableSharedFromThis.hpp',
 		'ememory/details/memory.hxx',
