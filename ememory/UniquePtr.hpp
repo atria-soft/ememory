@@ -1,19 +1,20 @@
-#ifndef UniquePtr_HPP_INCLUDED
-#define UniquePtr_HPP_INCLUDED
 
+#pragma once
+
+#include <etk/types.hpp>
 namespace ememory {
 	template <class EMEM_UPTR_TYPE>
 	class UniquePtr {
 		private:
 			EMEM_UPTR_TYPE* m_pointer;
-			template <class EMEM_UPTR_TYPE> UniquePtr(UniquePtr<EMEM_UPTR_TYPE> &);
-			template <class EMEM_UPTR_TYPE> UniquePtr &operator=(UniquePtr<EMEM_UPTR_TYPE> &);
+			
+			template <class EMEM_UPTR_TYPE_2>
+			UniquePtr(UniquePtr<EMEM_UPTR_TYPE_2> &) = delete;
+			
+			template <class EMEM_UPTR_TYPE_2>
+			UniquePtr &operator=(UniquePtr<EMEM_UPTR_TYPE_2> &) = delete;
 		public:
 			UniquePtr() :
-			  m_pointer(nullptr) {
-				
-			}
-			UniquePtr(nullptr) :
 			  m_pointer(nullptr) {
 				
 			}
@@ -30,9 +31,9 @@ namespace ememory {
 				return *this;
 			}
 			template <class EMEM_UPTR_TYPE_2>
-			UniquePtr& operator=(UniquePtr<EMEM_UPTR_TYPE_2, EMEM_UPTR_DELETER> _obj){
+			UniquePtr& operator=(UniquePtr<EMEM_UPTR_TYPE_2> _obj){
 				reset(_obj.release());
-				m_pointer = etk::move(_obj.pointer)
+				m_pointer = etk::move(_obj.pointer);
 				return *this;
 			}
 			EMEM_UPTR_TYPE operator*() const{
@@ -42,10 +43,10 @@ namespace ememory {
 				return m_pointer;
 			}
 			EMEM_UPTR_TYPE *get() const{
-				return *m_pointer;
+				return m_pointer;
 			}
 			EMEM_UPTR_TYPE *release(){
-				T *tmp = m_pointer;
+				EMEM_UPTR_TYPE *tmp = m_pointer;
 				m_pointer = 0;
 				return tmp;
 			}
@@ -58,7 +59,7 @@ namespace ememory {
 			}
 	};
 	
-	template<class EMEM_UPTR_TYPE>
+	template<class EMEM_UPTR_TYPE, class... EMEM_UPTR_ARG>
 	UniquePtr<EMEM_UPTR_TYPE> makeUniquePtr(EMEM_UPTR_ARG ... _obj) {
 		return ememory::UniquePtr<EMEM_UPTR_TYPE>(new EMEM_UPTR_TYPE(_obj...));
 	}
