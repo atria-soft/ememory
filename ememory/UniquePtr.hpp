@@ -18,6 +18,10 @@ namespace ememory {
 			  m_pointer(nullptr) {
 				
 			}
+			UniquePtr(etk::NullPtr) :
+			  m_pointer(nullptr) {
+				
+			}
 			explicit UniquePtr(EMEM_UPTR_TYPE* _obj) :
 			  m_pointer(_obj)
 			{
@@ -26,14 +30,19 @@ namespace ememory {
 			~UniquePtr() {
 				reset();
 			}
+			UniquePtr& operator=(etk::NullPtr) {
+				reset();
+				return *this;
+			}
 			UniquePtr& operator=(UniquePtr _obj) {
-				reset(_obj.release());
+				reset();
+				m_pointer = etk::move(_obj.release());
 				return *this;
 			}
 			template <class EMEM_UPTR_TYPE_2>
 			UniquePtr& operator=(UniquePtr<EMEM_UPTR_TYPE_2> _obj){
-				reset(_obj.release());
-				m_pointer = etk::move(_obj.pointer);
+				reset();
+				m_pointer = etk::move(_obj.m_pointer);
 				return *this;
 			}
 			EMEM_UPTR_TYPE operator*() const{
@@ -47,7 +56,7 @@ namespace ememory {
 			}
 			EMEM_UPTR_TYPE *release(){
 				EMEM_UPTR_TYPE *tmp = m_pointer;
-				m_pointer = 0;
+				m_pointer = nullptr;
 				return tmp;
 			}
 			void reset(){
@@ -55,7 +64,7 @@ namespace ememory {
 				m_pointer = nullptr;
 			}
 			void swap(UniquePtr &_obj){
-				std::swap(m_pointer, _obj.m_pointer);
+				etk::swap(m_pointer, _obj.m_pointer);
 			}
 	};
 	

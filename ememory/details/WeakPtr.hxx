@@ -6,7 +6,7 @@
 #pragma once
 
 #include <vector>
-#include <mutex>
+#include <ethread/Mutex.hpp>
 #include <ememory/debug.hpp>
 #include <ememory/Counter.hpp>
 
@@ -18,7 +18,7 @@ ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr():
 }
 
 template<typename EMEMORY_TYPE>
-ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(std::nullptr_t):
+ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(etk::NullPtr):
   m_element(nullptr),
   m_counter(nullptr) {
 	
@@ -75,7 +75,7 @@ ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const
 }
 
 template<typename EMEMORY_TYPE>
-ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (std::nullptr_t) {
+ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (etk::NullPtr) {
 	reset();
 	return *this;
 }
@@ -126,8 +126,8 @@ ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const
 
 template<typename EMEMORY_TYPE>
 template<class EMEMORY_TYPE2,
-         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
-                                  && !std::is_void<EMEMORY_TYPE2>::value
+         typename etk::EnableIf<    etk::IsVoid<EMEMORY_TYPE>::value
+                                  && !etk::IsVoid<EMEMORY_TYPE2>::value
                                  , int>::type>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(const ememory::SharedPtr<EMEMORY_TYPE2>& _obj):
   m_element((void*)_obj.get()),
@@ -147,8 +147,8 @@ ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(const ememory::SharedPtr<EMEMORY_TYPE2>&
 
 template<typename EMEMORY_TYPE>
 template<class EMEMORY_TYPE2,
-         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
-                                  && !std::is_void<EMEMORY_TYPE2>::value
+         typename etk::EnableIf<    etk::IsVoid<EMEMORY_TYPE>::value
+                                  && !etk::IsVoid<EMEMORY_TYPE2>::value
                                  , int>::type>
 ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const ememory::SharedPtr<EMEMORY_TYPE2>& _obj) {
 	reset();
@@ -170,7 +170,7 @@ ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const
 
 /*
 template<class EMEMORY_TYPE2,
-         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+         typename etk::EnableIf<  etk::IsBaseOf<EMEMORY_TYPE, EMEMORY_TYPE2>::value
                                  , int>::type>
 WeakPtr(const WeakPtr<EMEMORY_TYPE2>& _obj):
   m_element(_obj.m_element),
@@ -188,7 +188,7 @@ WeakPtr(const WeakPtr<EMEMORY_TYPE2>& _obj):
 	
 }
 template<class EMEMORY_TYPE2,
-         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+         typename etk::EnableIf<  etk::IsBaseOf<EMEMORY_TYPE, EMEMORY_TYPE2>::value
                                  , int>::type>
 WeakPtr& operator= (const WeakPtr<EMEMORY_TYPE2>& _obj) {
 	reset();
@@ -268,7 +268,7 @@ bool ememory::WeakPtr<EMEMORY_TYPE>::operator==(const ememory::WeakPtr<EMEMORY_T
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::WeakPtr<EMEMORY_TYPE>::operator==(std::nullptr_t) const {
+bool ememory::WeakPtr<EMEMORY_TYPE>::operator==(etk::NullPtr) const {
 	return m_counter == nullptr;
 }
 
@@ -278,7 +278,7 @@ bool ememory::WeakPtr<EMEMORY_TYPE>::operator!=(const ememory::WeakPtr<EMEMORY_T
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::WeakPtr<EMEMORY_TYPE>::operator!=(std::nullptr_t) const {
+bool ememory::WeakPtr<EMEMORY_TYPE>::operator!=(etk::NullPtr) const {
 	return m_counter != nullptr;
 }
 

@@ -5,12 +5,13 @@
  */
 #pragma once
 
-#include <mutex>
+#include <ethread/Mutex.hpp>
 // define type : uintXX_t and intXX_t
 #define __STDC_LIMIT_MACROS
 // note in android include the macro of min max are overwitten
-#include <cstdint>
-
+extern "C" {
+	#include <stdint.h>
+}
 namespace ememory {
 	/**
 	 * @brief Couter is an important part of the SharedPtr/WeakPtr implementation. This use a simple refcounting method dut thread-safe
@@ -29,7 +30,7 @@ namespace ememory {
 		private:
 			int64_t m_counterShared; //!< Count of the active SharedPtr
 			int64_t m_counterWeak; //!< Count of the active WeakPtr
-			mutable std::mutex m_mutex; //!< local counter mutex to prevent the thread concurent removing
+			mutable ethread::Mutex m_mutex; //!< local counter mutex to prevent the thread concurent removing
 		public:
 			/**
 			 * @brief Contructor

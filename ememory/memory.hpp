@@ -6,7 +6,7 @@
 #pragma once
 
 #include <etk/Vector.hpp>
-#include <mutex>
+#include <ethread/Mutex.hpp>
 #include <ememory/SharedPtr.hpp>
 #include <ememory/WeakPtr.hpp>
 #include <ememory/EnableSharedFromThis.hpp>

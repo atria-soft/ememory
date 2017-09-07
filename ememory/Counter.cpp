@@ -26,7 +26,7 @@ ememory::Counter::~Counter() {
 int64_t ememory::Counter::incrementShared(bool _fromWeak) {
 	int64_t out;
 	{
-		std::unique_lock<std::mutex> lock(m_mutex);
+		ethread::UniqueLock lock(m_mutex);
 		EMEMORY_DBG("shared++ (start)    ==> w:" << m_counterWeak << " s:" << m_counterShared << "    " << int64_t(this));
 		if (m_counterShared != 0 || _fromWeak == false) {
 			m_counterShared++;
@@ -38,7 +38,7 @@ int64_t ememory::Counter::incrementShared(bool _fromWeak) {
 }
 
 ememory::Counter::remove ememory::Counter::decrementShared() {
-	std::unique_lock<std::mutex> lock(m_mutex);
+	ethread::UniqueLock lock(m_mutex);
 	EMEMORY_DBG("shared-- (start)    ==> w:" << m_counterWeak << " s:" << m_counterShared << "    " << int64_t(this));
 	if (m_counterShared != 0) {
 		m_counterShared--;
@@ -62,7 +62,7 @@ ememory::Counter::remove ememory::Counter::decrementShared() {
 int64_t ememory::Counter::incrementWeak() {
 	int64_t out;
 	{
-		std::unique_lock<std::mutex> lock(m_mutex);
+		ethread::UniqueLock lock(m_mutex);
 		EMEMORY_DBG("weak++ (start)    ==> w:" << m_counterWeak << " s:" << m_counterShared << "    " << int64_t(this));
 		m_counterWeak++;
 		out = m_counterWeak;
@@ -72,7 +72,7 @@ int64_t ememory::Counter::incrementWeak() {
 }
 
 ememory::Counter::remove ememory::Counter::decrementWeak() {
-	std::unique_lock<std::mutex> lock(m_mutex);
+	ethread::UniqueLock lock(m_mutex);
 	EMEMORY_DBG("weak-- (stop)    ==> w:" << m_counterWeak << " s:" << m_counterShared << "    " << int64_t(this));
 	if (m_counterWeak != 0) {
 		m_counterWeak--;
@@ -92,7 +92,7 @@ ememory::Counter::remove ememory::Counter::decrementWeak() {
 int64_t ememory::Counter::getCountWeak() const {
 	int64_t out;
 	{
-		std::unique_lock<std::mutex> lock(m_mutex);
+		ethread::UniqueLock lock(m_mutex);
 		out = m_counterWeak;
 	}
 	return out;
@@ -101,7 +101,7 @@ int64_t ememory::Counter::getCountWeak() const {
 int64_t ememory::Counter::getCountShared() const {
 	int64_t out;
 	{
-		std::unique_lock<std::mutex> lock(m_mutex);
+		ethread::UniqueLock lock(m_mutex);
 		out = m_counterShared;
 	}
 	return out;
@@ -110,7 +110,7 @@ int64_t ememory::Counter::getCountShared() const {
 int64_t ememory::Counter::getCount() const {
 	int64_t out;
 	{
-		std::unique_lock<std::mutex> lock(m_mutex);
+		ethread::UniqueLock lock(m_mutex);
 		out = m_counterWeak + m_counterShared;
 	}
 	return out;

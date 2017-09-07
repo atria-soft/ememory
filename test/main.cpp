@@ -6,13 +6,13 @@
 
 #include <test-debug/debug.hpp>
 #include <etk/Vector.hpp>
-#include <gtest/gtest.h>
-#include <etk/etk.hpp>
+#include <etest/etest.hpp>
+//#include <etk/etk.hpp>
 
 
 int main(int _argc, const char *_argv[]) {
-	::testing::InitGoogleTest(&_argc, const_cast<char **>(_argv));
-	etk::init(_argc, _argv);
+	//etk::init(_argc, _argv);
+	etest::init(_argc, _argv);
 	for (int32_t iii=0; iii<_argc ; ++iii) {
 		etk::String data = _argv[iii];
 		if (    data == "-h"

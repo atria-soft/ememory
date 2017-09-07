@@ -6,7 +6,7 @@
 #pragma once
 
 #include <etk/Vector.hpp>
-#include <mutex>
+#include <ethread/Mutex.hpp>
 #include <ememory/debug.hpp>
 #include <ememory/Counter.hpp>
 
@@ -31,7 +31,7 @@ namespace ememory {
 			/**
 			 * @brief nullptr contructor
 			 */
-			WeakPtr(std::nullptr_t);
+			WeakPtr(etk::NullPtr);
 		private:
 			/**
 			 * @brief Contructor of the Weak Ptr (specific for EnableSharedFromThis)
@@ -71,14 +71,14 @@ namespace ememory {
 			 * @brief nullptr asignement
 			 * @return Reference on this
 			 */
-			WeakPtr<EMEMORY_TYPE>& operator= (std::nullptr_t);
+			WeakPtr<EMEMORY_TYPE>& operator= (etk::NullPtr);
 			/**
 			 * @brief Copy contuctor of herited WeakPtr
 			 * @param[in] _obj Object to copy
 			 */
 			template<class EMEMORY_TYPE2,
-			         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
-			                                  && !std::is_void<EMEMORY_TYPE2>::value
+			         typename etk::EnableIf<    etk::IsVoid<EMEMORY_TYPE>::value
+			                                  && !etk::IsVoid<EMEMORY_TYPE2>::value
 			                                 , int>::type = 0>
 			WeakPtr(const SharedPtr<EMEMORY_TYPE2>& _obj);
 			/**
@@ -87,18 +87,18 @@ namespace ememory {
 			 * @return Reference on this
 			 */
 			template<class EMEMORY_TYPE2,
-			         typename std::enable_if<    std::is_void<EMEMORY_TYPE>::value
-			                                  && !std::is_void<EMEMORY_TYPE2>::value
+			         typename etk::EnableIf<    etk::IsVoid<EMEMORY_TYPE>::value
+			                                  && !etk::IsVoid<EMEMORY_TYPE2>::value
 			                                 , int>::type = 0>
 			WeakPtr<EMEMORY_TYPE>& operator= (const SharedPtr<EMEMORY_TYPE2>& _obj);
 		public:
 			/*
 			template<class EMEMORY_TYPE2,
-			         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+			         typename etk::EnableIf<  etk::IsBaseOf<EMEMORY_TYPE, EMEMORY_TYPE2>::value
 			                                 , int>::type = 0>
 			WeakPtr(const WeakPtr<EMEMORY_TYPE2>& _obj);
 			template<class EMEMORY_TYPE2,
-			         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+			         typename etk::EnableIf<  etk::IsBaseOf<EMEMORY_TYPE, EMEMORY_TYPE2>::value
 			                                 , int>::type = 0>
 			WeakPtr& operator= (const WeakPtr<EMEMORY_TYPE2>& _obj);
 			*/
@@ -133,7 +133,7 @@ namespace ememory {
 			 * @brief Check if the WeakPtr have an internal data (not nullptr)
 			 * @return true The pointer is not asigned, false otherwise
 			 */
-			bool operator==(std::nullptr_t) const;
+			bool operator==(etk::NullPtr) const;
 			/**
 			 * @brief Check if two WeakPtr are different data
 			 * @param[in] _obj Object to compare
@@ -144,7 +144,7 @@ namespace ememory {
 			 * @brief Check if the SharedPtr have NOT an internal data (nullptr)
 			 * @return true The pointer is asigned, false otherwise
 			 */
-			bool operator!=(std::nullptr_t) const;
+			bool operator!=(etk::NullPtr) const;
 			/**
 			 * @brief Swap 2 Object inside the WeakPtr
 			 * @param[in] _obj Object to swap with

@@ -34,9 +34,10 @@ def configure(target, my_module):
 	    'test/testCasts.cpp'
 	    ])
 	my_module.add_depend([
+	    'cxx',
 	    'ememory',
-	    'gtest',
-	    'test-debug'
+	    'test-debug',
+	    'etest',
 	    ])
 	return True
 

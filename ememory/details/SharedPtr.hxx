@@ -5,15 +5,13 @@
  */
 #pragma once
 
-#include <vector>
-#include <mutex>
 #include <ememory/debug.hpp>
 #include <ememory/WeakPtr.hpp>
 
 template<typename EMEMORY_TYPE>
 template<class EMEMORY_TYPE2,
-         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-                                  && std::is_base_of<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
+         typename etk::EnableIf<    etk::IsSame<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+                                 && etk::IsBaseOf<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
                                  , int>::type>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element):
   m_element(_element),
@@ -35,8 +33,8 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element):
 
 template<typename EMEMORY_TYPE>
 template<class EMEMORY_TYPE2,
-         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-                                  && !std::is_base_of<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
+         typename etk::EnableIf<    etk::IsSame<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+                                 && !etk::IsBaseOf<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
                                  , int>::type>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element):
   m_element(_element),
@@ -58,7 +56,7 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr():
 }
 
 template<typename EMEMORY_TYPE>
-ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(std::nullptr_t):
+ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(etk::NullPtr):
   m_element(nullptr),
   m_counter(nullptr),
   m_deleter(createDeleter()) {
@@ -123,7 +121,7 @@ ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (c
 }
 
 template<typename EMEMORY_TYPE>
-ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (std::nullptr_t) {
+ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (etk::NullPtr) {
 	reset();
 	return *this;
 }
@@ -142,7 +140,7 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(ememory::SharedPtr<EMEMORY_TYPE>&& _
 
 template<typename EMEMORY_TYPE>
 template<class EMEMORY_TYPE2,
-         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+         typename etk::EnableIf<  etk::IsBaseOf<EMEMORY_TYPE, EMEMORY_TYPE2>::value
                                  , int>::type>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(const ememory::SharedPtr<EMEMORY_TYPE2>& _obj):
   m_element(const_cast<EMEMORY_TYPE2*>(_obj.get())),
@@ -162,7 +160,7 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(const ememory::SharedPtr<EMEMORY_TYP
 
 template<typename EMEMORY_TYPE>
 template<class EMEMORY_TYPE2,
-         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+         typename etk::EnableIf<  etk::IsBaseOf<EMEMORY_TYPE, EMEMORY_TYPE2>::value
                                  , int>::type>
 ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (const SharedPtr<EMEMORY_TYPE2>& _obj) {
 	reset();
@@ -234,7 +232,7 @@ int64_t ememory::SharedPtr<EMEMORY_TYPE>::useCount() const {
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::SharedPtr<EMEMORY_TYPE>::operator==(std::nullptr_t) const {
+bool ememory::SharedPtr<EMEMORY_TYPE>::operator==(etk::NullPtr) const {
 	return m_counter == nullptr;
 }
 
@@ -245,7 +243,7 @@ bool ememory::SharedPtr<EMEMORY_TYPE>::operator==(const SharedPtr<EMEMORY_TYPE2>
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::SharedPtr<EMEMORY_TYPE>::operator!=(std::nullptr_t) const {
+bool ememory::SharedPtr<EMEMORY_TYPE>::operator!=(etk::NullPtr) const {
 	return m_counter != nullptr;
 }
 
@@ -329,14 +327,14 @@ namespace ememory {
 	class SharedPtr<void> {
 		friend class WeakPtr<void>;
 		public:
-			using deleterCall = std::function<void(void* _data)>;
+			using deleterCall = etk::Function<void(void* _data)>;
 		private:
 			void* m_element;
 			ememory::Counter* m_counter;
 		public:
 			SharedPtr(void* _element);
 		public:
-			SharedPtr(std::nullptr_t):
+			SharedPtr(etk::NullPtr):
 			  m_element(nullptr),
 			  m_counter(nullptr) {
 				EMEMORY_DBG("new shared<void>");
@@ -360,7 +358,7 @@ namespace ememory {
 				}
 				m_counter->incrementShared();
 			}
-			SharedPtr& operator= (std::nullptr_t) {
+			SharedPtr& operator= (etk::NullPtr) {
 				reset();
 				return *this;
 			}
@@ -434,14 +432,14 @@ namespace ememory {
 				}
 				return m_counter->getCountShared();
 			}
-			bool operator==(std::nullptr_t) const {
+			bool operator==(etk::NullPtr) const {
 				return m_counter == nullptr;
 			}
 			template<class EMEMORY_TYPE2>
 			bool operator==(const SharedPtr<EMEMORY_TYPE2>& _obj) const {
 				return m_counter == _obj.m_counter;
 			}
-			bool operator!=(std::nullptr_t) const {
+			bool operator!=(etk::NullPtr) const {
 				return m_counter != nullptr;
 			}
 			template<class EMEMORY_TYPE2>

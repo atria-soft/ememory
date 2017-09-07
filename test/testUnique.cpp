@@ -6,11 +6,10 @@
  * @license MPL v2.0 (see license file)
  */
 
-#include <gtest/gtest.h>
+#include <etest/etest.hpp>
 
 #include <ememory/UniquePtr.hpp>
 #include <test-debug/debug.hpp>
-#define NAME "UNIQUE-PTR"
 
 TEST(TestEmemoryUniquePtr, Creation_1) {
 	ememory::UniquePtr<uint32_t> testData;
@@ -44,7 +43,7 @@ class testCreateAndDestroy {
 };
 
 TEST(TestEmemoryUniquePtr, reset) {
-	vals = {0,0,0,0,0,0,0,0,0,0,0,0,0};
+	memset(vals, 0, sizeof(vals));
 	EXPECT_EQ(vals[1], 0);
 	ememory::UniquePtr<testCreateAndDestroy> testData = ememory::makeUniquePtr<testCreateAndDestroy>(1);
 	EXPECT_NE(testData.get(), nullptr);
@@ -53,8 +52,18 @@ TEST(TestEmemoryUniquePtr, reset) {
 	EXPECT_EQ(testData.get(), nullptr);
 	EXPECT_EQ(vals[1], -1);
 }
+TEST(TestEmemoryUniquePtr, reset_2) {
+	memset(vals, 0, sizeof(vals));
+	EXPECT_EQ(vals[1], 0);
+	ememory::UniquePtr<testCreateAndDestroy> testData = ememory::makeUniquePtr<testCreateAndDestroy>(1);
+	EXPECT_NE(testData.get(), nullptr);
+	EXPECT_EQ(vals[1], 1);
+	testData = nullptr;
+	EXPECT_EQ(testData.get(), nullptr);
+	EXPECT_EQ(vals[1], -1);
+}
 TEST(TestEmemoryUniquePtr, overwrite) {
-	vals = {0,0,0,0,0,0,0,0,0,0,0,0,0};
+	memset(vals, 0, sizeof(vals));
 	ememory::UniquePtr<testCreateAndDestroy> testData = ememory::makeUniquePtr<testCreateAndDestroy>(1);
 	EXPECT_NE(testData.get(), nullptr);
 	EXPECT_EQ(vals[1], 1);

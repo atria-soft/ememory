@@ -5,8 +5,7 @@
  */
 #pragma once
 
-#include <etk/Vector.hpp>
-#include <mutex>
+#include <etk/Function.hpp>
 #include <ememory/debug.hpp>
 #include <ememory/Counter.hpp>
 #include <ememory/EnableSharedFromThis.hpp>
@@ -14,7 +13,7 @@
 namespace ememory {
 	template<typename> class WeakPtr;
 	template<typename> class EnableSharedFromThis;
-	using deleterCall = std::function<void(void* _data)>;
+	using deleterCall = etk::Function<void(void* _data)>;
 	/**
 	 * @brief ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer.
 	 * Several SharedPtr objects may own the same object. The object is destroyed and its memory deallocated when
@@ -47,13 +46,13 @@ namespace ememory {
 		public:
 			#ifndef PARSE_DOXYGEN
 				template<class EMEMORY_TYPE2,
-				         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-				                                  && std::is_base_of<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
+				         typename etk::EnableIf<    etk::IsSame<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+				                                  && etk::IsBaseOf<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
 				                                 , int>::type = 0>
 				SharedPtr(EMEMORY_TYPE2* _element);
 				template<class EMEMORY_TYPE2,
-				         typename std::enable_if<    std::is_same<EMEMORY_TYPE2, EMEMORY_TYPE>::value
-				                                  && !std::is_base_of<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
+				         typename etk::EnableIf<    etk::IsSame<EMEMORY_TYPE2, EMEMORY_TYPE>::value
+				                                  && !etk::IsBaseOf<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
 				                                 , int>::type = 0>
 				SharedPtr(EMEMORY_TYPE2* _element);
 			#else
@@ -67,7 +66,7 @@ namespace ememory {
 			/**
 			 * @brief Contructor on nullptr
 			 */
-			SharedPtr(std::nullptr_t);
+			SharedPtr(etk::NullPtr);
 			/**
 			 * @brief Contructor empty
 			 */
@@ -102,15 +101,15 @@ namespace ememory {
 			 * @brief Asignement operator (asign nullptr)
 			 * @return Reference on this
 			 */
-			SharedPtr& operator= (std::nullptr_t);
+			SharedPtr& operator= (etk::NullPtr);
 		public:
 			#ifndef PARSE_DOXYGEN
 				template<class EMEMORY_TYPE2,
-				         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+				         typename etk::EnableIf<  etk::IsBaseOf<EMEMORY_TYPE, EMEMORY_TYPE2>::value
 				                                 , int>::type = 0>
 				SharedPtr(const SharedPtr<EMEMORY_TYPE2>& _obj);
 				template<class EMEMORY_TYPE2,
-				         typename std::enable_if<  std::is_base_of<EMEMORY_TYPE, EMEMORY_TYPE2>::value
+				         typename etk::EnableIf<  etk::IsBaseOf<EMEMORY_TYPE, EMEMORY_TYPE2>::value
 				                                 , int>::type = 0>
 				SharedPtr& operator= (const SharedPtr<EMEMORY_TYPE2>& _obj);
 			#endif
@@ -128,7 +127,7 @@ namespace ememory {
 			 * @brief Check if the SharedPtr have an internal data (not nullptr)
 			 * @return true The pointer is not asigned, false otherwise
 			 */
-			bool operator==(std::nullptr_t) const;
+			bool operator==(etk::NullPtr) const;
 			/**
 			 * @brief Check if two SharedPtr are the same data (maybe not the same cast)
 			 * @param[in] _obj Object to compare
@@ -140,7 +139,7 @@ namespace ememory {
 			 * @brief Check if the SharedPtr have NOT an internal data (nullptr)
 			 * @return true The pointer is asigned, false otherwise
 			 */
-			bool operator!=(std::nullptr_t) const;
+			bool operator!=(etk::NullPtr) const;
 			/**
 			 * @brief Check if two SharedPtr are NOT the same data (maybe not the same cast)
 			 * @param[in] _obj Object to compare

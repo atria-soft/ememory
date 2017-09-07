@@ -4,7 +4,7 @@
  * @license MPL v2.0 (see license file)
  */
 
-#include <gtest/gtest.h>
+#include <etest/etest.hpp>
 #include <ememory/memory.hpp>
 #include "main.hpp"
 
