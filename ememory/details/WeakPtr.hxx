@@ -5,7 +5,6 @@
  */
 #pragma once
 
-#include <vector>
 #include <ethread/Mutex.hpp>
 #include <ememory/debug.hpp>
 #include <ememory/Counter.hpp>
@@ -259,7 +258,7 @@ ememory::SharedPtr<EMEMORY_TYPE> ememory::WeakPtr<EMEMORY_TYPE>::lock() {
 	}
 	out.m_counter = m_counter;
 	out.m_element = m_element;
-	return std::move(out);
+	return etk::move(out);
 }
 
 template<typename EMEMORY_TYPE>

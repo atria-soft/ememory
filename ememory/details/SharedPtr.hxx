@@ -194,7 +194,6 @@ void ememory::SharedPtr<EMEMORY_TYPE>::reset() {
 			delete m_counter;
 			if (m_deleter != nullptr) {
 				if (m_element != nullptr) {
-					//EMEMORY_ERROR("FREE 1 : " << std::hex << (uint64_t)m_element);
 					m_deleter((void*)m_element);
 				}
 			} else {
@@ -204,7 +203,6 @@ void ememory::SharedPtr<EMEMORY_TYPE>::reset() {
 		case ememory::Counter::remove::data:
 			if (m_deleter != nullptr) {
 				if (m_element != nullptr) {
-					//EMEMORY_ERROR("FREE 2 : " << std::hex << (uint64_t)m_element);
 					m_deleter((void*)m_element);
 				}
 			} else {

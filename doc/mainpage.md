@@ -6,7 +6,7 @@ EMEMORY library                                {#mainpage}
 What is EMEMORY, and how can I use it?
 ======================================
 
-EMEMORY, or Ewol Memory interface is a simple abstraction layer over std::shared_ptr.
+EMEMORY, or Ewol Memory interface implementing ememory::SharedPtr and ememory::UniquePtr.
 
 EMEMORY is designed for:
   - Permit to change the backend of shered_ptr when we want

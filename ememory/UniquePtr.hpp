@@ -5,9 +5,10 @@
 namespace ememory {
 	template <class EMEM_UPTR_TYPE>
 	class UniquePtr {
-		private:
+		//private: Do it better ...
+		public:
 			EMEM_UPTR_TYPE* m_pointer;
-			
+		private:
 			template <class EMEM_UPTR_TYPE_2>
 			UniquePtr(UniquePtr<EMEM_UPTR_TYPE_2> &) = delete;
 			
@@ -23,9 +24,15 @@ namespace ememory {
 				
 			}
 			explicit UniquePtr(EMEM_UPTR_TYPE* _obj) :
-			  m_pointer(_obj)
-			{
+			  m_pointer(_obj) {
 				
+			}
+			template <class EMEM_UPTR_TYPE_2>
+			UniquePtr(UniquePtr<EMEM_UPTR_TYPE_2>&& _obj) :
+			  m_pointer(nullptr) {
+				// TODO: Better: _obj.swap(*this);
+				m_pointer = _obj.m_pointer;
+				_obj.m_pointer = nullptr;
 			}
 			~UniquePtr() {
 				reset();
@@ -66,6 +73,26 @@ namespace ememory {
 			void swap(UniquePtr &_obj){
 				etk::swap(m_pointer, _obj.m_pointer);
 			}
+			/**
+			 * @brief Check if the UniquePtr have an internal data (not nullptr)
+			 * @return true The pointer is not asigned, false otherwise
+			 */
+			bool operator==(etk::NullPtr) const {
+				return m_pointer == nullptr;
+			}
+			/**
+			 * @brief Check if the UniquePtr have not an internal data (equal nullptr)
+			 * @return true The pointer is asigned, false otherwise
+			 */
+			bool operator!=(etk::NullPtr) const {
+				return m_pointer != nullptr;
+			}
+			/*
+			template <class EMEM_UPTR_TYPE_2>
+			void swap(UniquePtr<EMEM_UPTR_TYPE_2>& _obj) {
+				etk::swap(m_pointer, _obj.m_pointer);
+			}
+			*/
 	};
 	
 	template<class EMEM_UPTR_TYPE, class... EMEM_UPTR_ARG>
