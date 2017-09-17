@@ -41,24 +41,33 @@ namespace ememory {
 				reset();
 				return *this;
 			}
-			UniquePtr& operator=(UniquePtr _obj) {
+			UniquePtr& operator=(UniquePtr&& _obj) {
 				reset();
-				m_pointer = etk::move(_obj.release());
+				m_pointer = _obj.m_pointer;
+				_obj.m_pointer = nullptr;
 				return *this;
 			}
+			/*
 			template <class EMEM_UPTR_TYPE_2>
-			UniquePtr& operator=(UniquePtr<EMEM_UPTR_TYPE_2> _obj){
+			UniquePtr& operator=(UniquePtr<EMEM_UPTR_TYPE_2>& _obj){
 				reset();
-				m_pointer = etk::move(_obj.m_pointer);
+				m_pointer = _obj.m_pointer;
+				_obj.m_pointer = nullptr;
 				return *this;
-			}
-			EMEM_UPTR_TYPE operator*() const{
+			}*/
+			const EMEM_UPTR_TYPE& operator*() const {
 				return *m_pointer;
 			}
-			EMEM_UPTR_TYPE *operator->() const{
+			EMEM_UPTR_TYPE& operator*() {
+				return *m_pointer;
+			}
+			const EMEM_UPTR_TYPE* operator->() const {
 				return m_pointer;
 			}
-			EMEM_UPTR_TYPE *get() const{
+			EMEM_UPTR_TYPE* operator->() {
+				return m_pointer;
+			}
+			EMEM_UPTR_TYPE* get() const{
 				return m_pointer;
 			}
 			EMEM_UPTR_TYPE *release(){
