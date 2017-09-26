@@ -283,11 +283,7 @@ bool ememory::WeakPtr<EMEMORY_TYPE>::operator!=(etk::NullPtr) const {
 
 template<typename EMEMORY_TYPE>
 void ememory::WeakPtr<EMEMORY_TYPE>::swap(ememory::WeakPtr<EMEMORY_TYPE>& _obj) {
-	EMEMORY_TYPE* tmpE = m_element;
-	ememory::Counter* tmpC = m_counter;
-	m_element = _obj.m_element;
-	m_counter = _obj.m_counter;
-	_obj.m_element = tmpE;
-	_obj.m_counter = tmpC;
+	etk::swap(_obj.m_element, m_element);
+	etk::swap(_obj.m_counter, m_counter);
 }
 

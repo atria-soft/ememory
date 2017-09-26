@@ -284,15 +284,9 @@ EMEMORY_TYPE& ememory::SharedPtr<EMEMORY_TYPE>::operator*() {
 
 template<typename EMEMORY_TYPE>
 void ememory::SharedPtr<EMEMORY_TYPE>::swap(SharedPtr& _obj) {
-	EMEMORY_TYPE* tmpE = m_element;
-	ememory::Counter* tmpC = m_counter;
-	deleterCall tmpD = m_deleter;
-	m_element = _obj.m_element;
-	m_counter = _obj.m_counter;
-	m_deleter = _obj.m_deleter;
-	_obj.m_element = tmpE;
-	_obj.m_counter = tmpC;
-	_obj.m_deleter = tmpD;
+	etk::swap(_obj.m_element, m_element);
+	etk::swap(_obj.m_counter, m_counter);
+	etk::swap(_obj.m_deleter, m_deleter);
 }
 
 
