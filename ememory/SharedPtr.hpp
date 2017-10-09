@@ -49,18 +49,19 @@ namespace ememory {
 				         typename etk::EnableIf<    etk::IsSame<EMEMORY_TYPE2, EMEMORY_TYPE>::value
 				                                  && etk::IsBaseOf<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
 				                                 , int>::type = 0>
-				SharedPtr(EMEMORY_TYPE2* _element);
+				SharedPtr(EMEMORY_TYPE2* _element, deleterCall&& _deleter = [](void* _data) { delete((EMEMORY_TYPE*)_data);});
 				template<class EMEMORY_TYPE2,
 				         typename etk::EnableIf<    etk::IsSame<EMEMORY_TYPE2, EMEMORY_TYPE>::value
 				                                  && !etk::IsBaseOf<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
 				                                 , int>::type = 0>
-				SharedPtr(EMEMORY_TYPE2* _element);
+				SharedPtr(EMEMORY_TYPE2* _element, deleterCall&& _deleter = [](void* _data) { delete((EMEMORY_TYPE*)_data);});
 			#else
 				/**
 				 * @brief Contructor whith the pointer of data
 				 * @param[in] _element allocated data (SharedPtr will remove it)
+				 * @param[in] _deleter Deleter function of the data.
 				 */
-				SharedPtr(EMEMORY_TYPE2* _element);
+				SharedPtr(EMEMORY_TYPE2* _element, deleterCall&& _deleter);
 			#endif
 		public:
 			/**

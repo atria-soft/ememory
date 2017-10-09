@@ -13,10 +13,10 @@ template<class EMEMORY_TYPE2,
          typename etk::EnableIf<    etk::IsSame<EMEMORY_TYPE2, EMEMORY_TYPE>::value
                                  && etk::IsBaseOf<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
                                  , int>::type>
-ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element):
+ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element, deleterCall&& _deleter):
   m_element(_element),
   m_counter(nullptr),
-  m_deleter(createDeleter()) {
+  m_deleter(_deleter) {
 	EMEMORY_DBG("new shared");
 	if (m_element == nullptr) {
 		return;
@@ -36,10 +36,10 @@ template<class EMEMORY_TYPE2,
          typename etk::EnableIf<    etk::IsSame<EMEMORY_TYPE2, EMEMORY_TYPE>::value
                                  && !etk::IsBaseOf<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
                                  , int>::type>
-ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element):
+ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element, deleterCall&& _deleter):
   m_element(_element),
   m_counter(nullptr),
-  m_deleter(createDeleter()) {
+  m_deleter(_deleter) {
 	EMEMORY_DBG("new shared");
 	if (m_element == nullptr) {
 		return;
