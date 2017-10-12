@@ -6,6 +6,8 @@
 
 #include <etest/etest.hpp>
 #include <ememory/memory.hpp>
+#include <test-debug/debug.hpp>
+
 #include "main.hpp"
 
 TEST(TestShared, createAndDestroy) {
@@ -82,3 +84,138 @@ TEST(TestShared, setInVoid) {
 }
 
 
+
+
+static uint32_t isDestroy = 0;
+
+class testContructDestruct {
+	private:
+		uint32_t m_addValue;
+	public:
+		testContructDestruct(uint32_t _addValue):
+		  m_addValue(_addValue) {
+			isDestroy += m_addValue;
+			TEST_DEBUG("Create class " << m_addValue);
+		}
+		testContructDestruct(testContructDestruct&& _obj):
+		  m_addValue(_obj.m_addValue) {
+			_obj.m_addValue = 0;
+			TEST_DEBUG("move contruction " << m_addValue);
+		}
+		virtual ~testContructDestruct() {
+			if (m_addValue == 0) {
+				TEST_DEBUG("Remove class (after move)");
+				return;
+			}
+			TEST_DEBUG("Remove Class " << m_addValue);
+			isDestroy -= m_addValue;
+		}
+		testContructDestruct& operator= (testContructDestruct&& _obj) {
+			TEST_DEBUG("move operator " << m_addValue);
+			if (this != &_obj) {
+				etk::swap(m_addValue, _obj.m_addValue);
+			}
+			return *this;
+		}
+};
+
+class testContructDestruct2 : public ememory::EnableSharedFromThis<testContructDestruct2> {
+	private:
+		uint32_t m_addValue;
+	public:
+		testContructDestruct2(uint32_t _addValue):
+		  m_addValue(_addValue) {
+			isDestroy += m_addValue;
+			TEST_DEBUG("Create class " << m_addValue);
+		}
+		testContructDestruct2(testContructDestruct2&& _obj):
+		  m_addValue(_obj.m_addValue) {
+			_obj.m_addValue = 0;
+			TEST_DEBUG("move contruction " << m_addValue);
+		}
+		virtual ~testContructDestruct2() {
+			if (m_addValue == 0) {
+				TEST_DEBUG("Remove class (after move)");
+				return;
+			}
+			TEST_DEBUG("Remove Class " << m_addValue);
+			isDestroy -= m_addValue;
+		}
+		testContructDestruct2& operator= (testContructDestruct2&& _obj) {
+			TEST_DEBUG("move operator " << m_addValue);
+			if (this != &_obj) {
+				etk::swap(m_addValue, _obj.m_addValue);
+			}
+			return *this;
+		}
+};
+
+TEST(TestShared, destroyElementAtTheCorectMoment) {
+	isDestroy = 0;
+	{
+		etk::Vector<ememory::SharedPtr<testContructDestruct>> list;
+		list.pushBack(ememory::makeShared<testContructDestruct>(55));
+		EXPECT_EQ(list.size(), 1);
+		EXPECT_EQ(isDestroy, 55);
+		auto it = list.erase(list.begin());
+		EXPECT_EQ(isDestroy, 0);
+		EXPECT_EQ(list.size(), 0);
+		EXPECT_EQ(it, list.end());
+	}
+	EXPECT_EQ(isDestroy, 0);
+}
+
+TEST(TestShared, destroyElementAtTheCorectMoment_2) {
+	isDestroy = 0;
+	{
+		etk::Vector<ememory::SharedPtr<testContructDestruct>> list;
+		list.pushBack(ememory::makeShared<testContructDestruct>(4));
+		list.pushBack(ememory::makeShared<testContructDestruct>(30));
+		list.pushBack(ememory::makeShared<testContructDestruct>(1000));
+		list.pushBack(ememory::makeShared<testContructDestruct>(200));
+		EXPECT_EQ(list.size(), 4);
+		EXPECT_EQ(isDestroy, 1234);
+		auto it = list.erase(list.begin());
+		EXPECT_EQ(list.size(), 3);
+		EXPECT_EQ(isDestroy, 1230);
+		it = list.erase(list.begin()+1);
+		EXPECT_EQ(isDestroy, 230);
+		EXPECT_EQ(list.size(), 2);
+	}
+	EXPECT_EQ(isDestroy, 0);
+}
+
+TEST(TestShared, destroyElementAtTheCorectMoment_3) {
+	isDestroy = 0;
+	{
+		etk::Vector<ememory::SharedPtr<testContructDestruct2>> list;
+		list.pushBack(ememory::makeShared<testContructDestruct2>(55));
+		EXPECT_EQ(list.size(), 1);
+		EXPECT_EQ(isDestroy, 55);
+		auto it = list.erase(list.begin());
+		EXPECT_EQ(isDestroy, 0);
+		EXPECT_EQ(list.size(), 0);
+		EXPECT_EQ(it, list.end());
+	}
+	EXPECT_EQ(isDestroy, 0);
+}
+
+TEST(TestShared, destroyElementAtTheCorectMoment_4) {
+	isDestroy = 0;
+	{
+		etk::Vector<ememory::SharedPtr<testContructDestruct2>> list;
+		list.pushBack(ememory::makeShared<testContructDestruct2>(4));
+		list.pushBack(ememory::makeShared<testContructDestruct2>(30));
+		list.pushBack(ememory::makeShared<testContructDestruct2>(1000));
+		list.pushBack(ememory::makeShared<testContructDestruct2>(200));
+		EXPECT_EQ(list.size(), 4);
+		EXPECT_EQ(isDestroy, 1234);
+		auto it = list.erase(list.begin());
+		EXPECT_EQ(list.size(), 3);
+		EXPECT_EQ(isDestroy, 1230);
+		it = list.erase(list.begin()+1);
+		EXPECT_EQ(isDestroy, 230);
+		EXPECT_EQ(list.size(), 2);
+	}
+	EXPECT_EQ(isDestroy, 0);
+}
