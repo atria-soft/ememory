@@ -10,6 +10,7 @@
 #include <ememory/SharedPtr.hpp>
 #include <ememory/WeakPtr.hpp>
 #include <ememory/EnableSharedFromThis.hpp>
+#include <etk/Allocator.hpp>
 
 /**
  * @brief Ememory is a namespace to represent the @code #include <memory> @endcode part ==> simple memory access abstraction
@@ -22,7 +23,7 @@ namespace ememory {
 	 */
 	template<class EMEMORY_TYPE, typename... EMEMORY_ARGS>
 	static ememory::SharedPtr<EMEMORY_TYPE> makeShared(EMEMORY_ARGS && ..._args) {
-		return ememory::SharedPtr<EMEMORY_TYPE>(new EMEMORY_TYPE(etk::forward<EMEMORY_ARGS>(_args)...));
+		return ememory::SharedPtr<EMEMORY_TYPE>(ETK_NEW(EMEMORY_TYPE, etk::forward<EMEMORY_ARGS>(_args)...));
 	}
 	/**
 	 * @brief Cast in Dynamic the input SharedPtr into an other type like dynamic_cast on pointer

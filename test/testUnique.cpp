@@ -22,6 +22,11 @@ TEST(TestEmemoryUniquePtr, Creation_2) {
 	EXPECT_EQ(*testData.get(), 55);
 }
 TEST(TestEmemoryUniquePtr, Creation_3) {
+	ememory::UniquePtr<uint32_t> testData(ETK_NEW(uint32_t, 55));
+	EXPECT_NE(testData.get(), nullptr);
+	EXPECT_EQ(*testData.get(), 55);
+}
+TEST(TestEmemoryUniquePtr, Creation_4) {
 	ememory::UniquePtr<uint32_t> testData = ememory::makeUniquePtr<uint32_t>(456789);
 	EXPECT_NE(testData.get(), nullptr);
 	EXPECT_EQ(*testData.get(), 456789);

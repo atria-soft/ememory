@@ -13,7 +13,6 @@
 namespace ememory {
 	template<typename> class WeakPtr;
 	template<typename> class EnableSharedFromThis;
-	using deleterCall = etk::Function<void(void* _data)>;
 	/**
 	 * @brief ememory::SharedPtr is a smart pointer that retains shared ownership of an object through a pointer.
 	 * Several SharedPtr objects may own the same object. The object is destroyed and its memory deallocated when
@@ -31,6 +30,7 @@ namespace ememory {
 	 */
 	template<typename EMEMORY_TYPE>
 	class SharedPtr {
+		using deleterCall = etk::Function<void(void* _data)>;
 		friend class WeakPtr<EMEMORY_TYPE>;
 		private:
 			EMEMORY_TYPE* m_element; //!< Pointer on the Data
@@ -41,7 +41,7 @@ namespace ememory {
 			 * @return deleter function (need access to a voind data access)
 			 */
 			deleterCall createDeleter() const {
-				return [](void* _data) { delete((EMEMORY_TYPE*)_data);};
+				return [](void* _data) { ETK_DELETE(EMEMORY_TYPE, _data);};
 			}
 		public:
 			#ifndef PARSE_DOXYGEN
@@ -49,12 +49,12 @@ namespace ememory {
 				         typename etk::EnableIf<    etk::IsSame<EMEMORY_TYPE2, EMEMORY_TYPE>::value
 				                                  && etk::IsBaseOf<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
 				                                 , int>::type = 0>
-				SharedPtr(EMEMORY_TYPE2* _element, deleterCall&& _deleter = [](void* _data) { delete((EMEMORY_TYPE*)_data);});
+				SharedPtr(EMEMORY_TYPE2* _element, deleterCall&& _deleter = [](void* _data) { ETK_DELETE(EMEMORY_TYPE, _data);});
 				template<class EMEMORY_TYPE2,
 				         typename etk::EnableIf<    etk::IsSame<EMEMORY_TYPE2, EMEMORY_TYPE>::value
 				                                  && !etk::IsBaseOf<ememory::EnableSharedFromThisBase, EMEMORY_TYPE2>::value
 				                                 , int>::type = 0>
-				SharedPtr(EMEMORY_TYPE2* _element, deleterCall&& _deleter = [](void* _data) { delete((EMEMORY_TYPE*)_data);});
+				SharedPtr(EMEMORY_TYPE2* _element, deleterCall&& _deleter = [](void* _data) { ETK_DELETE(EMEMORY_TYPE, _data);});
 			#else
 				/**
 				 * @brief Contructor whith the pointer of data

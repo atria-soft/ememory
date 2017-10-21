@@ -22,6 +22,30 @@ TEST(TestShared, createAndDestroy) {
 	EXPECT_EQ(data != nullptr, false);
 }
 
+TEST(TestShared, createAndDestroy_2) {
+	ememory::SharedPtr<etk::String> data = ememory::SharedPtr<etk::String>(ETK_NEW(etk::String, "coucou"));
+	EXPECT_EQ(data.useCount(), 1);
+	EXPECT_EQ(*data, "coucou");
+	EXPECT_EQ(data == nullptr, false);
+	EXPECT_EQ(data != nullptr, true);
+	data.reset();
+	EXPECT_EQ(data.useCount(), 0);
+	EXPECT_EQ(data == nullptr, true);
+	EXPECT_EQ(data != nullptr, false);
+}
+
+TEST(TestShared, createAndDestroy_3) {
+	ememory::SharedPtr<etk::String> data = ememory::SharedPtr<etk::String>(new etk::String("coucou"));
+	EXPECT_EQ(data.useCount(), 1);
+	EXPECT_EQ(*data, "coucou");
+	EXPECT_EQ(data == nullptr, false);
+	EXPECT_EQ(data != nullptr, true);
+	data.reset();
+	EXPECT_EQ(data.useCount(), 0);
+	EXPECT_EQ(data == nullptr, true);
+	EXPECT_EQ(data != nullptr, false);
+}
+
 TEST(TestShared, copy) {
 	ememory::SharedPtr<etk::String> data = ememory::makeShared<etk::String>("coucou");
 	EXPECT_EQ(data.useCount(), 1);

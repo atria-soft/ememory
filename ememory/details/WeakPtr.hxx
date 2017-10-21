@@ -27,11 +27,11 @@ template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(EMEMORY_TYPE* _element):
   m_element(_element),
   m_counter(nullptr) {
-	EMEMORY_DBG("new weak");
+	EMEMORY_DBG("New weak");
 	if (m_element == nullptr) {
 		return;
 	}
-	m_counter = new ememory::Counter(true);
+	m_counter = ETK_NEW(ememory::Counter, true);
 }
 
 template<typename EMEMORY_TYPE>
@@ -221,7 +221,7 @@ void ememory::WeakPtr<EMEMORY_TYPE>::reset() {
 			EMEMORY_ERROR("in WeakPtr request remove all (impossible case ...)");
 			break;
 		case ememory::Counter::remove::counter:
-			delete m_counter;
+			ETK_DELETE(ememory::Counter, m_counter);
 			break;
 		case ememory::Counter::remove::none:
 			break;

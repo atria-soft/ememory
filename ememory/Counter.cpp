@@ -11,7 +11,7 @@ ememory::Counter::Counter(bool _fromWeak):
   m_counterShared(1),
   m_counterWeak(0),
   m_mutex() {
-	EMEMORY_DBG("new counter(" << _fromWeak << ")");
+	EMEMORY_DBG("Create counter(" << _fromWeak << ")");
 	if (_fromWeak == true) {
 		m_counterShared = 0;
 		m_counterWeak = 1;
@@ -20,7 +20,7 @@ ememory::Counter::Counter(bool _fromWeak):
 }
 
 ememory::Counter::~Counter() {
-	EMEMORY_DBG("delete counter");
+	EMEMORY_DBG("Delete counter");
 }
 
 int64_t ememory::Counter::incrementShared(bool _fromWeak) {

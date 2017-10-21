@@ -17,10 +17,12 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element, deleterCall
   m_element(_element),
   m_counter(nullptr),
   m_deleter(_deleter) {
-	EMEMORY_DBG("new shared");
+	EMEMORY_DBG("Create shared");
 	if (m_element == nullptr) {
 		return;
 	}
+	EMEMORY_DBG("Check if the user use the memory allocator or personal system...");
+	ETK_MEM_CHECK_POINTER(_element);
 	EMEMORY_DBG("    ==> get previous pointer");
 	m_counter = m_element->weakFromThis().getCounter();
 	if (m_counter != nullptr) {
@@ -40,11 +42,13 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element, deleterCall
   m_element(_element),
   m_counter(nullptr),
   m_deleter(_deleter) {
-	EMEMORY_DBG("new shared");
+	EMEMORY_DBG("Create shared");
 	if (m_element == nullptr) {
 		return;
 	}
-	m_counter = new ememory::Counter(false);
+	EMEMORY_DBG("Check if the user use the memory allocator or personal system...");
+	ETK_MEM_CHECK_POINTER(_element);
+	m_counter = ETK_NEW(ememory::Counter, false);
 }
 
 template<typename EMEMORY_TYPE>
@@ -52,7 +56,7 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr():
   m_element(nullptr),
   m_counter(nullptr),
   m_deleter(createDeleter()) {
-	EMEMORY_DBG("new shared");
+	EMEMORY_DBG("Create shared");
 }
 
 template<typename EMEMORY_TYPE>
@@ -60,7 +64,7 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(etk::NullPtr):
   m_element(nullptr),
   m_counter(nullptr),
   m_deleter(createDeleter()) {
-	EMEMORY_DBG("new shared");
+	EMEMORY_DBG("Create shared");
 }
 
 template<typename EMEMORY_TYPE>
@@ -68,7 +72,7 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE* _obj, ememory::Counter
   m_element(_obj),
   m_counter(_counter),
   m_deleter(createDeleter()) {
-	EMEMORY_DBG("new shared (from a cast)");
+	EMEMORY_DBG("Create shared (from a cast)");
 	if (_obj == nullptr) {
 		m_counter = nullptr;
 		return;
@@ -191,7 +195,7 @@ void ememory::SharedPtr<EMEMORY_TYPE>::reset() {
 	ememory::Counter::remove rmData = m_counter->decrementShared();
 	switch(rmData) {
 		case ememory::Counter::remove::all:
-			delete m_counter;
+			ETK_DELETE(ememory::Counter, m_counter);
 			if (m_deleter != nullptr) {
 				if (m_element != nullptr) {
 					m_deleter((void*)m_element);
@@ -210,7 +214,7 @@ void ememory::SharedPtr<EMEMORY_TYPE>::reset() {
 			}
 			break;
 		case ememory::Counter::remove::counter:
-			delete m_counter;
+			ETK_DELETE(ememory::Counter, m_counter);
 			break;
 		case ememory::Counter::remove::none:
 			break;
@@ -329,21 +333,21 @@ namespace ememory {
 			SharedPtr(etk::NullPtr):
 			  m_element(nullptr),
 			  m_counter(nullptr) {
-				EMEMORY_DBG("new shared<void>");
+				EMEMORY_DBG("Create shared<void>");
 			}
-						SharedPtr():
-						  m_element(nullptr),
-						  m_counter(nullptr) {
-							EMEMORY_DBG("new shared<void>");
-						}
-						~SharedPtr() {
+			SharedPtr():
+			  m_element(nullptr),
+			  m_counter(nullptr) {
+				EMEMORY_DBG("Create shared<void>");
+			}
+			~SharedPtr() {
 				EMEMORY_DBG("delete shared");
 				reset();
 			}
 			SharedPtr(void* _obj, ememory::Counter* _counter):
 			  m_element(_obj),
 			  m_counter(_counter) {
-				EMEMORY_DBG("new shared (from a cast)");
+				EMEMORY_DBG("Create shared (from a cast)");
 				if (_obj == nullptr) {
 					m_counter = nullptr;
 					return;
@@ -402,14 +406,14 @@ namespace ememory {
 				ememory::Counter::remove rmData = m_counter->decrementShared();
 				switch(rmData) {
 					case ememory::Counter::remove::all:
-						delete m_counter;
+						ETK_DELETE(ememory::Counter, m_counter);
 						EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr<void>");
 						break;
 					case ememory::Counter::remove::data:
 						EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr<void>");
 						break;
 					case ememory::Counter::remove::counter:
-						delete m_counter;
+						ETK_DELETE(ememory::Counter, m_counter);
 						break;
 					case ememory::Counter::remove::none:
 						break;
