@@ -107,6 +107,23 @@ TEST(TestShared, setInVoid) {
 	EXPECT_EQ(data.useCount(), 3);
 }
 
+class basicClass {
+	
+};
+
+class heritedClass : public basicClass {
+	
+};
+
+TEST(TestShared, heritage) {
+	ememory::SharedPtr<heritedClass> data = ememory::makeShared<heritedClass>();
+	ememory::SharedPtr<basicClass> data2 = data;
+	ememory::SharedPtr<basicClass> data3(data);
+	EXPECT_NE(data, nullptr);
+	EXPECT_NE(data2, nullptr);
+	EXPECT_NE(data3, nullptr);
+}
+
 
 
 
