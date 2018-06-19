@@ -65,7 +65,7 @@ namespace ememory {
 			#endif
 		public:
 			/**
-			 * @brief Contructor on nullptr
+			 * @brief Contructor on null
 			 */
 			SharedPtr(etk::NullPtr);
 			/**
@@ -99,7 +99,7 @@ namespace ememory {
 			 */
 			SharedPtr& operator= (const SharedPtr<EMEMORY_TYPE>& _obj);
 			/**
-			 * @brief Asignement operator (asign nullptr)
+			 * @brief Asignement operator (asign null)
 			 * @return Reference on this
 			 */
 			SharedPtr& operator= (etk::NullPtr);
@@ -125,7 +125,7 @@ namespace ememory {
 			 */
 			int64_t useCount() const;
 			/**
-			 * @brief Check if the SharedPtr have an internal data (not nullptr)
+			 * @brief Check if the SharedPtr have an internal data (not null)
 			 * @return true The pointer is not asigned, false otherwise
 			 */
 			bool operator==(etk::NullPtr) const;
@@ -137,7 +137,7 @@ namespace ememory {
 			template<class EMEMORY_TYPE2>
 			bool operator==(const SharedPtr<EMEMORY_TYPE2>& _obj) const;
 			/**
-			 * @brief Check if the SharedPtr have NOT an internal data (nullptr)
+			 * @brief Check if the SharedPtr have NOT an internal data (null)
 			 * @return true The pointer is asigned, false otherwise
 			 */
 			bool operator!=(etk::NullPtr) const;

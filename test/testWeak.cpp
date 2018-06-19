@@ -37,7 +37,7 @@ TEST(TestWeak, retrive) {
 	EXPECT_EQ(dataRetrive.useCount(), 0);
 	EXPECT_EQ(dataWeak.useCount(), 0);
 	dataRetrive = dataWeak.lock();
-	EXPECT_EQ(dataRetrive == nullptr, true);
+	EXPECT_EQ(dataRetrive == null, true);
 	EXPECT_EQ(dataRetrive.useCount(), 0);
 	EXPECT_EQ(dataWeak.useCount(), 0);
 }

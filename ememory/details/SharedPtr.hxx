@@ -15,17 +15,17 @@ template<class EMEMORY_TYPE2,
                                  , int>::type>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element, deleterCall&& _deleter):
   m_element(_element),
-  m_counter(nullptr),
+  m_counter(null),
   m_deleter(_deleter) {
 	EMEMORY_DBG("Create shared");
-	if (m_element == nullptr) {
+	if (m_element == null) {
 		return;
 	}
 	EMEMORY_DBG("Check if the user use the memory allocator or personal system...");
 	ETK_MEM_CHECK_POINTER(_element);
 	EMEMORY_DBG("    ==> get previous pointer");
 	m_counter = m_element->weakFromThis().getCounter();
-	if (m_counter != nullptr) {
+	if (m_counter != null) {
 		m_counter->incrementShared();
 	}
 	return;
@@ -40,10 +40,10 @@ template<class EMEMORY_TYPE2,
                                  , int>::type>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element, deleterCall&& _deleter):
   m_element(_element),
-  m_counter(nullptr),
+  m_counter(null),
   m_deleter(_deleter) {
 	EMEMORY_DBG("Create shared");
-	if (m_element == nullptr) {
+	if (m_element == null) {
 		return;
 	}
 	EMEMORY_DBG("Check if the user use the memory allocator or personal system...");
@@ -53,16 +53,16 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE2* _element, deleterCall
 
 template<typename EMEMORY_TYPE>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr():
-  m_element(nullptr),
-  m_counter(nullptr),
+  m_element(null),
+  m_counter(null),
   m_deleter(createDeleter()) {
 	EMEMORY_DBG("Create shared");
 }
 
 template<typename EMEMORY_TYPE>
 ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(etk::NullPtr):
-  m_element(nullptr),
-  m_counter(nullptr),
+  m_element(null),
+  m_counter(null),
   m_deleter(createDeleter()) {
 	EMEMORY_DBG("Create shared");
 }
@@ -73,8 +73,8 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(EMEMORY_TYPE* _obj, ememory::Counter
   m_counter(_counter),
   m_deleter(createDeleter()) {
 	EMEMORY_DBG("Create shared (from a cast)");
-	if (_obj == nullptr) {
-		m_counter = nullptr;
+	if (_obj == null) {
+		m_counter = null;
 		return;
 	}
 	m_counter->incrementShared();
@@ -91,14 +91,14 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(const ememory::SharedPtr<EMEMORY_TYP
   m_element(_obj.m_element),
   m_counter(_obj.m_counter),
   m_deleter(_obj.m_deleter) {
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
-		m_deleter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
+		m_deleter = null;
 		return;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return;
 	}
 	m_counter->incrementShared();
@@ -110,14 +110,14 @@ ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (c
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
 	m_deleter = _obj.m_deleter;
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
-		m_deleter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
+		m_deleter = null;
 		return *this;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return *this;
 	}
 	m_counter->incrementShared();
@@ -137,9 +137,9 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(ememory::SharedPtr<EMEMORY_TYPE>&& _
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
 	m_deleter = _obj.m_deleter;
-	_obj.m_element = nullptr;
-	_obj.m_counter = nullptr;
-	_obj.m_deleter = nullptr;
+	_obj.m_element = null;
+	_obj.m_counter = null;
+	_obj.m_deleter = null;
 }
 
 template<typename EMEMORY_TYPE>
@@ -150,13 +150,13 @@ ememory::SharedPtr<EMEMORY_TYPE>::SharedPtr(const ememory::SharedPtr<EMEMORY_TYP
   m_element(const_cast<EMEMORY_TYPE2*>(_obj.get())),
   m_counter(const_cast<ememory::Counter*>(_obj.getCounter())),
   m_deleter(createDeleter()) {
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
 		return;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return;
 	}
 	m_counter->incrementShared();
@@ -171,13 +171,13 @@ ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (c
 	m_element = const_cast<EMEMORY_TYPE2*>(_obj.get());
 	m_counter = const_cast<ememory::Counter*>(_obj.getCounter());
 	m_deleter = createDeleter();
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
 		return *this;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return *this;
 	}
 	m_counter->incrementShared();
@@ -186,9 +186,9 @@ ememory::SharedPtr<EMEMORY_TYPE>& ememory::SharedPtr<EMEMORY_TYPE>::operator= (c
 
 template<typename EMEMORY_TYPE>
 void ememory::SharedPtr<EMEMORY_TYPE>::reset() {
-	if(m_counter == nullptr) {
-		m_element = nullptr; // in case ...
-		m_deleter = nullptr;
+	if(m_counter == null) {
+		m_element = null; // in case ...
+		m_deleter = null;
 		return;
 	}
 	EMEMORY_DBG("reset sharedPtr (start)");
@@ -196,8 +196,8 @@ void ememory::SharedPtr<EMEMORY_TYPE>::reset() {
 	switch(rmData) {
 		case ememory::Counter::remove::all:
 			ETK_DELETE(ememory::Counter, m_counter);
-			if (m_deleter != nullptr) {
-				if (m_element != nullptr) {
+			if (m_deleter != null) {
+				if (m_element != null) {
 					m_deleter((void*)m_element);
 				}
 			} else {
@@ -205,8 +205,8 @@ void ememory::SharedPtr<EMEMORY_TYPE>::reset() {
 			}
 			break;
 		case ememory::Counter::remove::data:
-			if (m_deleter != nullptr) {
-				if (m_element != nullptr) {
+			if (m_deleter != null) {
+				if (m_element != null) {
 					m_deleter((void*)m_element);
 				}
 			} else {
@@ -219,15 +219,15 @@ void ememory::SharedPtr<EMEMORY_TYPE>::reset() {
 		case ememory::Counter::remove::none:
 			break;
 	}
-	m_deleter = nullptr;
-	m_counter = nullptr;
-	m_element = nullptr;
+	m_deleter = null;
+	m_counter = null;
+	m_element = null;
 	EMEMORY_DBG("reset sharedPtr (stop)");
 }
 
 template<typename EMEMORY_TYPE>
 int64_t ememory::SharedPtr<EMEMORY_TYPE>::useCount() const {
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return 0;
 	}
 	return m_counter->getCountShared();
@@ -235,7 +235,7 @@ int64_t ememory::SharedPtr<EMEMORY_TYPE>::useCount() const {
 
 template<typename EMEMORY_TYPE>
 bool ememory::SharedPtr<EMEMORY_TYPE>::operator==(etk::NullPtr) const {
-	return m_counter == nullptr;
+	return m_counter == null;
 }
 
 template<typename EMEMORY_TYPE>
@@ -246,7 +246,7 @@ bool ememory::SharedPtr<EMEMORY_TYPE>::operator==(const SharedPtr<EMEMORY_TYPE2>
 
 template<typename EMEMORY_TYPE>
 bool ememory::SharedPtr<EMEMORY_TYPE>::operator!=(etk::NullPtr) const {
-	return m_counter != nullptr;
+	return m_counter != null;
 }
 
 template<typename EMEMORY_TYPE>
@@ -331,13 +331,13 @@ namespace ememory {
 			SharedPtr(void* _element);
 		public:
 			SharedPtr(etk::NullPtr):
-			  m_element(nullptr),
-			  m_counter(nullptr) {
+			  m_element(null),
+			  m_counter(null) {
 				EMEMORY_DBG("Create shared<void>");
 			}
 			SharedPtr():
-			  m_element(nullptr),
-			  m_counter(nullptr) {
+			  m_element(null),
+			  m_counter(null) {
 				EMEMORY_DBG("Create shared<void>");
 			}
 			~SharedPtr() {
@@ -348,8 +348,8 @@ namespace ememory {
 			  m_element(_obj),
 			  m_counter(_counter) {
 				EMEMORY_DBG("Create shared (from a cast)");
-				if (_obj == nullptr) {
-					m_counter = nullptr;
+				if (_obj == null) {
+					m_counter = null;
 					return;
 				}
 				m_counter->incrementShared();
@@ -361,20 +361,20 @@ namespace ememory {
 			SharedPtr(SharedPtr<void>&& _obj) {
 				m_element = _obj.m_element;
 				m_counter = _obj.m_counter;
-				_obj.m_element = nullptr;
-				_obj.m_counter = nullptr;
+				_obj.m_element = null;
+				_obj.m_counter = null;
 			}
 			template<class EMEMORY_TYPE2>
 			SharedPtr(const SharedPtr<EMEMORY_TYPE2>& _obj):
 			  m_element((void*)_obj.get()),
 			  m_counter(_obj.getCounter()) {
-				if (    m_element == nullptr
-				     || m_counter == nullptr) {
-					m_element = nullptr;
-					m_counter = nullptr;
+				if (    m_element == null
+				     || m_counter == null) {
+					m_element = null;
+					m_counter = null;
 					return;
 				}
-				if (m_counter == nullptr) {
+				if (m_counter == null) {
 					return;
 				}
 				m_counter->incrementShared();
@@ -384,13 +384,13 @@ namespace ememory {
 				reset();
 				m_element = (void*)_obj.get();
 				m_counter = _obj.getCounter();
-				if (    m_element == nullptr
-				     || m_counter == nullptr) {
-					m_element = nullptr;
-					m_counter = nullptr;
+				if (    m_element == null
+				     || m_counter == null) {
+					m_element = null;
+					m_counter = null;
 					return *this;
 				}
-				if (m_counter == nullptr) {
+				if (m_counter == null) {
 					return *this;
 				}
 				m_counter->incrementShared();
@@ -398,8 +398,8 @@ namespace ememory {
 			}
 		public:
 			void reset() {
-				if(m_counter == nullptr) {
-					m_element = nullptr; // in case ...
+				if(m_counter == null) {
+					m_element = null; // in case ...
 					return;
 				}
 				EMEMORY_DBG("reset sharedPtr (start)");
@@ -418,25 +418,25 @@ namespace ememory {
 					case ememory::Counter::remove::none:
 						break;
 				}
-				m_counter = nullptr;
-				m_element = nullptr;
+				m_counter = null;
+				m_element = null;
 				EMEMORY_DBG("reset sharedPtr (stop)");
 			}
 			int64_t useCount() const {
-				if (m_counter == nullptr) {
+				if (m_counter == null) {
 					return 0;
 				}
 				return m_counter->getCountShared();
 			}
 			bool operator==(etk::NullPtr) const {
-				return m_counter == nullptr;
+				return m_counter == null;
 			}
 			template<class EMEMORY_TYPE2>
 			bool operator==(const SharedPtr<EMEMORY_TYPE2>& _obj) const {
 				return m_counter == _obj.m_counter;
 			}
 			bool operator!=(etk::NullPtr) const {
-				return m_counter != nullptr;
+				return m_counter != null;
 			}
 			template<class EMEMORY_TYPE2>
 			bool operator!=(const SharedPtr<EMEMORY_TYPE2>& _obj) const {

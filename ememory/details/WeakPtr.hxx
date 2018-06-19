@@ -11,24 +11,24 @@
 
 template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr():
-  m_element(nullptr),
-  m_counter(nullptr) {
+  m_element(null),
+  m_counter(null) {
 	
 }
 
 template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(etk::NullPtr):
-  m_element(nullptr),
-  m_counter(nullptr) {
+  m_element(null),
+  m_counter(null) {
 	
 }
 
 template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(EMEMORY_TYPE* _element):
   m_element(_element),
-  m_counter(nullptr) {
+  m_counter(null) {
 	EMEMORY_DBG("New weak");
-	if (m_element == nullptr) {
+	if (m_element == null) {
 		return;
 	}
 	m_counter = ETK_NEW(ememory::Counter, true);
@@ -43,13 +43,13 @@ template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(const ememory::WeakPtr<EMEMORY_TYPE>& _obj):
   m_element(_obj.m_element),
   m_counter(_obj.m_counter) {
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
 		return;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return;
 	}
 	m_counter->incrementWeak();
@@ -60,13 +60,13 @@ ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const
 	reset();
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
 		return *this;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return *this;
 	}
 	m_counter->incrementWeak();
@@ -83,21 +83,21 @@ template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(ememory::WeakPtr<EMEMORY_TYPE>&& _obj) {
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
-	_obj.m_element = nullptr;
-	_obj.m_counter = nullptr;
+	_obj.m_element = null;
+	_obj.m_counter = null;
 }
 
 template<typename EMEMORY_TYPE>
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(const ememory::SharedPtr<EMEMORY_TYPE>& _obj):
   m_element(_obj.m_element),
   m_counter(_obj.m_counter) {
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
 		return;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return;
 	}
 	m_counter->incrementWeak();
@@ -109,13 +109,13 @@ ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const
 	reset();
 	m_element = _obj.m_element;
 	m_counter = _obj.m_counter;
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
 		return *this;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return *this;
 	}
 	m_counter->incrementWeak();
@@ -131,13 +131,13 @@ template<class EMEMORY_TYPE2,
 ememory::WeakPtr<EMEMORY_TYPE>::WeakPtr(const ememory::SharedPtr<EMEMORY_TYPE2>& _obj):
   m_element((void*)_obj.get()),
   m_counter(_obj.getCounter()) {
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
 		return;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return;
 	}
 	m_counter->incrementWeak();
@@ -153,13 +153,13 @@ ememory::WeakPtr<EMEMORY_TYPE>& ememory::WeakPtr<EMEMORY_TYPE>::operator= (const
 	reset();
 	m_element = (void*)_obj.get();
 	m_counter = _obj.getCounter();
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
 		return *this;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return *this;
 	}
 	m_counter->incrementWeak();
@@ -174,13 +174,13 @@ template<class EMEMORY_TYPE2,
 WeakPtr(const WeakPtr<EMEMORY_TYPE2>& _obj):
   m_element(_obj.m_element),
   m_counter(_obj.getCounter()) {
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
 		return;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return;
 	}
 	m_counter->incrementWeak();
@@ -193,13 +193,13 @@ WeakPtr& operator= (const WeakPtr<EMEMORY_TYPE2>& _obj) {
 	reset();
 	m_element = _obj.m_element;
 	m_counter = _obj.getCounter();
-	if (    m_element == nullptr
-	     || m_counter == nullptr) {
-		m_element = nullptr;
-		m_counter = nullptr;
+	if (    m_element == null
+	     || m_counter == null) {
+		m_element = null;
+		m_counter = null;
 		return *this;
 	}
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return *this;
 	}
 	m_counter->incrementWeak();
@@ -208,8 +208,8 @@ WeakPtr& operator= (const WeakPtr<EMEMORY_TYPE2>& _obj) {
 */
 template<typename EMEMORY_TYPE>
 void ememory::WeakPtr<EMEMORY_TYPE>::reset() {
-	if(m_counter == nullptr) {
-		m_element = nullptr; // in case ...
+	if(m_counter == null) {
+		m_element = null; // in case ...
 		return;
 	}
 	ememory::Counter::remove rmData = m_counter->decrementWeak();
@@ -226,13 +226,13 @@ void ememory::WeakPtr<EMEMORY_TYPE>::reset() {
 		case ememory::Counter::remove::none:
 			break;
 	}
-	m_counter = nullptr;
-	m_element = nullptr;
+	m_counter = null;
+	m_element = null;
 }
 
 template<typename EMEMORY_TYPE>
 int ememory::WeakPtr<EMEMORY_TYPE>::useCount() const {
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return 0;
 	}
 	return m_counter->getCountShared();
@@ -240,7 +240,7 @@ int ememory::WeakPtr<EMEMORY_TYPE>::useCount() const {
 
 template<typename EMEMORY_TYPE>
 bool ememory::WeakPtr<EMEMORY_TYPE>::expired() const {
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return true;
 	}
 	return m_counter->getCountShared() == 0;
@@ -249,7 +249,7 @@ bool ememory::WeakPtr<EMEMORY_TYPE>::expired() const {
 template<typename EMEMORY_TYPE>
 ememory::SharedPtr<EMEMORY_TYPE> ememory::WeakPtr<EMEMORY_TYPE>::lock() {
 	ememory::SharedPtr<EMEMORY_TYPE> out;
-	if (m_counter == nullptr) {
+	if (m_counter == null) {
 		return out;
 	}
 	int64_t count = m_counter->incrementShared(true);
@@ -268,7 +268,7 @@ bool ememory::WeakPtr<EMEMORY_TYPE>::operator==(const ememory::WeakPtr<EMEMORY_T
 
 template<typename EMEMORY_TYPE>
 bool ememory::WeakPtr<EMEMORY_TYPE>::operator==(etk::NullPtr) const {
-	return m_counter == nullptr;
+	return m_counter == null;
 }
 
 template<typename EMEMORY_TYPE>
@@ -278,7 +278,7 @@ bool ememory::WeakPtr<EMEMORY_TYPE>::operator!=(const ememory::WeakPtr<EMEMORY_T
 
 template<typename EMEMORY_TYPE>
 bool ememory::WeakPtr<EMEMORY_TYPE>::operator!=(etk::NullPtr) const {
-	return m_counter != nullptr;
+	return m_counter != null;
 }
 
 template<typename EMEMORY_TYPE>

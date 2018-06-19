@@ -14,36 +14,36 @@ TEST(TestShared, createAndDestroy) {
 	ememory::SharedPtr<etk::String> data = ememory::makeShared<etk::String>("coucou");
 	EXPECT_EQ(data.useCount(), 1);
 	EXPECT_EQ(*data, "coucou");
-	EXPECT_EQ(data == nullptr, false);
-	EXPECT_EQ(data != nullptr, true);
+	EXPECT_EQ(data == null, false);
+	EXPECT_EQ(data != null, true);
 	data.reset();
 	EXPECT_EQ(data.useCount(), 0);
-	EXPECT_EQ(data == nullptr, true);
-	EXPECT_EQ(data != nullptr, false);
+	EXPECT_EQ(data == null, true);
+	EXPECT_EQ(data != null, false);
 }
 
 TEST(TestShared, createAndDestroy_2) {
 	ememory::SharedPtr<etk::String> data = ememory::SharedPtr<etk::String>(ETK_NEW(etk::String, "coucou"));
 	EXPECT_EQ(data.useCount(), 1);
 	EXPECT_EQ(*data, "coucou");
-	EXPECT_EQ(data == nullptr, false);
-	EXPECT_EQ(data != nullptr, true);
+	EXPECT_EQ(data == null, false);
+	EXPECT_EQ(data != null, true);
 	data.reset();
 	EXPECT_EQ(data.useCount(), 0);
-	EXPECT_EQ(data == nullptr, true);
-	EXPECT_EQ(data != nullptr, false);
+	EXPECT_EQ(data == null, true);
+	EXPECT_EQ(data != null, false);
 }
 
 TEST(TestShared, createAndDestroy_3) {
 	ememory::SharedPtr<etk::String> data = ememory::SharedPtr<etk::String>(new etk::String("coucou"));
 	EXPECT_EQ(data.useCount(), 1);
 	EXPECT_EQ(*data, "coucou");
-	EXPECT_EQ(data == nullptr, false);
-	EXPECT_EQ(data != nullptr, true);
+	EXPECT_EQ(data == null, false);
+	EXPECT_EQ(data != null, true);
 	data.reset();
 	EXPECT_EQ(data.useCount(), 0);
-	EXPECT_EQ(data == nullptr, true);
-	EXPECT_EQ(data != nullptr, false);
+	EXPECT_EQ(data == null, true);
+	EXPECT_EQ(data != null, false);
 }
 
 TEST(TestShared, copy) {
@@ -119,9 +119,9 @@ TEST(TestShared, heritage) {
 	ememory::SharedPtr<heritedClass> data = ememory::makeShared<heritedClass>();
 	ememory::SharedPtr<basicClass> data2 = data;
 	ememory::SharedPtr<basicClass> data3(data);
-	EXPECT_NE(data, nullptr);
-	EXPECT_NE(data2, nullptr);
-	EXPECT_NE(data3, nullptr);
+	EXPECT_NE(data, null);
+	EXPECT_NE(data2, null);
+	EXPECT_NE(data3, null);
 }
 
 

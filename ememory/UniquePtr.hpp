@@ -19,13 +19,13 @@ namespace ememory {
 			UniquePtr &operator=(UniquePtr<EMEM_UPTR_TYPE_2> &) = delete;
 		public:
 			UniquePtr() :
-			  m_pointer(nullptr),
-			  m_deleter(nullptr) {
+			  m_pointer(null),
+			  m_deleter(null) {
 				
 			}
 			UniquePtr(etk::NullPtr) :
-			  m_pointer(nullptr),
-			  m_deleter(nullptr) {
+			  m_pointer(null),
+			  m_deleter(null) {
 				
 			}
 			explicit UniquePtr(EMEM_UPTR_TYPE* _obj, deleterCall&& _deleter = [](void* _data) { ETK_DELETE(EMEM_UPTR_TYPE, _data);}) :
@@ -35,8 +35,8 @@ namespace ememory {
 			}
 			template <class EMEM_UPTR_TYPE_2>
 			UniquePtr(UniquePtr<EMEM_UPTR_TYPE_2>&& _obj) :
-			  m_pointer(nullptr),
-			  m_deleter(nullptr) {
+			  m_pointer(null),
+			  m_deleter(null) {
 				etk::swap(_obj.m_pointer, m_pointer);
 				etk::swap(_obj.m_deleter, m_deleter);
 			}
@@ -58,7 +58,7 @@ namespace ememory {
 			UniquePtr& operator=(UniquePtr<EMEM_UPTR_TYPE_2>& _obj){
 				reset();
 				m_pointer = _obj.m_pointer;
-				_obj.m_pointer = nullptr;
+				_obj.m_pointer = null;
 				return *this;
 			}*/
 			const EMEM_UPTR_TYPE& operator*() const {
@@ -78,32 +78,32 @@ namespace ememory {
 			}
 			EMEM_UPTR_TYPE *release(){
 				EMEM_UPTR_TYPE *tmp = m_pointer;
-				m_pointer = nullptr;
+				m_pointer = null;
 				return tmp;
 			}
 			void reset(){
-				if (m_deleter != nullptr) {
+				if (m_deleter != null) {
 					m_deleter(m_pointer);
 				}
-				m_pointer = nullptr;
+				m_pointer = null;
 			}
 			void swap(UniquePtr &_obj){
 				etk::swap(_obj.m_pointer, m_pointer);
 				etk::swap(_obj.m_deleter, m_deleter);
 			}
 			/**
-			 * @brief Check if the UniquePtr have an internal data (not nullptr)
+			 * @brief Check if the UniquePtr have an internal data (not null)
 			 * @return true The pointer is not asigned, false otherwise
 			 */
 			bool operator==(etk::NullPtr) const {
-				return m_pointer == nullptr;
+				return m_pointer == null;
 			}
 			/**
-			 * @brief Check if the UniquePtr have not an internal data (equal nullptr)
+			 * @brief Check if the UniquePtr have not an internal data (equal null)
 			 * @return true The pointer is asigned, false otherwise
 			 */
 			bool operator!=(etk::NullPtr) const {
-				return m_pointer != nullptr;
+				return m_pointer != null;
 			}
 			/*
 			template <class EMEM_UPTR_TYPE_2>

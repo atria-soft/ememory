@@ -13,22 +13,22 @@
 
 TEST(TestEmemoryUniquePtr, Creation_1) {
 	ememory::UniquePtr<uint32_t> testData;
-	EXPECT_EQ(testData.get(), nullptr);
+	EXPECT_EQ(testData.get(), null);
 }
 
 TEST(TestEmemoryUniquePtr, Creation_2) {
 	ememory::UniquePtr<uint32_t> testData(new uint32_t(55));
-	EXPECT_NE(testData.get(), nullptr);
+	EXPECT_NE(testData.get(), null);
 	EXPECT_EQ(*testData.get(), 55);
 }
 TEST(TestEmemoryUniquePtr, Creation_3) {
 	ememory::UniquePtr<uint32_t> testData(ETK_NEW(uint32_t, 55));
-	EXPECT_NE(testData.get(), nullptr);
+	EXPECT_NE(testData.get(), null);
 	EXPECT_EQ(*testData.get(), 55);
 }
 TEST(TestEmemoryUniquePtr, Creation_4) {
 	ememory::UniquePtr<uint32_t> testData = ememory::makeUniquePtr<uint32_t>(456789);
-	EXPECT_NE(testData.get(), nullptr);
+	EXPECT_NE(testData.get(), null);
 	EXPECT_EQ(*testData.get(), 456789);
 }
 
@@ -51,26 +51,26 @@ TEST(TestEmemoryUniquePtr, reset) {
 	memset(vals, 0, sizeof(vals));
 	EXPECT_EQ(vals[1], 0);
 	ememory::UniquePtr<testCreateAndDestroy> testData = ememory::makeUniquePtr<testCreateAndDestroy>(1);
-	EXPECT_NE(testData.get(), nullptr);
+	EXPECT_NE(testData.get(), null);
 	EXPECT_EQ(vals[1], 1);
 	testData.reset();
-	EXPECT_EQ(testData.get(), nullptr);
+	EXPECT_EQ(testData.get(), null);
 	EXPECT_EQ(vals[1], -1);
 }
 TEST(TestEmemoryUniquePtr, reset_2) {
 	memset(vals, 0, sizeof(vals));
 	EXPECT_EQ(vals[1], 0);
 	ememory::UniquePtr<testCreateAndDestroy> testData = ememory::makeUniquePtr<testCreateAndDestroy>(1);
-	EXPECT_NE(testData.get(), nullptr);
+	EXPECT_NE(testData.get(), null);
 	EXPECT_EQ(vals[1], 1);
-	testData = nullptr;
-	EXPECT_EQ(testData.get(), nullptr);
+	testData = null;
+	EXPECT_EQ(testData.get(), null);
 	EXPECT_EQ(vals[1], -1);
 }
 TEST(TestEmemoryUniquePtr, overwrite) {
 	memset(vals, 0, sizeof(vals));
 	ememory::UniquePtr<testCreateAndDestroy> testData = ememory::makeUniquePtr<testCreateAndDestroy>(1);
-	EXPECT_NE(testData.get(), nullptr);
+	EXPECT_NE(testData.get(), null);
 	EXPECT_EQ(vals[1], 1);
 	EXPECT_EQ(vals[2], 0);
 	testData = ememory::makeUniquePtr<testCreateAndDestroy>(2);

@@ -29,7 +29,7 @@ namespace ememory {
 			 */
 			WeakPtr();
 			/**
-			 * @brief nullptr contructor
+			 * @brief null contructor
 			 */
 			WeakPtr(etk::NullPtr);
 		private:
@@ -68,7 +68,7 @@ namespace ememory {
 			 */
 			WeakPtr<EMEMORY_TYPE>& operator= (const SharedPtr<EMEMORY_TYPE>& _obj);
 			/**
-			 * @brief nullptr asignement
+			 * @brief null asignement
 			 * @return Reference on this
 			 */
 			WeakPtr<EMEMORY_TYPE>& operator= (etk::NullPtr);
@@ -130,7 +130,7 @@ namespace ememory {
 			 */
 			bool operator==(const WeakPtr& _obj);
 			/**
-			 * @brief Check if the WeakPtr have an internal data (not nullptr)
+			 * @brief Check if the WeakPtr have an internal data (not null)
 			 * @return true The pointer is not asigned, false otherwise
 			 */
 			bool operator==(etk::NullPtr) const;
@@ -141,7 +141,7 @@ namespace ememory {
 			 */
 			bool operator!=(const WeakPtr& _obj);
 			/**
-			 * @brief Check if the SharedPtr have NOT an internal data (nullptr)
+			 * @brief Check if the SharedPtr have NOT an internal data (null)
 			 * @return true The pointer is asigned, false otherwise
 			 */
 			bool operator!=(etk::NullPtr) const;
