@@ -33,8 +33,8 @@ namespace ememory {
 		using deleterCall = etk::Function<void(void* _data)>;
 		friend class WeakPtr<EMEMORY_TYPE>;
 		private:
-			EMEMORY_TYPE* m_element; //!< Pointer on the Data
-			ememory::Counter* m_counter; //!< Pointer on the counter
+			EMEMORY_TYPE* m_element = null; //!< Pointer on the Data
+			ememory::Counter* m_counter = null; //!< Pointer on the counter
 			deleterCall m_deleter; //!< Function to call to delete the data pointer
 			/**
 			 * @brief Create the function to remove the pointer of the data
