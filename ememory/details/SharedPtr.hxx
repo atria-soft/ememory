@@ -379,11 +379,41 @@ namespace ememory {
 				}
 				m_counter->incrementShared();
 			}
+			SharedPtr(const SharedPtr<void>& _obj) {
+				m_element = _obj.m_element;
+				m_counter = _obj.m_counter;
+				if (    m_element == null
+				     || m_counter == null) {
+					m_element = null;
+					m_counter = null;
+					return;
+				}
+				if (m_counter == null) {
+					return;
+				}
+				m_counter->incrementShared();
+			}
 			template<class EMEMORY_TYPE2>
 			SharedPtr& operator= (const SharedPtr<EMEMORY_TYPE2>& _obj) {
 				reset();
 				m_element = (void*)_obj.get();
 				m_counter = _obj.getCounter();
+				if (    m_element == null
+				     || m_counter == null) {
+					m_element = null;
+					m_counter = null;
+					return *this;
+				}
+				if (m_counter == null) {
+					return *this;
+				}
+				m_counter->incrementShared();
+				return *this;
+			}
+			SharedPtr& operator= (const SharedPtr<void>& _obj) {
+				reset();
+				m_element = _obj.m_element;
+				m_counter = _obj.m_counter;
 				if (    m_element == null
 				     || m_counter == null) {
 					m_element = null;
