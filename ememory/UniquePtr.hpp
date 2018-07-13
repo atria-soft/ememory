@@ -11,6 +11,7 @@ namespace ememory {
 		public:
 			EMEM_UPTR_TYPE* m_pointer;
 			deleterCall m_deleter; //!< Function to call to delete the data pointer
+		
 		private:
 			template <class EMEM_UPTR_TYPE_2>
 			UniquePtr(UniquePtr<EMEM_UPTR_TYPE_2> &) = delete;
@@ -105,17 +106,15 @@ namespace ememory {
 			bool operator!=(etk::NullPtr) const {
 				return m_pointer != null;
 			}
-			/*
-			template <class EMEM_UPTR_TYPE_2>
-			void swap(UniquePtr<EMEM_UPTR_TYPE_2>& _obj) {
-				etk::swap(m_pointer, _obj.m_pointer);
-			}
-			*/
 	};
 	
 	template<class EMEM_UPTR_TYPE, class... EMEM_UPTR_ARG>
 	UniquePtr<EMEM_UPTR_TYPE> makeUniquePtr(EMEM_UPTR_ARG ... _obj) {
 		return ememory::UniquePtr<EMEM_UPTR_TYPE>(ETK_NEW(EMEM_UPTR_TYPE, _obj...));
+	}
+	template<class EMEM_UPTR_TYPE_OUT, class EMEM_UPTR_TYPE, class... EMEM_UPTR_ARG>
+	UniquePtr<EMEM_UPTR_TYPE_OUT> makeUniquePtrCast(EMEM_UPTR_ARG ... _obj) {
+		return ememory::UniquePtr<EMEM_UPTR_TYPE_OUT>(ETK_NEW(EMEM_UPTR_TYPE, _obj...));
 	}
 	
 	template <class EMEM_UPTR_TYPE>
