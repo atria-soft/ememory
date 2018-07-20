@@ -28,6 +28,7 @@ def configure(target, my_module):
 	my_module.add_src_file([
 	    'test/main.cpp',
 	    'test/testUnique.cpp',
+	    'test/testRef.cpp',
 	    'test/testShared.cpp',
 	    'test/testWeak.cpp',
 	    'test/testEnableSharedFromThis.cpp',

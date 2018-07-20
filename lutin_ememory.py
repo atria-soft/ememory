@@ -29,21 +29,25 @@ def configure(target, my_module):
 	# add the file to compile:
 	my_module.add_src_file([
 		'ememory/debug.cpp',
-		'ememory/Counter.cpp'
+		'ememory/Counter.cpp',
+		'ememory/RefCounter.cpp',
 		])
 	
 	my_module.add_header_file([
 		'ememory/debug.hpp',
 		'ememory/memory.hpp',
 		'ememory/Counter.hpp',
+		'ememory/RefCounter.hpp',
+		'ememory/RefPtr.hpp',
 		'ememory/SharedPtr.hpp',
 		'ememory/UniquePtr.hpp',
 		'ememory/WeakPtr.hpp',
 		'ememory/EnableSharedFromThis.hpp',
 		'ememory/details/memory.hxx',
 		'ememory/details/SharedPtr.hxx',
+		'ememory/details/RefPtr.hxx',
 		'ememory/details/WeakPtr.hxx',
-		'ememory/details/EnableSharedFromThis.hxx'
+		'ememory/details/EnableSharedFromThis.hxx',
 		])
 	
 	# build in C++ mode

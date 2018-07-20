@@ -128,68 +128,69 @@ TEST(TestShared, heritage) {
 
 
 static uint32_t isDestroy = 0;
-
-class testContructDestruct {
-	private:
-		uint32_t m_addValue;
-	public:
-		testContructDestruct(uint32_t _addValue):
-		  m_addValue(_addValue) {
-			isDestroy += m_addValue;
-			TEST_DEBUG("Create class " << m_addValue);
-		}
-		testContructDestruct(testContructDestruct&& _obj):
-		  m_addValue(_obj.m_addValue) {
-			_obj.m_addValue = 0;
-			TEST_DEBUG("move contruction " << m_addValue);
-		}
-		virtual ~testContructDestruct() {
-			if (m_addValue == 0) {
-				TEST_DEBUG("Remove class (after move)");
-				return;
+namespace {
+	class testContructDestruct {
+		private:
+			uint32_t m_addValue;
+		public:
+			testContructDestruct(uint32_t _addValue):
+			  m_addValue(_addValue) {
+				isDestroy += m_addValue;
+				TEST_DEBUG("Create class " << m_addValue);
 			}
-			TEST_DEBUG("Remove Class " << m_addValue);
-			isDestroy -= m_addValue;
-		}
-		testContructDestruct& operator= (testContructDestruct&& _obj) {
-			TEST_DEBUG("move operator " << m_addValue);
-			if (this != &_obj) {
-				etk::swap(m_addValue, _obj.m_addValue);
+			testContructDestruct(testContructDestruct&& _obj):
+			  m_addValue(_obj.m_addValue) {
+				_obj.m_addValue = 0;
+				TEST_DEBUG("move contruction " << m_addValue);
 			}
-			return *this;
-		}
-};
-
-class testContructDestruct2 : public ememory::EnableSharedFromThis<testContructDestruct2> {
-	private:
-		uint32_t m_addValue;
-	public:
-		testContructDestruct2(uint32_t _addValue):
-		  m_addValue(_addValue) {
-			isDestroy += m_addValue;
-			TEST_DEBUG("Create class " << m_addValue);
-		}
-		testContructDestruct2(testContructDestruct2&& _obj):
-		  m_addValue(_obj.m_addValue) {
-			_obj.m_addValue = 0;
-			TEST_DEBUG("move contruction " << m_addValue);
-		}
-		virtual ~testContructDestruct2() {
-			if (m_addValue == 0) {
-				TEST_DEBUG("Remove class (after move)");
-				return;
+			virtual ~testContructDestruct() {
+				if (m_addValue == 0) {
+					TEST_DEBUG("Remove class (after move)");
+					return;
+				}
+				TEST_DEBUG("Remove Class " << m_addValue);
+				isDestroy -= m_addValue;
 			}
-			TEST_DEBUG("Remove Class " << m_addValue);
-			isDestroy -= m_addValue;
-		}
-		testContructDestruct2& operator= (testContructDestruct2&& _obj) {
-			TEST_DEBUG("move operator " << m_addValue);
-			if (this != &_obj) {
-				etk::swap(m_addValue, _obj.m_addValue);
+			testContructDestruct& operator= (testContructDestruct&& _obj) {
+				TEST_DEBUG("move operator " << m_addValue);
+				if (this != &_obj) {
+					etk::swap(m_addValue, _obj.m_addValue);
+				}
+				return *this;
 			}
-			return *this;
-		}
-};
+	};
+	
+	class testContructDestruct2 : public ememory::EnableSharedFromThis<testContructDestruct2> {
+		private:
+			uint32_t m_addValue;
+		public:
+			testContructDestruct2(uint32_t _addValue):
+			  m_addValue(_addValue) {
+				isDestroy += m_addValue;
+				TEST_DEBUG("Create class " << m_addValue);
+			}
+			testContructDestruct2(testContructDestruct2&& _obj):
+			  m_addValue(_obj.m_addValue) {
+				_obj.m_addValue = 0;
+				TEST_DEBUG("move contruction " << m_addValue);
+			}
+			virtual ~testContructDestruct2() {
+				if (m_addValue == 0) {
+					TEST_DEBUG("Remove class (after move)");
+					return;
+				}
+				TEST_DEBUG("Remove Class " << m_addValue);
+				isDestroy -= m_addValue;
+			}
+			testContructDestruct2& operator= (testContructDestruct2&& _obj) {
+				TEST_DEBUG("move operator " << m_addValue);
+				if (this != &_obj) {
+					etk::swap(m_addValue, _obj.m_addValue);
+				}
+				return *this;
+			}
+	};
+}
 
 TEST(TestShared, destroyElementAtTheCorectMoment) {
 	isDestroy = 0;
