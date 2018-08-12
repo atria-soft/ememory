@@ -6,6 +6,9 @@
 
 #include <ememory/RefCounter.hpp>
 #include <ememory/debug.hpp>
+#include <etk/typeInfo.hpp>
+
+ETK_DECLARE_TYPE(ememory::RefCounter);
 
 ememory::RefCounter::~RefCounter() {
 	if (m_refCount != 0) {

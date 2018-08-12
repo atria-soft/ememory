@@ -327,6 +327,7 @@ namespace ememory {
 		private:
 			void* m_element;
 			ememory::Counter* m_counter;
+			deleterCall m_deleter; //!< Function to call to delete the data pointer
 		public:
 			SharedPtr(void* _element);
 		public:
@@ -361,13 +362,16 @@ namespace ememory {
 			SharedPtr(SharedPtr<void>&& _obj) {
 				m_element = _obj.m_element;
 				m_counter = _obj.m_counter;
+				m_deleter = _obj.m_deleter;
 				_obj.m_element = null;
 				_obj.m_counter = null;
+				_obj.m_deleter = null;
 			}
 			template<class EMEMORY_TYPE2>
 			SharedPtr(const SharedPtr<EMEMORY_TYPE2>& _obj):
 			  m_element((void*)_obj.get()),
-			  m_counter(_obj.getCounter()) {
+			  m_counter(_obj.getCounter()),
+			  m_deleter(_obj.getDeleter()) {
 				if (    m_element == null
 				     || m_counter == null) {
 					m_element = null;
@@ -382,6 +386,7 @@ namespace ememory {
 			SharedPtr(const SharedPtr<void>& _obj) {
 				m_element = _obj.m_element;
 				m_counter = _obj.m_counter;
+				m_deleter = _obj.m_deleter;
 				if (    m_element == null
 				     || m_counter == null) {
 					m_element = null;
@@ -398,6 +403,7 @@ namespace ememory {
 				reset();
 				m_element = (void*)_obj.get();
 				m_counter = _obj.getCounter();
+				m_deleter = _obj.getDeleter();
 				if (    m_element == null
 				     || m_counter == null) {
 					m_element = null;
@@ -414,6 +420,7 @@ namespace ememory {
 				reset();
 				m_element = _obj.m_element;
 				m_counter = _obj.m_counter;
+				m_deleter = _obj.m_deleter;
 				if (    m_element == null
 				     || m_counter == null) {
 					m_element = null;
@@ -437,10 +444,22 @@ namespace ememory {
 				switch(rmData) {
 					case ememory::Counter::remove::all:
 						ETK_DELETE(ememory::Counter, m_counter);
-						EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr<void>");
+						if (m_deleter != null) {
+							if (m_element != null) {
+								m_deleter((void*)m_element);
+							}
+						} else {
+							EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr<void>");
+						}
 						break;
 					case ememory::Counter::remove::data:
-						EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr<void>");
+						if (m_deleter != null) {
+							if (m_element != null) {
+								m_deleter((void*)m_element);
+							}
+						} else {
+							EMEMORY_WARNING("Maybe a leak ==> no deleter of the SharedPtr<void>");
+						}
 						break;
 					case ememory::Counter::remove::counter:
 						ETK_DELETE(ememory::Counter, m_counter);
@@ -494,6 +513,9 @@ namespace ememory {
 			}
 			ememory::Counter* getCounter() const {
 				return m_counter;
+			}
+			deleterCall getDeleter() const {
+				return m_deleter;
 			}
 			// TODO: unique
 			// TODO: bool
