@@ -262,7 +262,7 @@ ememory::SharedPtr<EMEMORY_TYPE> ememory::WeakPtr<EMEMORY_TYPE>::lock() {
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::WeakPtr<EMEMORY_TYPE>::operator==(const ememory::WeakPtr<EMEMORY_TYPE>& _obj) {
+bool ememory::WeakPtr<EMEMORY_TYPE>::operator==(const ememory::WeakPtr<EMEMORY_TYPE>& _obj) const {
 	return m_counter == _obj.m_counter;
 }
 
@@ -272,7 +272,7 @@ bool ememory::WeakPtr<EMEMORY_TYPE>::operator==(etk::NullPtr) const {
 }
 
 template<typename EMEMORY_TYPE>
-bool ememory::WeakPtr<EMEMORY_TYPE>::operator!=(const ememory::WeakPtr<EMEMORY_TYPE>& _obj) {
+bool ememory::WeakPtr<EMEMORY_TYPE>::operator!=(const ememory::WeakPtr<EMEMORY_TYPE>& _obj) const {
 	return m_counter != _obj.m_counter;
 }
 

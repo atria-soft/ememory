@@ -124,27 +124,27 @@ namespace ememory {
 			 */
 			ememory::SharedPtr<EMEMORY_TYPE> lock();
 			/**
-			 * @brief Check if two WeakPtr are the same data
-			 * @param[in] _obj Object to compare
-			 * @return true The Object have the same pointer reference, false otherwise
-			 */
-			bool operator==(const WeakPtr& _obj);
-			/**
 			 * @brief Check if the WeakPtr have an internal data (not null)
 			 * @return true The pointer is not asigned, false otherwise
 			 */
 			bool operator==(etk::NullPtr) const;
 			/**
-			 * @brief Check if two WeakPtr are different data
+			 * @brief Check if two WeakPtr are the same data
 			 * @param[in] _obj Object to compare
-			 * @return true The Object have NOT the same pointer reference, false otherwise
+			 * @return true The Object have the same pointer reference, false otherwise
 			 */
-			bool operator!=(const WeakPtr& _obj);
+			bool operator==(const WeakPtr& _obj) const;
 			/**
 			 * @brief Check if the SharedPtr have NOT an internal data (null)
 			 * @return true The pointer is asigned, false otherwise
 			 */
 			bool operator!=(etk::NullPtr) const;
+			/**
+			 * @brief Check if two WeakPtr are different data
+			 * @param[in] _obj Object to compare
+			 * @return true The Object have NOT the same pointer reference, false otherwise
+			 */
+			bool operator!=(const WeakPtr& _obj) const;
 			/**
 			 * @brief Swap 2 Object inside the WeakPtr
 			 * @param[in] _obj Object to swap with
