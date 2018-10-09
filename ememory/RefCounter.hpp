@@ -14,7 +14,11 @@ namespace ememory {
 	 * @brief Use the element as a refcounted element
 	 */
 	class RefCounter {
-		protected:
+		#ifndef ETK_MEMORY_CHECKER
+			protected:
+		#else
+			public:
+		#endif
 			// Virtualize destructor in private to prevent user ot remove it without permition
 			virtual ~RefCounter();
 		private:
