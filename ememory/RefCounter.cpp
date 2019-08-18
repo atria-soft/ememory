@@ -10,6 +10,22 @@
 
 ETK_DECLARE_TYPE(ememory::RefCounter);
 
+#ifdef DEBUG
+	static int32_t& getLocalDebugCounter() {
+		static int32_t g_uid = 0;
+		return g_uid;
+	}
+	void ememory::resetDebugRefCounter() {
+		getLocalDebugCounter() = 0;
+	}
+#endif
+
+ememory::RefCounter::RefCounter() {
+	#ifdef DEBUG
+		m_uid = getLocalDebugCounter()++;
+	#endif
+}
+
 ememory::RefCounter::~RefCounter() {
 	if (m_refCount != 0) {
 		EMEMORY_ERROR("delete a RefCounted element that is keep by somewhere !! " << m_refCount);
@@ -30,11 +46,23 @@ void ememory::RefCounter::refRelease() {
 		return;
 	}
 	if (refCount < 0) {
-		EMEMORY_ERROR("request release a refcounted One more time than needed !! " << m_refCount);
+		#ifdef DEBUG
+			EMEMORY_ERROR("request release a refcounted One more time than needed !! " << m_refCount << " uid=" << m_uid);
+		#else
+			EMEMORY_ERROR("request release a refcounted One more time than needed !! " << m_refCount);
+		#endif
 		m_refCount = 0;
 	}
 }
 
 int ememory::RefCounter::getRefCount() const {
 	return m_refCount;
+}
+
+
+uint64_t ememory::RefCounter::getRawPointer() const {
+	#ifdef DEBUG
+		return m_uid;
+	#endif
+	return uint64_t(this);
 }

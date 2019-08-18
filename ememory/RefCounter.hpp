@@ -19,10 +19,14 @@ namespace ememory {
 		#else
 			public:
 		#endif
+			RefCounter();
 			// Virtualize destructor in private to prevent user ot remove it without permition
 			virtual ~RefCounter();
 		private:
 			int32_t m_refCount = 1;
+			#ifdef DEBUG
+				int32_t m_uid;
+			#endif
 		public:
 			/**
 			 * @brief Keep a copy of this reference-counted element.
@@ -46,7 +50,15 @@ namespace ememory {
 			 * @return Request const SharedPtr
 			 */
 			//const ememory::RefPtr<EMEMORY_TYPE> refFromThis() const;
+		protected:
+			/**
+			 * @brief get the RAW pointer value of this element (for debug only)
+			 */
+			uint64_t getRawPointer() const;
 	};
+	#ifdef DEBUG
+		void resetDebugRefCounter();
+	#endif
 }
 
 #include <ememory/details/EnableSharedFromThis.hxx>
